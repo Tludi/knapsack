@@ -7,17 +7,22 @@
 //
 
 import UIKit
+import RealmSwift
 
 class TripViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
   var numbers = ["one", "two", "three", "four", "five"]
+  var allTrips = Realm().objects(Trip)
   
   @IBOutlet weak var itemTable: UITableView!
   @IBOutlet weak var addButtonView: UIView!
   @IBAction func addButton(sender: UIButton) {
     println("pressed add button")
-    numbers.append("new number")
-    itemTable.reloadData()
+//    numbers.append("new number")
+//    itemTable.reloadData()
+  }
+  @IBAction func clearTrips(sender: UIBarButtonItem) {
+    clearDatabase()
   }
   
   override func viewDidLoad() {
@@ -34,18 +39,30 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // Do any additional setup after loading the view, typically from a nib.
   }
+  
+  override func viewWillAppear(animated: Bool) {
+    itemTable.reloadData()
+  }
 
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return numbers.count
+    return allTrips.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("tripCell", forIndexPath: indexPath) as! UITableViewCell
-//    cell.textLabel!.text = "Hello from \(indexPath.row)"
+    let trip = allTrips[indexPath.row]
     
+    // tripName
     var tripNameLabel = cell.contentView.viewWithTag(1) as! UILabel
-    tripNameLabel.text = "Hello from \(indexPath.row)"
+    tripNameLabel.text = "\(trip.tripName)"
+    // tripStartDate
+    var dateLabel = cell.contentView.viewWithTag(3) as! UILabel
+    dateLabel.text = "\(trip.startDate)"
+    // tripItems Total
+    var itemLabel = cell.contentView.viewWithTag(4) as! UILabel
+//    itemLabel.text = "\(trip.lists.count)"
+    itemLabel.text = "100 Items"
     
     return cell
   }
@@ -91,6 +108,28 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     return [deleteCellAction, editCellAction]
   }
   
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "showListTable" {
+      if let destinationController = segue.destinationViewController as? TripListViewController {
+        if let tripIndex = itemTable.indexPathForSelectedRow() {
+          println("clicked show list")
+          let trip = allTrips[tripIndex.row]
+          destinationController.chosenTrip = trip
+        }
+      }
+    }
+  }
+  
+  
+  
+  func clearDatabase() {
+    let realm = Realm()
+    realm.write {
+      realm.deleteAll()
+    }
+    self.itemTable.reloadData()
+  }
   
 //  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 //    if segue.identifier == "showcelldata" {

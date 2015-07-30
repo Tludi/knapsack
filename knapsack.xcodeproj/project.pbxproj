@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		003217521B6A90EA0092E36E /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003217511B6A90EA0092E36E /* TripViewController.swift */; };
 		003217531B6A90EA0092E36E /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003217511B6A90EA0092E36E /* TripViewController.swift */; };
+		003217551B6ABA300092E36E /* TripListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003217541B6ABA300092E36E /* TripListViewController.swift */; };
+		003217561B6ABA300092E36E /* TripListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003217541B6ABA300092E36E /* TripListViewController.swift */; };
 		005F80711B69F5F700D46FB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005F806F1B69F5F700D46FB1 /* Main.storyboard */; };
 		005F80721B69F5F700D46FB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005F806F1B69F5F700D46FB1 /* Main.storyboard */; };
 		005F807A1B69F68400D46FB1 /* TripListTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80731B69F68400D46FB1 /* TripListTableController.swift */; };
@@ -60,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		003217511B6A90EA0092E36E /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
+		003217541B6ABA300092E36E /* TripListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripListViewController.swift; sourceTree = "<group>"; };
 		005F80701B69F5F700D46FB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		005F80731B69F68400D46FB1 /* TripListTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripListTableController.swift; sourceTree = "<group>"; };
 		005F80741B69F68400D46FB1 /* TripTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableController.swift; sourceTree = "<group>"; };
@@ -142,6 +145,7 @@
 			children = (
 				00D0C8DD1B67DFEC00823D22 /* Images.xcassets */,
 				005F806F1B69F5F700D46FB1 /* Main.storyboard */,
+				003217541B6ABA300092E36E /* TripListViewController.swift */,
 				005F80731B69F68400D46FB1 /* TripListTableController.swift */,
 				005F80741B69F68400D46FB1 /* TripTableController.swift */,
 				005F80751B69F68400D46FB1 /* NewTripViewController.swift */,
@@ -419,6 +423,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00D0C8D71B67DFEC00823D22 /* AppDelegate.swift in Sources */,
+				003217551B6ABA300092E36E /* TripListViewController.swift in Sources */,
 				005F809A1B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				005F80961B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				005F809C1B69F83000D46FB1 /* ENSideMenu.swift in Sources */,
@@ -441,6 +446,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				00D0C8ED1B67DFEC00823D22 /* knapsackTests.swift in Sources */,
+				003217561B6ABA300092E36E /* TripListViewController.swift in Sources */,
 				005F809B1B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				005F80971B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				005F809D1B69F83000D46FB1 /* ENSideMenu.swift in Sources */,
