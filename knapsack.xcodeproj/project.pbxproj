@@ -7,12 +7,45 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		003217521B6A90EA0092E36E /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003217511B6A90EA0092E36E /* TripViewController.swift */; };
+		003217531B6A90EA0092E36E /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003217511B6A90EA0092E36E /* TripViewController.swift */; };
+		005F80711B69F5F700D46FB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005F806F1B69F5F700D46FB1 /* Main.storyboard */; };
+		005F80721B69F5F700D46FB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005F806F1B69F5F700D46FB1 /* Main.storyboard */; };
+		005F807A1B69F68400D46FB1 /* TripListTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80731B69F68400D46FB1 /* TripListTableController.swift */; };
+		005F807B1B69F68400D46FB1 /* TripListTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80731B69F68400D46FB1 /* TripListTableController.swift */; };
+		005F807C1B69F68400D46FB1 /* TripTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80741B69F68400D46FB1 /* TripTableController.swift */; };
+		005F807D1B69F68400D46FB1 /* TripTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80741B69F68400D46FB1 /* TripTableController.swift */; };
+		005F807E1B69F68400D46FB1 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80751B69F68400D46FB1 /* NewTripViewController.swift */; };
+		005F807F1B69F68400D46FB1 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80751B69F68400D46FB1 /* NewTripViewController.swift */; };
+		005F80801B69F68400D46FB1 /* ListItemTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80761B69F68400D46FB1 /* ListItemTableController.swift */; };
+		005F80811B69F68400D46FB1 /* ListItemTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80761B69F68400D46FB1 /* ListItemTableController.swift */; };
+		005F80821B69F68400D46FB1 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80771B69F68400D46FB1 /* MenuTableViewController.swift */; };
+		005F80831B69F68400D46FB1 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80771B69F68400D46FB1 /* MenuTableViewController.swift */; };
+		005F80841B69F68400D46FB1 /* SideNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80781B69F68400D46FB1 /* SideNavigationController.swift */; };
+		005F80851B69F68400D46FB1 /* SideNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80781B69F68400D46FB1 /* SideNavigationController.swift */; };
+		005F80861B69F68400D46FB1 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80791B69F68400D46FB1 /* Trip.swift */; };
+		005F80871B69F68400D46FB1 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80791B69F68400D46FB1 /* Trip.swift */; };
+		005F80941B69F83000D46FB1 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F808B1B69F83000D46FB1 /* TPKeyboardAvoidingCollectionView.m */; };
+		005F80951B69F83000D46FB1 /* TPKeyboardAvoidingCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F808B1B69F83000D46FB1 /* TPKeyboardAvoidingCollectionView.m */; };
+		005F80961B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F808D1B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m */; };
+		005F80971B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F808D1B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m */; };
+		005F80981B69F83000D46FB1 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F808F1B69F83000D46FB1 /* TPKeyboardAvoidingTableView.m */; };
+		005F80991B69F83000D46FB1 /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F808F1B69F83000D46FB1 /* TPKeyboardAvoidingTableView.m */; };
+		005F809A1B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F80911B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		005F809B1B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 005F80911B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m */; };
+		005F809C1B69F83000D46FB1 /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80921B69F83000D46FB1 /* ENSideMenu.swift */; };
+		005F809D1B69F83000D46FB1 /* ENSideMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80921B69F83000D46FB1 /* ENSideMenu.swift */; };
+		005F809E1B69F83000D46FB1 /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80931B69F83000D46FB1 /* ENSideMenuNavigationController.swift */; };
+		005F809F1B69F83000D46FB1 /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80931B69F83000D46FB1 /* ENSideMenuNavigationController.swift */; };
+		005F80A11B69F8A000D46FB1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005F80A01B69F8A000D46FB1 /* LaunchScreen.xib */; };
+		005F80A21B69F8A000D46FB1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005F80A01B69F8A000D46FB1 /* LaunchScreen.xib */; };
 		00D0C8D71B67DFEC00823D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D0C8D61B67DFEC00823D22 /* AppDelegate.swift */; };
-		00D0C8D91B67DFEC00823D22 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D0C8D81B67DFEC00823D22 /* ViewController.swift */; };
-		00D0C8DC1B67DFEC00823D22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 00D0C8DA1B67DFEC00823D22 /* Main.storyboard */; };
 		00D0C8DE1B67DFEC00823D22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D0C8DD1B67DFEC00823D22 /* Images.xcassets */; };
-		00D0C8E11B67DFEC00823D22 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 00D0C8DF1B67DFEC00823D22 /* LaunchScreen.xib */; };
 		00D0C8ED1B67DFEC00823D22 /* knapsackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D0C8EC1B67DFEC00823D22 /* knapsackTests.swift */; };
+		00D0C8FA1B67E0A900823D22 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 00D0C8F91B67E0A900823D22 /* Podfile */; };
+		00D0C8FB1B67E0A900823D22 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 00D0C8F91B67E0A900823D22 /* Podfile */; };
+		33E7F67341D85F314B683F82 /* Pods_knapsackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABA22F1A9E1065FFD23B9AEE /* Pods_knapsackTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		624187F712CF1FA558A83397 /* Pods_knapsack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E04F9B3FD421C9DDC05FFB /* Pods_knapsack.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,16 +59,42 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		003217511B6A90EA0092E36E /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
+		005F80701B69F5F700D46FB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		005F80731B69F68400D46FB1 /* TripListTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripListTableController.swift; sourceTree = "<group>"; };
+		005F80741B69F68400D46FB1 /* TripTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableController.swift; sourceTree = "<group>"; };
+		005F80751B69F68400D46FB1 /* NewTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
+		005F80761B69F68400D46FB1 /* ListItemTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemTableController.swift; sourceTree = "<group>"; };
+		005F80771B69F68400D46FB1 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		005F80781B69F68400D46FB1 /* SideNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideNavigationController.swift; sourceTree = "<group>"; };
+		005F80791B69F68400D46FB1 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		005F80881B69F6BE00D46FB1 /* knapsack-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "knapsack-Bridging-Header.h"; sourceTree = "<group>"; };
+		005F80891B69F6BE00D46FB1 /* knapsackTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "knapsackTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		005F808A1B69F82000D46FB1 /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
+		005F808B1B69F83000D46FB1 /* TPKeyboardAvoidingCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingCollectionView.m; sourceTree = "<group>"; };
+		005F808C1B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		005F808D1B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		005F808E1B69F83000D46FB1 /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
+		005F808F1B69F83000D46FB1 /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		005F80901B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+TPKeyboardAvoidingAdditions.h"; sourceTree = "<group>"; };
+		005F80911B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+TPKeyboardAvoidingAdditions.m"; sourceTree = "<group>"; };
+		005F80921B69F83000D46FB1 /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
+		005F80931B69F83000D46FB1 /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
+		005F80A01B69F8A000D46FB1 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		00D0C8D11B67DFEC00823D22 /* knapsack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = knapsack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D0C8D51B67DFEC00823D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00D0C8D61B67DFEC00823D22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		00D0C8D81B67DFEC00823D22 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		00D0C8DB1B67DFEC00823D22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		00D0C8DD1B67DFEC00823D22 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		00D0C8E01B67DFEC00823D22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		00D0C8E61B67DFEC00823D22 /* knapsackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = knapsackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D0C8EB1B67DFEC00823D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00D0C8EC1B67DFEC00823D22 /* knapsackTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = knapsackTests.swift; sourceTree = "<group>"; };
+		00D0C8F91B67E0A900823D22 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		06656AC038E531D4531251AF /* Pods-knapsackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knapsackTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-knapsackTests/Pods-knapsackTests.debug.xcconfig"; sourceTree = "<group>"; };
+		45E04F9B3FD421C9DDC05FFB /* Pods_knapsack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_knapsack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A8D12CB2C080664B4322565 /* Pods-knapsackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knapsackTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-knapsackTests/Pods-knapsackTests.release.xcconfig"; sourceTree = "<group>"; };
+		81367A8B8C54849758D1E3F2 /* Pods-knapsack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knapsack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-knapsack/Pods-knapsack.debug.xcconfig"; sourceTree = "<group>"; };
+		ABA22F1A9E1065FFD23B9AEE /* Pods_knapsackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_knapsackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F6DD111CA5923D8C3909A4F0 /* Pods-knapsack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knapsack.release.xcconfig"; path = "Pods/Target Support Files/Pods-knapsack/Pods-knapsack.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				624187F712CF1FA558A83397 /* Pods_knapsack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				33E7F67341D85F314B683F82 /* Pods_knapsackTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +123,8 @@
 				00D0C8D31B67DFEC00823D22 /* knapsack */,
 				00D0C8E91B67DFEC00823D22 /* knapsackTests */,
 				00D0C8D21B67DFEC00823D22 /* Products */,
+				F57270E339857EC8F138409E /* Pods */,
+				8A7A0C8638E53531076589A0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,12 +140,17 @@
 		00D0C8D31B67DFEC00823D22 /* knapsack */ = {
 			isa = PBXGroup;
 			children = (
-				00D0C8D61B67DFEC00823D22 /* AppDelegate.swift */,
-				00D0C8D81B67DFEC00823D22 /* ViewController.swift */,
-				00D0C8DA1B67DFEC00823D22 /* Main.storyboard */,
 				00D0C8DD1B67DFEC00823D22 /* Images.xcassets */,
-				00D0C8DF1B67DFEC00823D22 /* LaunchScreen.xib */,
+				005F806F1B69F5F700D46FB1 /* Main.storyboard */,
+				005F80731B69F68400D46FB1 /* TripListTableController.swift */,
+				005F80741B69F68400D46FB1 /* TripTableController.swift */,
+				005F80751B69F68400D46FB1 /* NewTripViewController.swift */,
+				005F80761B69F68400D46FB1 /* ListItemTableController.swift */,
+				005F80771B69F68400D46FB1 /* MenuTableViewController.swift */,
+				005F80781B69F68400D46FB1 /* SideNavigationController.swift */,
+				005F80791B69F68400D46FB1 /* Trip.swift */,
 				00D0C8D41B67DFEC00823D22 /* Supporting Files */,
+				003217511B6A90EA0092E36E /* TripViewController.swift */,
 			);
 			path = knapsack;
 			sourceTree = "<group>";
@@ -90,7 +158,22 @@
 		00D0C8D41B67DFEC00823D22 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				005F808A1B69F82000D46FB1 /* TPKeyboardAvoidingCollectionView.h */,
+				005F808B1B69F83000D46FB1 /* TPKeyboardAvoidingCollectionView.m */,
+				005F808C1B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.h */,
+				005F808D1B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m */,
+				005F808E1B69F83000D46FB1 /* TPKeyboardAvoidingTableView.h */,
+				005F808F1B69F83000D46FB1 /* TPKeyboardAvoidingTableView.m */,
+				005F80901B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.h */,
+				005F80911B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m */,
+				005F80921B69F83000D46FB1 /* ENSideMenu.swift */,
+				005F80931B69F83000D46FB1 /* ENSideMenuNavigationController.swift */,
+				005F80A01B69F8A000D46FB1 /* LaunchScreen.xib */,
+				00D0C8F91B67E0A900823D22 /* Podfile */,
+				00D0C8D61B67DFEC00823D22 /* AppDelegate.swift */,
 				00D0C8D51B67DFEC00823D22 /* Info.plist */,
+				005F80881B69F6BE00D46FB1 /* knapsack-Bridging-Header.h */,
+				005F80891B69F6BE00D46FB1 /* knapsackTests-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -112,6 +195,26 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8A7A0C8638E53531076589A0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				45E04F9B3FD421C9DDC05FFB /* Pods_knapsack.framework */,
+				ABA22F1A9E1065FFD23B9AEE /* Pods_knapsackTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F57270E339857EC8F138409E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				81367A8B8C54849758D1E3F2 /* Pods-knapsack.debug.xcconfig */,
+				F6DD111CA5923D8C3909A4F0 /* Pods-knapsack.release.xcconfig */,
+				06656AC038E531D4531251AF /* Pods-knapsackTests.debug.xcconfig */,
+				7A8D12CB2C080664B4322565 /* Pods-knapsackTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +222,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00D0C8F01B67DFEC00823D22 /* Build configuration list for PBXNativeTarget "knapsack" */;
 			buildPhases = (
+				A2D03A1131577DAF532031A0 /* Check Pods Manifest.lock */,
 				00D0C8CD1B67DFEC00823D22 /* Sources */,
 				00D0C8CE1B67DFEC00823D22 /* Frameworks */,
 				00D0C8CF1B67DFEC00823D22 /* Resources */,
+				79DCF4368C8819865D165D5C /* Embed Pods Frameworks */,
+				5E2301BBD948F6970C8500B0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -136,9 +242,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00D0C8F31B67DFEC00823D22 /* Build configuration list for PBXNativeTarget "knapsackTests" */;
 			buildPhases = (
+				45D46506DA6DBAF90F65F83E /* Check Pods Manifest.lock */,
 				00D0C8E21B67DFEC00823D22 /* Sources */,
 				00D0C8E31B67DFEC00823D22 /* Frameworks */,
 				00D0C8E41B67DFEC00823D22 /* Resources */,
+				86DF5BE2D748C47D57950EA5 /* Embed Pods Frameworks */,
+				43A0B454D6A3D5FB26672A79 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -192,9 +301,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00D0C8DC1B67DFEC00823D22 /* Main.storyboard in Resources */,
-				00D0C8E11B67DFEC00823D22 /* LaunchScreen.xib in Resources */,
+				005F80A11B69F8A000D46FB1 /* LaunchScreen.xib in Resources */,
+				00D0C8FA1B67E0A900823D22 /* Podfile in Resources */,
 				00D0C8DE1B67DFEC00823D22 /* Images.xcassets in Resources */,
+				005F80711B69F5F700D46FB1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,18 +312,127 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00D0C8FB1B67E0A900823D22 /* Podfile in Resources */,
+				005F80A21B69F8A000D46FB1 /* LaunchScreen.xib in Resources */,
+				005F80721B69F5F700D46FB1 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		43A0B454D6A3D5FB26672A79 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-knapsackTests/Pods-knapsackTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45D46506DA6DBAF90F65F83E /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		5E2301BBD948F6970C8500B0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-knapsack/Pods-knapsack-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		79DCF4368C8819865D165D5C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-knapsack/Pods-knapsack-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86DF5BE2D748C47D57950EA5 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-knapsackTests/Pods-knapsackTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A2D03A1131577DAF532031A0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		00D0C8CD1B67DFEC00823D22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00D0C8D91B67DFEC00823D22 /* ViewController.swift in Sources */,
 				00D0C8D71B67DFEC00823D22 /* AppDelegate.swift in Sources */,
+				005F809A1B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				005F80961B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				005F809C1B69F83000D46FB1 /* ENSideMenu.swift in Sources */,
+				005F80941B69F83000D46FB1 /* TPKeyboardAvoidingCollectionView.m in Sources */,
+				005F80801B69F68400D46FB1 /* ListItemTableController.swift in Sources */,
+				003217521B6A90EA0092E36E /* TripViewController.swift in Sources */,
+				005F80821B69F68400D46FB1 /* MenuTableViewController.swift in Sources */,
+				005F80841B69F68400D46FB1 /* SideNavigationController.swift in Sources */,
+				005F80861B69F68400D46FB1 /* Trip.swift in Sources */,
+				005F807A1B69F68400D46FB1 /* TripListTableController.swift in Sources */,
+				005F809E1B69F83000D46FB1 /* ENSideMenuNavigationController.swift in Sources */,
+				005F80981B69F83000D46FB1 /* TPKeyboardAvoidingTableView.m in Sources */,
+				005F807E1B69F68400D46FB1 /* NewTripViewController.swift in Sources */,
+				005F807C1B69F68400D46FB1 /* TripTableController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +441,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				00D0C8ED1B67DFEC00823D22 /* knapsackTests.swift in Sources */,
+				005F809B1B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				005F80971B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				005F809D1B69F83000D46FB1 /* ENSideMenu.swift in Sources */,
+				005F80951B69F83000D46FB1 /* TPKeyboardAvoidingCollectionView.m in Sources */,
+				005F80811B69F68400D46FB1 /* ListItemTableController.swift in Sources */,
+				003217531B6A90EA0092E36E /* TripViewController.swift in Sources */,
+				005F80831B69F68400D46FB1 /* MenuTableViewController.swift in Sources */,
+				005F80851B69F68400D46FB1 /* SideNavigationController.swift in Sources */,
+				005F80871B69F68400D46FB1 /* Trip.swift in Sources */,
+				005F807B1B69F68400D46FB1 /* TripListTableController.swift in Sources */,
+				005F809F1B69F83000D46FB1 /* ENSideMenuNavigationController.swift in Sources */,
+				005F80991B69F83000D46FB1 /* TPKeyboardAvoidingTableView.m in Sources */,
+				005F807F1B69F68400D46FB1 /* NewTripViewController.swift in Sources */,
+				005F807D1B69F68400D46FB1 /* TripTableController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,20 +469,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		00D0C8DA1B67DFEC00823D22 /* Main.storyboard */ = {
+		005F806F1B69F5F700D46FB1 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				00D0C8DB1B67DFEC00823D22 /* Base */,
+				005F80701B69F5F700D46FB1 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		00D0C8DF1B67DFEC00823D22 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				00D0C8E01B67DFEC00823D22 /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -338,28 +563,37 @@
 		};
 		00D0C8F11B67DFEC00823D22 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 81367A8B8C54849758D1E3F2 /* Pods-knapsack.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = knapsack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "knapsack/knapsack-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		00D0C8F21B67DFEC00823D22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F6DD111CA5923D8C3909A4F0 /* Pods-knapsack.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = knapsack/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "knapsack/knapsack-Bridging-Header.h";
 			};
 			name = Release;
 		};
 		00D0C8F41B67DFEC00823D22 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 06656AC038E531D4531251AF /* Pods-knapsackTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -371,14 +605,18 @@
 				INFOPLIST_FILE = knapsackTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "knapsack/knapsackTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/knapsack.app/knapsack";
 			};
 			name = Debug;
 		};
 		00D0C8F51B67DFEC00823D22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7A8D12CB2C080664B4322565 /* Pods-knapsackTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -386,6 +624,7 @@
 				INFOPLIST_FILE = knapsackTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "knapsack/knapsackTests-Bridging-Header.h";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/knapsack.app/knapsack";
 			};
 			name = Release;
@@ -409,6 +648,7 @@
 				00D0C8F21B67DFEC00823D22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		00D0C8F31B67DFEC00823D22 /* Build configuration list for PBXNativeTarget "knapsackTests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +657,7 @@
 				00D0C8F51B67DFEC00823D22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
