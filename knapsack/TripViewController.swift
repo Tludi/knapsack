@@ -11,7 +11,7 @@ import RealmSwift
 
 class TripViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-  var numbers = ["one", "two", "three", "four", "five"]
+  var realm = Realm()
   var allTrips = Realm().objects(Trip)
   
   @IBOutlet weak var itemTable: UITableView!
@@ -52,6 +52,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("tripCell", forIndexPath: indexPath) as! UITableViewCell
     let trip = allTrips[indexPath.row]
+    var allTripItems = trip.lists.first?.items.count
     
     // tripName
     var tripNameLabel = cell.contentView.viewWithTag(1) as! UILabel
@@ -61,8 +62,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     dateLabel.text = "\(trip.startDate)"
     // tripItems Total
     var itemLabel = cell.contentView.viewWithTag(4) as! UILabel
-//    itemLabel.text = "\(trip.lists.count)"
-    itemLabel.text = "100 Items"
+    itemLabel.text = "\(allTripItems!) items"
     
     return cell
   }
@@ -85,20 +85,27 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
       println(self)
 //      self.performSegueWithIdentifier("editcelldata", sender: self)
       
-      
       println("edit cell data")
       
     }
-    
     var editimage = UIImage(named: "editbox.png")!
-    
     editCellAction.backgroundColor = UIColor(patternImage: editimage)
-    //    editCellAction.backgroundColor = UIColor.cyanColor()
-    
-    var deleteCellAction = UITableViewRowAction(style: .Default, title: "   ") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+
+    // Delete trip functions
+    var deleteCellAction = UITableViewRowAction(style: .Normal, title: "    ") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
       println("delete action")
-      self.numbers.removeAtIndex(indexPath.row)
-      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+      var deleteAlert = UIAlertController(title: "Confirm Delete", message: "Selected Trip Will be DELETED!", preferredStyle: .Alert)
+      deleteAlert.addAction(UIAlertAction(title: "Delete", style: .Default, handler: { (action: UIAlertAction!) in
+        self.realm.write {
+          let selectedTrip = self.allTrips[indexPath.row]
+          self.realm.delete(selectedTrip)
+        }
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+      }))
+      deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+        return
+      }))
+      self.presentViewController(deleteAlert, animated: true, completion: nil)
     }
     
     var deleteImage = UIImage(named: "deletebox.png")!
@@ -130,6 +137,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     self.itemTable.reloadData()
   }
+  
   
 //  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 //    if segue.identifier == "showcelldata" {

@@ -26,6 +26,10 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     listTable.backgroundView = UIImageView(image: bgImage)
   }
+  
+  override func viewWillAppear(animated: Bool) {
+    listTable.reloadData()
+  }
 
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -42,7 +46,7 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
     let cell = tableView.dequeueReusableCellWithIdentifier("listCell", forIndexPath: indexPath) as! UITableViewCell
     let tripLists = chosenTrip.lists
     let tripList = tripLists[indexPath.row]
-    
+    var unpackedItems = tripList.items.filter("packed = false")
     // List Name
     var listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
     println(tripList.listName)
@@ -52,6 +56,10 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
     // Item Name
     var listItemNameLabel = cell.contentView.viewWithTag(2) as! UILabel
     listItemNameLabel.text = "\(tripList.items.count) items"
+    
+    // Items Left to pack
+    var itemsLeft = cell.contentView.viewWithTag(3) as! UILabel
+    itemsLeft.text = "\(unpackedItems.count) left"
     
     return cell
   }

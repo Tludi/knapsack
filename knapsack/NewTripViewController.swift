@@ -44,13 +44,17 @@ class NewTripViewController: UIViewController {
     println("pressed added trip")
     if var newTripName = tripNameField.text {
       let trip = Trip()
+      trip.id = NSUUID().UUIDString
       trip.tripName = newTripName
       trip.startDate = dateTextField.text
       trip.numberOfDays = nightsCount.text!
       
       var newList = ItemList()
+      newList.id = NSUUID().UUIDString
       newList.listName = "All Items"
+      
       let newItem = Item()
+      newItem.id = NSUUID().UUIDString
       newItem.itemName = "Soap"
       newList.items.append(newItem)
       trip.lists.append(newList)
