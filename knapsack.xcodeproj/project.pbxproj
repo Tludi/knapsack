@@ -41,6 +41,8 @@
 		005F809F1B69F83000D46FB1 /* ENSideMenuNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80931B69F83000D46FB1 /* ENSideMenuNavigationController.swift */; };
 		005F80A11B69F8A000D46FB1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005F80A01B69F8A000D46FB1 /* LaunchScreen.xib */; };
 		005F80A21B69F8A000D46FB1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 005F80A01B69F8A000D46FB1 /* LaunchScreen.xib */; };
+		0063AC921B6ADAE500059646 /* ListItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063AC911B6ADAE500059646 /* ListItemsViewController.swift */; };
+		0063AC931B6ADAE500059646 /* ListItemsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063AC911B6ADAE500059646 /* ListItemsViewController.swift */; };
 		00D0C8D71B67DFEC00823D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D0C8D61B67DFEC00823D22 /* AppDelegate.swift */; };
 		00D0C8DE1B67DFEC00823D22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D0C8DD1B67DFEC00823D22 /* Images.xcassets */; };
 		00D0C8ED1B67DFEC00823D22 /* knapsackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D0C8EC1B67DFEC00823D22 /* knapsackTests.swift */; };
@@ -84,6 +86,7 @@
 		005F80921B69F83000D46FB1 /* ENSideMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenu.swift; sourceTree = "<group>"; };
 		005F80931B69F83000D46FB1 /* ENSideMenuNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ENSideMenuNavigationController.swift; sourceTree = "<group>"; };
 		005F80A01B69F8A000D46FB1 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		0063AC911B6ADAE500059646 /* ListItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemsViewController.swift; sourceTree = "<group>"; };
 		00D0C8D11B67DFEC00823D22 /* knapsack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = knapsack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D0C8D51B67DFEC00823D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00D0C8D61B67DFEC00823D22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -145,6 +148,7 @@
 			children = (
 				00D0C8DD1B67DFEC00823D22 /* Images.xcassets */,
 				005F806F1B69F5F700D46FB1 /* Main.storyboard */,
+				0063AC911B6ADAE500059646 /* ListItemsViewController.swift */,
 				003217541B6ABA300092E36E /* TripListViewController.swift */,
 				005F80731B69F68400D46FB1 /* TripListTableController.swift */,
 				005F80741B69F68400D46FB1 /* TripTableController.swift */,
@@ -427,6 +431,7 @@
 				005F809A1B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				005F80961B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				005F809C1B69F83000D46FB1 /* ENSideMenu.swift in Sources */,
+				0063AC921B6ADAE500059646 /* ListItemsViewController.swift in Sources */,
 				005F80941B69F83000D46FB1 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				005F80801B69F68400D46FB1 /* ListItemTableController.swift in Sources */,
 				003217521B6A90EA0092E36E /* TripViewController.swift in Sources */,
@@ -450,6 +455,7 @@
 				005F809B1B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				005F80971B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				005F809D1B69F83000D46FB1 /* ENSideMenu.swift in Sources */,
+				0063AC931B6ADAE500059646 /* ListItemsViewController.swift in Sources */,
 				005F80951B69F83000D46FB1 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				005F80811B69F68400D46FB1 /* ListItemTableController.swift in Sources */,
 				003217531B6A90EA0092E36E /* TripViewController.swift in Sources */,

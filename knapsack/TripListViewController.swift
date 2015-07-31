@@ -12,6 +12,7 @@ import RealmSwift
 class TripListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
   var chosenTrip = Trip()
+  var allTrips = Realm().objects(Trip)
 
   @IBOutlet weak var listTable: UITableView!
   @IBOutlet weak var tripNameLabel: UILabel!
@@ -20,7 +21,7 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
       super.viewDidLoad()
 
     tripNameLabel.text = chosenTrip.tripName
-    
+    self.title = "Lists"
     // Set the background image of the trips table
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     listTable.backgroundView = UIImageView(image: bgImage)
@@ -46,7 +47,7 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
     var listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
     println(tripList.listName)
 //    listNameLabel.text = "\(tripList.listName)"
-    listNameLabel.text = "\(chosenTrip.lists.count)"
+    listNameLabel.text = "\(tripList.listName)"
     
     // Item Name
     var listItemNameLabel = cell.contentView.viewWithTag(2) as! UILabel
@@ -55,8 +56,18 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
     return cell
   }
   
-
-
-
-
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "showListItems" {
+      if let destinationController = segue.destinationViewController as? ListItemsViewController {
+        if let listIndex = listTable.indexPathForSelectedRow() {
+          println("clicked show list")
+          
+          let list = chosenTrip.lists[listIndex.row]
+          destinationController.chosenList = list
+        }
+      }
+    }
+  }
+  
+  
 }

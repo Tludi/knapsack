@@ -48,8 +48,11 @@ class NewTripViewController: UIViewController {
       trip.startDate = dateTextField.text
       trip.numberOfDays = nightsCount.text!
       
-      let newList = ItemList()
+      var newList = ItemList()
       newList.listName = "All Items"
+      let newItem = Item()
+      newItem.itemName = "Soap"
+      newList.items.append(newItem)
       trip.lists.append(newList)
       realm.write {
         self.realm.add(trip)
