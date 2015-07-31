@@ -25,6 +25,11 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     clearDatabase()
   }
   
+  @IBAction func cancelToNewTripViewController(segue:UIStoryboardSegue) {
+    
+  }
+  
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
