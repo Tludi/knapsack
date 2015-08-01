@@ -126,7 +126,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <segue destination="i5e-8q-tCR" kind="show" identifier="showListTable" id="NOs-lj-EhP"/>
+                                            <segue destination="i5e-8q-tCR" kind="show" identifier="showTripLists" id="NOs-lj-EhP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -195,6 +195,7 @@
                     <connections>
                         <outlet property="addButtonView" destination="m7e-K0-rWx" id="Zib-0G-k63"/>
                         <outlet property="itemTable" destination="9pX-bt-eTc" id="RBo-Qd-Pkc"/>
+                        <segue destination="11I-Sm-pTb" kind="presentation" identifier="editTripData" modalPresentationStyle="pageSheet" modalTransitionStyle="crossDissolve" id="f4S-Xp-zWy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fEV-F6-wkC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -302,6 +303,7 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="addTripButton:" destination="11I-Sm-pTb" eventType="touchUpInside" id="ICk-2W-2Sf"/>
+                                                    <segue destination="gzH-wl-5Yr" kind="unwind" unwindAction="cancelToNewTripViewController:" id="bOa-2u-3CO"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -379,13 +381,13 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="plS-qk-KtZ"/>
                                         <exclude reference="1IB-mS-Bd7"/>
                                         <exclude reference="Kqs-1e-uus"/>
                                         <exclude reference="AB1-Lh-FMy"/>
                                         <exclude reference="eIu-10-RdJ"/>
                                         <exclude reference="1p2-x8-SIX"/>
                                         <exclude reference="cAG-Nr-SqX"/>
+                                        <exclude reference="plS-qk-KtZ"/>
                                     </mask>
                                 </variation>
                             </scrollView>
@@ -858,6 +860,6 @@
         <image name="tripBox" width="644" height="204"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ign-6R-l0a"/>
+        <segue reference="f4S-Xp-zWy"/>
     </inferredMetricsTieBreakers>
 </document>

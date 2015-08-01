@@ -13,6 +13,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
   var realm = Realm()
   var allTrips = Realm().objects(Trip)
+  var selectedTrip = Trip()
   
   @IBOutlet weak var itemTable: UITableView!
   @IBOutlet weak var addButtonView: UIView!
@@ -87,9 +88,10 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var editCellAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "    ") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
       
       self.editing = false
-      println(self)
-//      self.performSegueWithIdentifier("editcelldata", sender: self)
+      self.selectedTrip = self.allTrips[indexPath.row]
       
+      self.performSegueWithIdentifier("editTripData", sender: self)
+
       println("edit cell data")
       
     }
@@ -121,19 +123,6 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
   }
   
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.identifier == "showListTable" {
-      if let destinationController = segue.destinationViewController as? TripListViewController {
-        if let tripIndex = itemTable.indexPathForSelectedRow() {
-          println("clicked show list")
-          let trip = allTrips[tripIndex.row]
-          destinationController.chosenTrip = trip
-        }
-      }
-    }
-  }
-  
-  
   
   func clearDatabase() {
     let realm = Realm()
@@ -144,24 +133,25 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
   }
   
   
-//  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//    if segue.identifier == "showcelldata" {
-//      if let destinationController = segue.destinationViewController as? showCellViewController {
-//        if let numberIndex = itemTable.indexPathForSelectedRow() {
-//          let passedNumber = numbers[numberIndex.row]
-//          destinationController.passedCellNumber = passedNumber
-//        }
-//      }
-//    } else if segue.identifier == "editcelldata" {
-//      if let destinationController = segue.destinationViewController as? EditCellViewController {
-//        if let numberIndex = itemTable.indexPathForSelectedRow() {
-//          let passedNumber = numbers[numberIndex.row]
-//          println(numbers[numberIndex.row])
-//          destinationController.passedNumberCell = passedNumber
-//        }
-//      }
-//    }
-//  }
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "showTripLists" {
+      if let destinationController = segue.destinationViewController as? TripListViewController {
+        if let tripIndex = itemTable.indexPathForSelectedRow() {
+          let chosenTrip = allTrips[tripIndex.row]
+          destinationController.chosenTrip = chosenTrip
+        }
+      }
+    }
+    
+    if segue.identifier == "editTripData" {
+      if let destinationController = segue.destinationViewController as? NewTripViewController {
+          println("clicked edit trip")
+          destinationController.editedTrip = selectedTrip
+          destinationController.editToggle = true
+      }
+    }
+  } // end prepareforsegue
+
 
 
 }

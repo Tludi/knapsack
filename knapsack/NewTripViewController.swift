@@ -13,7 +13,7 @@ class NewTripViewController: UIViewController {
 
   let realm = Realm()
   var editedTrip = Trip()
-  var editButtonLabel = "Oh No"
+  var editToggle = false
   
   @IBOutlet weak var tripDetailLabel: UILabel!
   @IBOutlet var newTripView: UIView!
@@ -42,25 +42,34 @@ class NewTripViewController: UIViewController {
   @IBOutlet weak var addtripButtonLabel: UIButton!
   @IBAction func addTripButton(sender: UIButton) {
     println("pressed added trip")
-    if var newTripName = tripNameField.text {
-      let trip = Trip()
-      trip.id = NSUUID().UUIDString
-      trip.tripName = newTripName
-      trip.startDate = dateTextField.text
-      trip.numberOfDays = nightsCount.text!
-      
-      var newList = ItemList()
-      newList.id = NSUUID().UUIDString
-      newList.listName = "All Items"
-      
-      let newItem = Item()
-      newItem.id = NSUUID().UUIDString
-      newItem.itemName = "Soap"
-      newList.items.append(newItem)
-      trip.lists.append(newList)
+
+    if editToggle == true {
       realm.write {
-        self.realm.add(trip)
+        self.editedTrip.tripName = self.tripNameField.text
+        self.editedTrip.startDate = self.dateTextField.text
+        self.editedTrip.numberOfDays = self.nightsCount.text!
+      }
+    } else {
+      if var newTripName = tripNameField.text {
+        let trip = Trip()
+        trip.id = NSUUID().UUIDString
+        trip.tripName = newTripName
+        trip.startDate = dateTextField.text
+        trip.numberOfDays = nightsCount.text!
         
+        var newList = ItemList()
+        newList.id = NSUUID().UUIDString
+        newList.listName = "All Items"
+        
+        let newItem = Item()
+        newItem.id = NSUUID().UUIDString
+        newItem.itemName = "Soap"
+        newList.items.append(newItem)
+        trip.lists.append(newList)
+        realm.write {
+          self.realm.add(trip)
+          
+        }
       }
     }
     numberOfTrips.text = "\(realm.objects(Trip).count)"
@@ -69,8 +78,22 @@ class NewTripViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    tripDetailLabel.text = editedTrip.tripName
-    println(editedTrip.tripName)
+    
+    println("button text = \(addtripButtonLabel.titleLabel!.text)")
+    
+    if editedTrip.tripName != "name" {
+      println(editedTrip.tripName)
+      tripDetailLabel.text = "Edit \(editedTrip.tripName)"
+      tripNameField.text = editedTrip.tripName
+      dateTextField.text = editedTrip.startDate
+//      var startDateConversion = NSNumberFormatter().numberFromString(editedTrip.startDate)!.floatValue
+      var sliderValueConversion = NSNumberFormatter().numberFromString(editedTrip.numberOfDays)?.floatValue
+      slider.value = sliderValueConversion!
+      addtripButtonLabel.setTitle("Edit Trip", forState: .Normal)
+    } else {
+      println("no trip")
+      tripDetailLabel.text = "Trip Details"
+    }
     
     
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
@@ -87,21 +110,10 @@ class NewTripViewController: UIViewController {
 //    addtripButtonLabel.setTitle("\(editButtonLabel)", forState: .Normal)
   }
 
-  override func didReceiveMemoryWarning() {
-      super.didReceiveMemoryWarning()
-      // Dispose of any resources that can be recreated.
-  }
+
   
 
-  /*
-  // MARK: - Navigation
 
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-      // Get the new view controller using segue.destinationViewController.
-      // Pass the selected object to the new view controller.
-  }
-  */
   
   func datePickerValueChanged(sender:UIDatePicker) {
     var dateFormatter = NSDateFormatter()
