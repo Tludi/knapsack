@@ -1,5 +1,6 @@
 //
 //  NewTripViewController.swift
+//  View for Adding and Editing the Trip() model
 //  knapsack
 //
 //  Created by manatee on 7/26/15.
@@ -24,13 +25,10 @@ class NewTripViewController: UIViewController {
   @IBOutlet weak var slider: UISlider!
   
   @IBAction func dateTextFieldEditing(sender: UITextField) {
-    
+    // configure the date picker
     var datePickerView:UIDatePicker = UIDatePicker()
-    
     datePickerView.datePickerMode = UIDatePickerMode.Date
-    
     sender.inputView = datePickerView
-    
     datePickerView.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
   }
   
@@ -41,34 +39,42 @@ class NewTripViewController: UIViewController {
   
   @IBOutlet weak var addtripButtonLabel: UIButton!
   @IBAction func addTripButton(sender: UIButton) {
-    println("pressed added trip")
-
-    if editToggle == true {
+    
+    // check if edit or add was selected in previous view
+    if editToggle == true { // Edit existing Trip()
       realm.write {
         self.editedTrip.tripName = self.tripNameField.text
         self.editedTrip.startDate = self.dateTextField.text
         self.editedTrip.numberOfDays = self.nightsCount.text!
       }
-    } else {
+    } else {  // add new Trip()
       if var newTripName = tripNameField.text {
         let trip = Trip()
         trip.id = NSUUID().UUIDString
-        trip.tripName = newTripName
-        trip.startDate = dateTextField.text
-        trip.numberOfDays = nightsCount.text!
-        
-        var newList = ItemList()
-        newList.id = NSUUID().UUIDString
-        newList.listName = "All Items"
-        
-        let newItem = Item()
-        newItem.id = NSUUID().UUIDString
-        newItem.itemName = "Soap"
-        newList.items.append(newItem)
-        trip.lists.append(newList)
-        realm.write {
-          self.realm.add(trip)
+        if newTripName == "" {
+          var noNameAlert = UIAlertController(title: "Trip Name", message: "Name Can Not Be Blank", preferredStyle: .Alert)
+          noNameAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+            return
+          }))
+          self.presentViewController(noNameAlert, animated: true, completion: nil)
+        } else {
+          trip.tripName = newTripName
+          trip.startDate = dateTextField.text
+          trip.numberOfDays = nightsCount.text!
           
+          var newList = ItemList()
+          newList.id = NSUUID().UUIDString
+          newList.listName = "All Items"
+          
+          let newItem = Item()
+          newItem.id = NSUUID().UUIDString
+          newItem.itemName = "Soap"
+          newList.items.append(newItem)
+          trip.lists.append(newList)
+          realm.write {
+            self.realm.add(trip)
+            
+          }
         }
       }
     }
@@ -79,19 +85,22 @@ class NewTripViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    println("button text = \(addtripButtonLabel.titleLabel!.text)")
-    
-    if editedTrip.tripName != "name" {
-      println(editedTrip.tripName)
-      tripDetailLabel.text = "Edit \(editedTrip.tripName)"
+    // checking if tripName has changed from default in the model
+    // If tripName is not the default,
+    // change check if changing default in model
+    if editedTrip.tripName != "defaulttripname" {
+      // populate data fields with existing data
       tripNameField.text = editedTrip.tripName
       dateTextField.text = editedTrip.startDate
-//      var startDateConversion = NSNumberFormatter().numberFromString(editedTrip.startDate)!.floatValue
+      // convert String to Float
       var sliderValueConversion = NSNumberFormatter().numberFromString(editedTrip.numberOfDays)?.floatValue
       slider.value = sliderValueConversion!
+      // set detail label to Edit 'Trip'
+      tripDetailLabel.text = "Edit \(editedTrip.tripName)"
+      // set the add button label to Edit Trip if editing
       addtripButtonLabel.setTitle("Edit Trip", forState: .Normal)
     } else {
-      println("no trip")
+//      println("no trip")
       tripDetailLabel.text = "Trip Details"
     }
     

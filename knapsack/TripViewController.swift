@@ -13,23 +13,43 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
   var realm = Realm()
   var allTrips = Realm().objects(Trip)
+  var presentedTrips = Realm().objects(Trip).filter("archived = false")
   var selectedTrip = Trip()
+  var showActiveTrips = true
+  
+
   
   @IBOutlet weak var itemTable: UITableView!
   @IBOutlet weak var addButtonView: UIView!
+  
   @IBAction func addButton(sender: UIButton) {
-    println("pressed add button")
-//    numbers.append("new number")
-//    itemTable.reloadData()
   }
+  
+  @IBOutlet weak var toggleTripType: UIBarButtonItem!
+  @IBAction func toggleTripType(sender: UIBarButtonItem) {
+    if showActiveTrips == true {
+      showActiveTrips = false
+      presentedTrips = Realm().objects(Trip).filter("archived = true")
+      self.title = "Archives"
+      var archiveImage: UIImage = UIImage(named: "archiveFlag.png")!
+//      toggleTripType.setBackgroundImage(archiveImage, forState: .Normal, barMetrics: .Default)
+    } else {
+      showActiveTrips = true
+      presentedTrips = Realm().objects(Trip).filter("archived = false")
+      self.title = "Active Trips"
+      var archiveImage: UIImage = UIImage(named: "archiveFlag.png")!
+//      toggleTripType.setBackgroundImage(archiveImage, forState: .Normal, barMetrics: .Default)
+    }
+    itemTable.reloadData()
+  }
+  
+  
   @IBAction func clearTrips(sender: UIBarButtonItem) {
     clearDatabase()
   }
-  
   @IBAction func cancelToNewTripViewController(segue:UIStoryboardSegue) {
-    
+    // this is set to unwind segues to the NewTripController
   }
-  
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -38,26 +58,30 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     itemTable.backgroundView = UIImageView(image: bgImage)
     
+    // give the lower add button rounded corners and shadow
     addButtonView.layer.cornerRadius = 30
     addButtonView.layer.shadowOffset = CGSizeMake(2, 2)
     addButtonView.layer.shadowRadius = 2
     addButtonView.layer.shadowOpacity = 0.7
     
-    // Do any additional setup after loading the view, typically from a nib.
   }
   
   override func viewWillAppear(animated: Bool) {
+    // reload the table when coming back from another view
     itemTable.reloadData()
   }
 
+  // **** Formatting the tableView *****//
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return allTrips.count
+    return presentedTrips.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("tripCell", forIndexPath: indexPath) as! UITableViewCell
-    let trip = allTrips[indexPath.row]
+    let trip = presentedTrips[indexPath.row]
+    
+    //**** hard coded --- FIX!
     var allTripItems = trip.lists.first?.items.count
     
     // tripName
@@ -69,6 +93,13 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // tripItems Total
     var itemLabel = cell.contentView.viewWithTag(4) as! UILabel
     itemLabel.text = "\(allTripItems!) items"
+    // toggle archive flag based on trip status
+    var archiveFlag = cell.contentView.viewWithTag(5)
+    if trip.archived == true {
+      archiveFlag?.hidden = false
+    } else {
+      archiveFlag?.hidden = true
+    }
     
     return cell
   }
@@ -82,29 +113,75 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
   
   
   
-  //  add edit and delete buttons to cells
+  //  Trip table cell actions - Copy, Edit, Delete
   func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
     
+    // Copy trip functions
+    var copyCellAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "    "){ (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+      
+      self.selectedTrip = self.presentedTrips[indexPath.row]
+      let copiedTrip = Trip()
+      var originalList = ItemList()
+      var newList = ItemList()
+      var originalItem = Item()
+      var newItem = Item()
+
+      for originalList in self.selectedTrip.lists {
+        newList.id = NSUUID().UUIDString
+        newList.listName = originalList.listName
+        for originalItem in originalList.items {
+          newItem.id = NSUUID().UUIDString
+          newItem.itemName = originalItem.itemName
+          newList.items.append(newItem)
+        }
+        copiedTrip.lists.append(newList)
+      }
+      copiedTrip.id = NSUUID().UUIDString
+      copiedTrip.tripName = "\(self.selectedTrip.tripName)Copy"
+      copiedTrip.startDate = self.selectedTrip.startDate
+      copiedTrip.numberOfDays = self.selectedTrip.numberOfDays
+
+      self.realm.write {
+        self.realm.add(copiedTrip, update: false)
+      }
+      println("copy trip")
+      self.itemTable.reloadData()
+    }
+    
+    var copyimage = UIImage(named: "copybox.png")!
+    copyCellAction.backgroundColor = UIColor(patternImage: copyimage)
+    
+    // Archive trip functions
+    var archiveCellAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "    ") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+      
+      self.editing = false
+      self.selectedTrip = self.presentedTrips[indexPath.row]
+      self.realm.write {
+        self.selectedTrip.archived = true
+      }
+      self.itemTable.reloadData()
+    }
+    var archiveimage = UIImage(named: "archivebox.png")!
+    archiveCellAction.backgroundColor = UIColor(patternImage: archiveimage)
+    
+    // Edit trip functions
     var editCellAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "    ") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
       
       self.editing = false
-      self.selectedTrip = self.allTrips[indexPath.row]
-      
+      self.selectedTrip = self.presentedTrips[indexPath.row]
       self.performSegueWithIdentifier("editTripData", sender: self)
-
-      println("edit cell data")
-      
     }
     var editimage = UIImage(named: "editbox.png")!
     editCellAction.backgroundColor = UIColor(patternImage: editimage)
 
+    
     // Delete trip functions
     var deleteCellAction = UITableViewRowAction(style: .Normal, title: "    ") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
       println("delete action")
       var deleteAlert = UIAlertController(title: "Confirm Delete", message: "Selected Trip Will be DELETED!", preferredStyle: .Alert)
       deleteAlert.addAction(UIAlertAction(title: "Delete", style: .Default, handler: { (action: UIAlertAction!) in
         self.realm.write {
-          let selectedTrip = self.allTrips[indexPath.row]
+          let selectedTrip = self.presentedTrips[indexPath.row]
           self.realm.delete(selectedTrip)
         }
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
@@ -119,25 +196,19 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     deleteCellAction.backgroundColor = UIColor(patternImage: deleteImage)
     
     // first item in array is far right in cell
-    return [deleteCellAction, editCellAction]
+    return [deleteCellAction, editCellAction, copyCellAction, archiveCellAction]
   }
   
   
   
-  func clearDatabase() {
-    let realm = Realm()
-    realm.write {
-      realm.deleteAll()
-    }
-    self.itemTable.reloadData()
-  }
+
   
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "showTripLists" {
       if let destinationController = segue.destinationViewController as? TripListViewController {
         if let tripIndex = itemTable.indexPathForSelectedRow() {
-          let chosenTrip = allTrips[tripIndex.row]
+          let chosenTrip = presentedTrips[tripIndex.row]
           destinationController.chosenTrip = chosenTrip
         }
       }
@@ -152,6 +223,15 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
   } // end prepareforsegue
 
+  
+  // Clear database for testing
 
+  func clearDatabase() {
+    let realm = Realm()
+    realm.write {
+      realm.deleteAll()
+    }
+    self.itemTable.reloadData()
+  }
 
 }

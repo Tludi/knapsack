@@ -17,6 +17,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   let checkedButtonImage = UIImage(named: "filledCheck.png")
   let uncheckedButtonImage = UIImage(named: "emptyCheck.png")
   
+  
   @IBOutlet weak var listName: UILabel!
   @IBOutlet weak var listItemTable: UITableView!
 

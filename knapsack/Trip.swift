@@ -12,11 +12,12 @@ import RealmSwift
 
 class Trip: Object {
   dynamic var id = ""
-  dynamic var tripName = "name"
+  dynamic var tripName = "defaulttripname"
   dynamic var startDate = "date"
   dynamic var numberOfDays = "five"
   dynamic var endDate = NSDate()
   dynamic var tripImage = "imagePath"
+  dynamic var archived = false
   
   override static func primaryKey() -> String? {
     return "id"

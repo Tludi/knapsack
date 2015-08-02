@@ -13,14 +13,8 @@
 		003217561B6ABA300092E36E /* TripListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003217541B6ABA300092E36E /* TripListViewController.swift */; };
 		005F80711B69F5F700D46FB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005F806F1B69F5F700D46FB1 /* Main.storyboard */; };
 		005F80721B69F5F700D46FB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 005F806F1B69F5F700D46FB1 /* Main.storyboard */; };
-		005F807A1B69F68400D46FB1 /* TripListTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80731B69F68400D46FB1 /* TripListTableController.swift */; };
-		005F807B1B69F68400D46FB1 /* TripListTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80731B69F68400D46FB1 /* TripListTableController.swift */; };
-		005F807C1B69F68400D46FB1 /* TripTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80741B69F68400D46FB1 /* TripTableController.swift */; };
-		005F807D1B69F68400D46FB1 /* TripTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80741B69F68400D46FB1 /* TripTableController.swift */; };
 		005F807E1B69F68400D46FB1 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80751B69F68400D46FB1 /* NewTripViewController.swift */; };
 		005F807F1B69F68400D46FB1 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80751B69F68400D46FB1 /* NewTripViewController.swift */; };
-		005F80801B69F68400D46FB1 /* ListItemTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80761B69F68400D46FB1 /* ListItemTableController.swift */; };
-		005F80811B69F68400D46FB1 /* ListItemTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80761B69F68400D46FB1 /* ListItemTableController.swift */; };
 		005F80821B69F68400D46FB1 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80771B69F68400D46FB1 /* MenuTableViewController.swift */; };
 		005F80831B69F68400D46FB1 /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80771B69F68400D46FB1 /* MenuTableViewController.swift */; };
 		005F80841B69F68400D46FB1 /* SideNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005F80781B69F68400D46FB1 /* SideNavigationController.swift */; };
@@ -52,6 +46,8 @@
 		00D0C8FB1B67E0A900823D22 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 00D0C8F91B67E0A900823D22 /* Podfile */; };
 		33E7F67341D85F314B683F82 /* Pods_knapsackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABA22F1A9E1065FFD23B9AEE /* Pods_knapsackTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		624187F712CF1FA558A83397 /* Pods_knapsack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 45E04F9B3FD421C9DDC05FFB /* Pods_knapsack.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		EF98D4691B6DB4B200175C53 /* MasterItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF98D4681B6DB4B200175C53 /* MasterItems.swift */; };
+		EF98D46A1B6DB4B200175C53 /* MasterItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF98D4681B6DB4B200175C53 /* MasterItems.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,10 +64,7 @@
 		003217511B6A90EA0092E36E /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
 		003217541B6ABA300092E36E /* TripListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripListViewController.swift; sourceTree = "<group>"; };
 		005F80701B69F5F700D46FB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		005F80731B69F68400D46FB1 /* TripListTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripListTableController.swift; sourceTree = "<group>"; };
-		005F80741B69F68400D46FB1 /* TripTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripTableController.swift; sourceTree = "<group>"; };
 		005F80751B69F68400D46FB1 /* NewTripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
-		005F80761B69F68400D46FB1 /* ListItemTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemTableController.swift; sourceTree = "<group>"; };
 		005F80771B69F68400D46FB1 /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		005F80781B69F68400D46FB1 /* SideNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideNavigationController.swift; sourceTree = "<group>"; };
 		005F80791B69F68400D46FB1 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
@@ -103,6 +96,7 @@
 		7A8D12CB2C080664B4322565 /* Pods-knapsackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knapsackTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-knapsackTests/Pods-knapsackTests.release.xcconfig"; sourceTree = "<group>"; };
 		81367A8B8C54849758D1E3F2 /* Pods-knapsack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knapsack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-knapsack/Pods-knapsack.debug.xcconfig"; sourceTree = "<group>"; };
 		ABA22F1A9E1065FFD23B9AEE /* Pods_knapsackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_knapsackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF98D4681B6DB4B200175C53 /* MasterItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterItems.swift; sourceTree = "<group>"; };
 		F6DD111CA5923D8C3909A4F0 /* Pods-knapsack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knapsack.release.xcconfig"; path = "Pods/Target Support Files/Pods-knapsack/Pods-knapsack.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -151,18 +145,16 @@
 			children = (
 				00D0C8DD1B67DFEC00823D22 /* Images.xcassets */,
 				005F806F1B69F5F700D46FB1 /* Main.storyboard */,
-				0063AC911B6ADAE500059646 /* ListItemsViewController.swift */,
-				003217541B6ABA300092E36E /* TripListViewController.swift */,
-				005F80731B69F68400D46FB1 /* TripListTableController.swift */,
-				005F80741B69F68400D46FB1 /* TripTableController.swift */,
+				003217511B6A90EA0092E36E /* TripViewController.swift */,
 				005F80751B69F68400D46FB1 /* NewTripViewController.swift */,
-				005F80761B69F68400D46FB1 /* ListItemTableController.swift */,
-				005F80771B69F68400D46FB1 /* MenuTableViewController.swift */,
+				003217541B6ABA300092E36E /* TripListViewController.swift */,
+				0063AC911B6ADAE500059646 /* ListItemsViewController.swift */,
+				0063AC941B6B13D600059646 /* MasterItemViewController.swift */,
 				005F80781B69F68400D46FB1 /* SideNavigationController.swift */,
+				005F80771B69F68400D46FB1 /* MenuTableViewController.swift */,
 				005F80791B69F68400D46FB1 /* Trip.swift */,
 				00D0C8D41B67DFEC00823D22 /* Supporting Files */,
-				003217511B6A90EA0092E36E /* TripViewController.swift */,
-				0063AC941B6B13D600059646 /* MasterItemViewController.swift */,
+				EF98D4681B6DB4B200175C53 /* MasterItems.swift */,
 			);
 			path = knapsack;
 			sourceTree = "<group>";
@@ -437,17 +429,15 @@
 				005F809C1B69F83000D46FB1 /* ENSideMenu.swift in Sources */,
 				0063AC921B6ADAE500059646 /* ListItemsViewController.swift in Sources */,
 				005F80941B69F83000D46FB1 /* TPKeyboardAvoidingCollectionView.m in Sources */,
-				005F80801B69F68400D46FB1 /* ListItemTableController.swift in Sources */,
 				003217521B6A90EA0092E36E /* TripViewController.swift in Sources */,
 				005F80821B69F68400D46FB1 /* MenuTableViewController.swift in Sources */,
 				005F80841B69F68400D46FB1 /* SideNavigationController.swift in Sources */,
+				EF98D4691B6DB4B200175C53 /* MasterItems.swift in Sources */,
 				005F80861B69F68400D46FB1 /* Trip.swift in Sources */,
-				005F807A1B69F68400D46FB1 /* TripListTableController.swift in Sources */,
 				005F809E1B69F83000D46FB1 /* ENSideMenuNavigationController.swift in Sources */,
 				005F80981B69F83000D46FB1 /* TPKeyboardAvoidingTableView.m in Sources */,
 				0063AC951B6B13D600059646 /* MasterItemViewController.swift in Sources */,
 				005F807E1B69F68400D46FB1 /* NewTripViewController.swift in Sources */,
-				005F807C1B69F68400D46FB1 /* TripTableController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,17 +452,15 @@
 				005F809D1B69F83000D46FB1 /* ENSideMenu.swift in Sources */,
 				0063AC931B6ADAE500059646 /* ListItemsViewController.swift in Sources */,
 				005F80951B69F83000D46FB1 /* TPKeyboardAvoidingCollectionView.m in Sources */,
-				005F80811B69F68400D46FB1 /* ListItemTableController.swift in Sources */,
 				003217531B6A90EA0092E36E /* TripViewController.swift in Sources */,
 				005F80831B69F68400D46FB1 /* MenuTableViewController.swift in Sources */,
 				005F80851B69F68400D46FB1 /* SideNavigationController.swift in Sources */,
+				EF98D46A1B6DB4B200175C53 /* MasterItems.swift in Sources */,
 				005F80871B69F68400D46FB1 /* Trip.swift in Sources */,
-				005F807B1B69F68400D46FB1 /* TripListTableController.swift in Sources */,
 				005F809F1B69F83000D46FB1 /* ENSideMenuNavigationController.swift in Sources */,
 				005F80991B69F83000D46FB1 /* TPKeyboardAvoidingTableView.m in Sources */,
 				0063AC961B6B13D600059646 /* MasterItemViewController.swift in Sources */,
 				005F807F1B69F68400D46FB1 /* NewTripViewController.swift in Sources */,
-				005F807D1B69F68400D46FB1 /* TripTableController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

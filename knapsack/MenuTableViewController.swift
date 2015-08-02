@@ -90,7 +90,7 @@ class MenuTableViewController: UITableViewController {
     
     switch (indexPath.row) {
     case 0:
-      destinationViewController = storyboard.instantiateViewControllerWithIdentifier("ListItemTableController") as! ListItemTableController
+      destinationViewController = storyboard.instantiateViewControllerWithIdentifier("ListItemTableController") as! TripListViewController
 //      destinationViewController.title = "All Irises"
       break
 //    case 1:
@@ -106,7 +106,7 @@ class MenuTableViewController: UITableViewController {
 //      destinationViewController.title = "Favorites"
 //      break
     default:
-      destinationViewController = storyboard.instantiateViewControllerWithIdentifier("TripTableController") as! TripTableController
+      destinationViewController = storyboard.instantiateViewControllerWithIdentifier("TripTableController") as! TripViewController
 //      destinationViewController.title = "IrisCodex"
       break
     }
