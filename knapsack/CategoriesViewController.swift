@@ -11,7 +11,7 @@ import RealmSwift
 
 
 
-class MasterItemViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class CategoriesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
   var realm = Realm()
   var trips = Realm().objects(Trip)
@@ -19,23 +19,19 @@ class MasterItemViewController: UIViewController, UITableViewDataSource, UITable
   var passedList = ItemList()
   
   var allItems = MasterItemList()
+  var categories = MasterItemList().categories
   
   @IBAction func addItemButton(sender: UIButton) {
     var firstTrip = trips.first!
-    
     var itemToAdd = Item()
-
-    println(passedList)
-    
     itemToAdd.id = NSUUID().UUIDString
     itemToAdd.itemName = "Toothbrush"
-    
-    
     realm.write {
       self.passedList.items.append(itemToAdd)
     }
   }
   
+  @IBOutlet weak var categoryTable: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -58,8 +54,20 @@ class MasterItemViewController: UIViewController, UITableViewDataSource, UITable
       cell.textLabel?.text = item.capitalizedString
       return cell
     
-    }
+  }
 
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "showCategoryItems" {
+      if let destinationController = segue.destinationViewController as? CategoryListViewController {
+        if let categoryIndex = categoryTable.indexPathForSelectedRow() {
+          var categoryToPass = allItems.categories[categoryIndex.row]
+          destinationController.passedCategory = categoryToPass
+          destinationController.passedList = passedList
+        }
+      }
+    }
+  }
 
 
 }

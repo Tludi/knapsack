@@ -47,7 +47,7 @@ class ItemList: Object {
 class Item: Object {
   dynamic var id = ""
   dynamic var itemName = "name"
-  dynamic var itemCount: Int = 1
+  dynamic var itemCount: Int = 0
   dynamic var itemImage = "imagePath"
   dynamic var packed: Bool = false
   

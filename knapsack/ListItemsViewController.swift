@@ -31,6 +31,8 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     listItemTable.backgroundView = UIImageView(image: bgImage)
     
+    println(chosenList.items.count)
+    
   }
   
   
@@ -49,38 +51,44 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     } else {
       return chosenList.items.count
     }
+//    return chosenList.items.count
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//    if chosenList.items == [] {
-//      let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! UITableViewCell
-//      // List Name
-//      var listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
-//      listNameLabel.text = "NO Items Yet"
-//      return cell
-//    } else {
-    let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! UITableViewCell
-    // List Name
-    var listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
-    var noItemLabel = cell.contentView.viewWithTag(100) as! UILabel
-    var itemCircle = cell.contentView.viewWithTag(50)
-    var checkButton:UIButton = cell.contentView.viewWithTag(10) as! UIButton
-    if chosenList.items[indexPath.row].packed == true {
-      checkButton.setImage(checkedButtonImage, forState: .Normal)
-    } else {
-      checkButton.setImage(uncheckedButtonImage, forState: .Normal)
-    }
-    
     if chosenList.items.count == 0 {
-        println(chosenList.items.count)
-        noItemLabel.text = "No Items Yet"
-        itemCircle!.hidden = true
+      let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! UITableViewCell
+      // List Name
+      var listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
+      var noItemLabel = cell.contentView.viewWithTag(100) as! UILabel
+      var itemCircle = cell.contentView.viewWithTag(50)
+      var checkButton:UIButton = cell.contentView.viewWithTag(10) as! UIButton
+      noItemLabel.text = "No Items Yet"
+      itemCircle!.hidden = true
+      checkButton.hidden = true
+      return cell
     } else {
+      let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! UITableViewCell
+      // List Name
+      var listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
+      var noItemLabel = cell.contentView.viewWithTag(100) as! UILabel
+      var itemCircle = cell.contentView.viewWithTag(50)
+      var checkButton:UIButton = cell.contentView.viewWithTag(10) as! UIButton
+      if chosenList.items[indexPath.row].packed == true {
+        checkButton.setImage(checkedButtonImage, forState: .Normal)
+      } else {
+        checkButton.setImage(uncheckedButtonImage, forState: .Normal)
+      }
       listNameLabel.text = "\(chosenList.items[indexPath.row].itemName)"
+//      if chosenList.items.count == 0 {
+//          println(chosenList.items.count)
+//          noItemLabel.text = "No Items Yet"
+//          itemCircle!.hidden = true
+//      } else {
+//        listNameLabel.text = "\(chosenList.items[indexPath.row].itemName)"
+//      }
+
+      return cell
     }
-
-
-    return cell
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -96,7 +104,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "showAddItem" {
-      if let destinationController = segue.destinationViewController as? MasterItemViewController {
+      if let destinationController = segue.destinationViewController as? CategoriesViewController {
           println("clicked add item")
           destinationController.passedList = chosenList
       }

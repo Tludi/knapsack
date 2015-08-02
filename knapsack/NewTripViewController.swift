@@ -66,10 +66,10 @@ class NewTripViewController: UIViewController {
           newList.id = NSUUID().UUIDString
           newList.listName = "All Items"
           
-          let newItem = Item()
-          newItem.id = NSUUID().UUIDString
-          newItem.itemName = "Soap"
-          newList.items.append(newItem)
+//          let newItem = Item()
+//          newItem.id = NSUUID().UUIDString
+//          newItem.itemName = "Soap"
+//          newList.items.append(newItem)
           trip.lists.append(newList)
           realm.write {
             self.realm.add(trip)
