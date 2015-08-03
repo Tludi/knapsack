@@ -57,7 +57,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     if chosenList.items.count == 0 {
       let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! UITableViewCell
-      // List Name
+      // no items cell
       var listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
       var noItemLabel = cell.contentView.viewWithTag(100) as! UILabel
       var itemCircle = cell.contentView.viewWithTag(50)
@@ -93,13 +93,11 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     var cell = tableView.cellForRowAtIndexPath(indexPath)
-    var selectedItem = chosenList.items[indexPath.row]
     var checkButton:UIButton = cell?.contentView.viewWithTag(10) as! UIButton
-    toggleCheckButton(selectedItem)
-    
-    println(indexPath)
-    
-//   listItemTable.reloadRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+    if checkButton.hidden == false {
+      var selectedItem = chosenList.items[indexPath.row]
+      toggleCheckButton(selectedItem)
+    }
   }
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

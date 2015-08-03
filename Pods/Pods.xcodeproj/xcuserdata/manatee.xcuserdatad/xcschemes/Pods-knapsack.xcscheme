@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D6DEF788ADCE3E7FD631E25E"
+               BlueprintIdentifier = "01B5B5EC64A22909FA97300C"
                BuildableName = "Pods_knapsack.framework"
                BlueprintName = "Pods-knapsack"
                ReferencedContainer = "container:Pods.xcodeproj">
