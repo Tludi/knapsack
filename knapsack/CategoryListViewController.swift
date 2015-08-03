@@ -31,15 +31,46 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     return masterList[passedCategory]!.count
   }
   
+  
+  // show cell
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemCell", forIndexPath: indexPath) as! UITableViewCell
     
-    var category = CategoryList(category: passedCategory, items: masterList[passedCategory]! )
+    // get current saved items from the passed list
+    var passedListItems = passedList.items
+    println(passedListItems.count)
     
-    cell.textLabel?.text = category.items[indexPath.row]
+    // get master category list from swift file
+    var category = CategoryList(category: passedCategory, items: masterList[passedCategory]! )
+    var item = category.items[indexPath.row]
+   
+    
+    
+    // set cell labels
+    var itemLabel = cell.contentView.viewWithTag(1) as! UILabel
+    var itemStepper = cell.contentView.viewWithTag(6) as! UIStepper
+    var itemCountLabel = cell.contentView.viewWithTag(5) as! UILabel
+    itemLabel.text = item
+    var itemCount = 0
+    itemCountLabel.text = "\(itemCount)"
+    if itemCount == 0 {
+      itemStepper.hidden = true
+    }
+
+    
+    
+    
+//    cell.textLabel?.text = category.items[indexPath.row]
     return cell
   }
 
+  
+  
+  
+  
+  
+  
+  
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     println(indexPath.row)
     let cell = tableView.cellForRowAtIndexPath(indexPath)!
@@ -54,7 +85,6 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     realm.write {
       self.passedList.items.append(newItem)
     }
-    
     
   }
 

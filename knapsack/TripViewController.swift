@@ -13,7 +13,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
   var realm = Realm()
   var allTrips = Realm().objects(Trip)
-  var presentedTrips = Realm().objects(Trip).filter("archived = false")
+  var presentedTrips = Realm().objects(Trip).filter("archived = false").sorted("startDate")
   var selectedTrip = Trip()
   var showActiveTrips = true
   

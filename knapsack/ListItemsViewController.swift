@@ -73,6 +73,8 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
       var noItemLabel = cell.contentView.viewWithTag(100) as! UILabel
       var itemCircle = cell.contentView.viewWithTag(50)
       var checkButton:UIButton = cell.contentView.viewWithTag(10) as! UIButton
+      checkButton.addTarget(self, action: "clicked", forControlEvents: .TouchUpInside)
+      
       if chosenList.items[indexPath.row].packed == true {
         checkButton.setImage(checkedButtonImage, forState: .Normal)
       } else {
@@ -119,6 +121,10 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
       }
     }
     listItemTable.reloadData()
+  }
+  
+  func clicked() {
+    println("clicked check button")
   }
 
 
