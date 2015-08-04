@@ -16,6 +16,7 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
   var passedList = ItemList()
   var masterList = MasterItemList().itemList
   
+  @IBOutlet weak var itemTable: UITableView!
   
   override func viewDidLoad() {
       super.viewDidLoad()
@@ -34,6 +35,7 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
   
   // show cell
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    var masterItemCount = 0
     let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemCell", forIndexPath: indexPath) as! UITableViewCell
     
     // get current saved items from the passed list
@@ -48,27 +50,19 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     
     // set cell labels
     var itemLabel = cell.contentView.viewWithTag(1) as! UILabel
-    var itemStepper = cell.contentView.viewWithTag(6) as! UIStepper
     var itemCountLabel = cell.contentView.viewWithTag(5) as! UILabel
+    var increaseButton:UIButton = cell.contentView.viewWithTag(10) as! UIButton
+    var decreaseButton:UIButton = cell.contentView.viewWithTag(11) as! UIButton
+    increaseButton.addTarget(self, action: "changeItemCount:", forControlEvents: .TouchUpInside)
+    decreaseButton.addTarget(self, action: "changeItemCount:", forControlEvents: .TouchUpInside)
+    
+    
     itemLabel.text = item
-    var itemCount = 0
-    itemCountLabel.text = "\(itemCount)"
-    if itemCount == 0 {
-      itemStepper.hidden = true
-    }
-
+    itemCountLabel.text = "0"
     
     
-    
-//    cell.textLabel?.text = category.items[indexPath.row]
     return cell
   }
-
-  
-  
-  
-  
-  
   
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
@@ -86,6 +80,27 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
       self.passedList.items.append(newItem)
     }
     
+  }
+  
+  func changeItemCount(sender : UIButton!) {
+    var cell = sender.superview!.superview!
+    var countLabel = cell.viewWithTag(5)! as! UILabel
+    var currentCount = countLabel.text?.toInt()
+    if sender.tag == 10 {
+      var updatedCount = currentCount! + 1
+      countLabel.text = "\(updatedCount)"
+    } else {
+      var updatedCount = currentCount! - 1
+      if updatedCount < 0 {
+        countLabel.text = "0"
+      } else {
+        countLabel.text = "\(updatedCount)"
+      }
+    }
+
+    
+//    testLabel.text = "\(updatedCount)"
+    println(countLabel.text!)
   }
 
 
