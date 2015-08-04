@@ -49,6 +49,10 @@ class NewTripViewController: UIViewController {
       }
     } else {  // add new Trip()
       if var newTripName = tripNameField.text {
+        let masterList = Realm().objects(ItemList).filter("id = '1'")
+        let masterItems = masterList[0].items
+        let masterCategories = MasterItemList().categories
+        
         let trip = Trip()
         trip.id = NSUUID().UUIDString
         if newTripName == "" {
@@ -66,11 +70,18 @@ class NewTripViewController: UIViewController {
           newList.id = NSUUID().UUIDString
           newList.listName = "All Items"
           
-//          let newItem = Item()
-//          newItem.id = NSUUID().UUIDString
-//          newItem.itemName = "Soap"
-//          newList.items.append(newItem)
+
+          for item in masterItems {
+            var newItem = Item()
+            newItem.id = NSUUID().UUIDString
+            newItem.itemCategory = item.itemCategory
+            newItem.itemName = item.itemName
+            newList.items.append(newItem)
+          }
+
           trip.lists.append(newList)
+          
+          
           realm.write {
             self.realm.add(trip)
             

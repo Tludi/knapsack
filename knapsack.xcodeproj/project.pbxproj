@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00150B571B71504300AE47C7 /* NewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00150B561B71504300AE47C7 /* NewListViewController.swift */; };
+		00150B581B71504300AE47C7 /* NewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00150B561B71504300AE47C7 /* NewListViewController.swift */; };
 		003217521B6A90EA0092E36E /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003217511B6A90EA0092E36E /* TripViewController.swift */; };
 		003217531B6A90EA0092E36E /* TripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003217511B6A90EA0092E36E /* TripViewController.swift */; };
 		003217551B6ABA300092E36E /* TripListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 003217541B6ABA300092E36E /* TripListViewController.swift */; };
@@ -41,6 +43,8 @@
 		0063AC961B6B13D600059646 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063AC941B6B13D600059646 /* CategoriesViewController.swift */; };
 		007F621F1B6E81D800D2A36B /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007F621E1B6E81D800D2A36B /* CategoryListViewController.swift */; };
 		007F62201B6E81D800D2A36B /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007F621E1B6E81D800D2A36B /* CategoryListViewController.swift */; };
+		00CFC2DB1B715E5E00B4B325 /* MasterItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CFC2DA1B715E5E00B4B325 /* MasterItemList.swift */; };
+		00CFC2DC1B715E5E00B4B325 /* MasterItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CFC2DA1B715E5E00B4B325 /* MasterItemList.swift */; };
 		00D0C8D71B67DFEC00823D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D0C8D61B67DFEC00823D22 /* AppDelegate.swift */; };
 		00D0C8DE1B67DFEC00823D22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D0C8DD1B67DFEC00823D22 /* Images.xcassets */; };
 		00D0C8ED1B67DFEC00823D22 /* knapsackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D0C8EC1B67DFEC00823D22 /* knapsackTests.swift */; };
@@ -63,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00150B561B71504300AE47C7 /* NewListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewListViewController.swift; sourceTree = "<group>"; };
 		003217511B6A90EA0092E36E /* TripViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripViewController.swift; sourceTree = "<group>"; };
 		003217541B6ABA300092E36E /* TripListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripListViewController.swift; sourceTree = "<group>"; };
 		005F80701B69F5F700D46FB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -86,6 +91,7 @@
 		0063AC911B6ADAE500059646 /* ListItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemsViewController.swift; sourceTree = "<group>"; };
 		0063AC941B6B13D600059646 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		007F621E1B6E81D800D2A36B /* CategoryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
+		00CFC2DA1B715E5E00B4B325 /* MasterItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterItemList.swift; sourceTree = "<group>"; };
 		00D0C8D11B67DFEC00823D22 /* knapsack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = knapsack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D0C8D51B67DFEC00823D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00D0C8D61B67DFEC00823D22 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +154,7 @@
 			children = (
 				00D0C8DD1B67DFEC00823D22 /* Images.xcassets */,
 				005F806F1B69F5F700D46FB1 /* Main.storyboard */,
+				00150B561B71504300AE47C7 /* NewListViewController.swift */,
 				003217511B6A90EA0092E36E /* TripViewController.swift */,
 				005F80751B69F68400D46FB1 /* NewTripViewController.swift */,
 				003217541B6ABA300092E36E /* TripListViewController.swift */,
@@ -159,6 +166,7 @@
 				00D0C8D41B67DFEC00823D22 /* Supporting Files */,
 				EF98D4681B6DB4B200175C53 /* MasterItems.swift */,
 				007F621E1B6E81D800D2A36B /* CategoryListViewController.swift */,
+				00CFC2DA1B715E5E00B4B325 /* MasterItemList.swift */,
 			);
 			path = knapsack;
 			sourceTree = "<group>";
@@ -428,10 +436,12 @@
 			files = (
 				00D0C8D71B67DFEC00823D22 /* AppDelegate.swift in Sources */,
 				003217551B6ABA300092E36E /* TripListViewController.swift in Sources */,
+				00CFC2DB1B715E5E00B4B325 /* MasterItemList.swift in Sources */,
 				005F809A1B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				005F80961B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				007F621F1B6E81D800D2A36B /* CategoryListViewController.swift in Sources */,
 				005F809C1B69F83000D46FB1 /* ENSideMenu.swift in Sources */,
+				00150B571B71504300AE47C7 /* NewListViewController.swift in Sources */,
 				0063AC921B6ADAE500059646 /* ListItemsViewController.swift in Sources */,
 				005F80941B69F83000D46FB1 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				003217521B6A90EA0092E36E /* TripViewController.swift in Sources */,
@@ -453,9 +463,11 @@
 				00D0C8ED1B67DFEC00823D22 /* knapsackTests.swift in Sources */,
 				003217561B6ABA300092E36E /* TripListViewController.swift in Sources */,
 				005F809B1B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
+				00150B581B71504300AE47C7 /* NewListViewController.swift in Sources */,
 				005F80971B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				007F62201B6E81D800D2A36B /* CategoryListViewController.swift in Sources */,
 				005F809D1B69F83000D46FB1 /* ENSideMenu.swift in Sources */,
+				00CFC2DC1B715E5E00B4B325 /* MasterItemList.swift in Sources */,
 				0063AC931B6ADAE500059646 /* ListItemsViewController.swift in Sources */,
 				005F80951B69F83000D46FB1 /* TPKeyboardAvoidingCollectionView.m in Sources */,
 				003217531B6A90EA0092E36E /* TripViewController.swift in Sources */,

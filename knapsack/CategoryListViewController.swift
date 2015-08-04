@@ -53,6 +53,9 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     var itemCountLabel = cell.contentView.viewWithTag(5) as! UILabel
     var increaseButton:UIButton = cell.contentView.viewWithTag(10) as! UIButton
     var decreaseButton:UIButton = cell.contentView.viewWithTag(11) as! UIButton
+    if itemCountLabel.text == "0" {
+      decreaseButton.hidden = true
+    }
     increaseButton.addTarget(self, action: "changeItemCount:", forControlEvents: .TouchUpInside)
     decreaseButton.addTarget(self, action: "changeItemCount:", forControlEvents: .TouchUpInside)
     
@@ -65,26 +68,27 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
   }
   
   
-  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    println(indexPath.row)
-    let cell = tableView.cellForRowAtIndexPath(indexPath)!
-    println(cell.textLabel?.text)
-    
-    var category = CategoryList(category: passedCategory, items: masterList[passedCategory]! )
-    var selectedItem = category.items[indexPath.row]
-    var newItem = Item()
-    newItem.id = NSUUID().UUIDString
-    newItem.itemName = selectedItem
-    newItem.itemCount = 1
-    realm.write {
-      self.passedList.items.append(newItem)
-    }
-    
-  }
+//  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+//    println(indexPath.row)
+//    let cell = tableView.cellForRowAtIndexPath(indexPath)!
+//    println(cell.textLabel?.text)
+//    
+//    var category = CategoryList(category: passedCategory, items: masterList[passedCategory]! )
+//    var selectedItem = category.items[indexPath.row]
+//    var newItem = Item()
+//    newItem.id = NSUUID().UUIDString
+//    newItem.itemName = selectedItem
+//    newItem.itemCount = 1
+//    realm.write {
+//      self.passedList.items.append(newItem)
+//    }
+//    
+//  }
   
   func changeItemCount(sender : UIButton!) {
-    var cell = sender.superview!.superview!
-    var countLabel = cell.viewWithTag(5)! as! UILabel
+    var cell = sender.superview!.superview! as! UITableViewCell
+    var itemLabel = cell.viewWithTag(1) as! UILabel
+    var countLabel = cell.viewWithTag(5) as! UILabel
     var currentCount = countLabel.text?.toInt()
     if sender.tag == 10 {
       var updatedCount = currentCount! + 1
@@ -97,9 +101,18 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
         countLabel.text = "\(updatedCount)"
       }
     }
-
     
-//    testLabel.text = "\(updatedCount)"
+//    var category = CategoryList(category: passedCategory, items: masterList[passedCategory]! )
+//    var selectedItem = category.items[indexPath.row]
+    var newItem = Item()
+    newItem.id = NSUUID().UUIDString
+    newItem.itemName = itemLabel.text!
+    newItem.itemCount = countLabel.text!.toInt()!
+    realm.write {
+      self.passedList.items.append(newItem)
+    }
+    
+    
     println(countLabel.text!)
   }
 

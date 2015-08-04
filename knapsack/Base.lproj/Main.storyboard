@@ -431,10 +431,10 @@
             </objects>
             <point key="canvasLocation" x="583" y="503"/>
         </scene>
-        <!--View Controller-->
+        <!--New List View Controller-->
         <scene sceneID="eWh-fj-GKJ">
             <objects>
-                <viewController id="9Pm-yL-sSF" sceneMemberID="viewController">
+                <viewController id="9Pm-yL-sSF" customClass="NewListViewController" customModule="knapsack" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1PN-1q-323"/>
                         <viewControllerLayoutGuide type="bottom" id="K4F-tJ-od0"/>
@@ -449,14 +449,60 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N02-ld-hIl">
+                                <rect key="frame" x="130" y="178" width="61" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="61" id="3qo-QU-yXd"/>
+                                    <constraint firstAttribute="height" constant="30" id="GkA-dM-9WT"/>
+                                </constraints>
+                                <state key="normal" title="Populate">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="populateMasterList:" destination="9Pm-yL-sSF" eventType="touchUpInside" id="9Ge-uy-iLZ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTS-gE-t5N">
+                                <rect key="frame" x="139" y="273" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UVa-B2-1U1">
+                                <rect key="frame" x="139" y="302" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ybF-FB-hLG">
+                                <rect key="frame" x="98" y="442" width="125" height="30"/>
+                                <state key="normal" title="Delete Master List">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteMasterList:" destination="9Pm-yL-sSF" eventType="touchUpInside" id="WQG-Um-Uwe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="UVa-B2-1U1" firstAttribute="top" secondItem="hTS-gE-t5N" secondAttribute="bottom" constant="8" id="7Gy-es-Bp6"/>
+                            <constraint firstItem="ybF-FB-hLG" firstAttribute="top" secondItem="UVa-B2-1U1" secondAttribute="bottom" constant="119" id="7ca-S6-Ksf"/>
+                            <constraint firstAttribute="centerX" secondItem="UVa-B2-1U1" secondAttribute="centerX" id="8Hj-yW-qGF"/>
+                            <constraint firstAttribute="centerX" secondItem="N02-ld-hIl" secondAttribute="centerX" id="JGU-g9-kfK"/>
+                            <constraint firstAttribute="centerX" secondItem="ybF-FB-hLG" secondAttribute="centerX" id="V3J-fI-WMi"/>
                             <constraint firstItem="Xb5-O8-vNc" firstAttribute="top" secondItem="1PN-1q-323" secondAttribute="bottom" constant="85" id="dcg-Dn-h10"/>
                             <constraint firstAttribute="centerX" secondItem="Xb5-O8-vNc" secondAttribute="centerX" id="jMP-DS-h2I"/>
+                            <constraint firstItem="N02-ld-hIl" firstAttribute="top" secondItem="Xb5-O8-vNc" secondAttribute="bottom" constant="8" id="km3-HR-NeL"/>
+                            <constraint firstAttribute="centerX" secondItem="hTS-gE-t5N" secondAttribute="centerX" id="nOP-YR-wQc"/>
+                            <constraint firstAttribute="centerY" secondItem="hTS-gE-t5N" secondAttribute="centerY" id="ndL-SN-LJa"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="allListsCount" destination="UVa-B2-1U1" id="3it-jH-LuT"/>
+                        <outlet property="masterItemCount" destination="hTS-gE-t5N" id="RGn-rg-cAs"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ukO-d2-nRi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -558,7 +604,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fWb-VZ-jTU" id="qSh-2s-t86">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="55" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6h-FX-uSF">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z6h-FX-uSF">
                                                     <rect key="frame" x="292" y="11" width="20" height="21"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="32" id="Voe-xr-8vb"/>
@@ -580,7 +626,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" tag="10" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbv-1b-Kkz">
+                                                <button opaque="NO" tag="10" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xbv-1b-Kkz">
                                                     <rect key="frame" x="249" y="4" width="35" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="35" id="JEX-uI-04G"/>
@@ -590,7 +636,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNb-uU-D5J">
+                                                <button opaque="NO" tag="11" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNb-uU-D5J">
                                                     <rect key="frame" x="206" y="4" width="35" height="35"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="35" id="3LX-eK-odI"/>

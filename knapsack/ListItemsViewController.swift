@@ -86,6 +86,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         checkButton.setImage(uncheckedButtonImage, forState: .Normal)
       }
       listNameLabel.text = "\(chosenList.items[indexPath.row].itemName)"
+      testLabel.text = "\(chosenList.items[indexPath.row].itemCount)"
 //      if chosenList.items.count == 0 {
 //          println(chosenList.items.count)
 //          noItemLabel.text = "No Items Yet"
