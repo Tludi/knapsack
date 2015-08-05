@@ -16,11 +16,15 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
   var passedList = ItemList()
   var masterList = MasterItemList().itemList
   
+  
+  
+  
   @IBOutlet weak var itemTable: UITableView!
   
   override func viewDidLoad() {
       super.viewDidLoad()
     self.title = passedCategory.capitalizedString
+    println("\(passedList.items.count) - passed list items ")
   }
   
   
@@ -29,8 +33,11 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return masterList[passedCategory]!.count
+//    return masterList[passedCategory]!.count
+    var categoryItemList = passedList.items.filter("itemCategory = '\(passedCategory)'")
+    return categoryItemList.count
   }
+  
   
   
   // show cell
@@ -40,19 +47,21 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     
     // get current saved items from the passed list
     var passedListItems = passedList.items
-    println(passedListItems.count)
+    var categoryItemList = passedList.items.filter("itemCategory = '\(passedCategory)'")
+    var item = categoryItemList[indexPath.row]
     
     // get master category list from swift file
-    var category = CategoryList(category: passedCategory, items: masterList[passedCategory]! )
-    var item = category.items[indexPath.row]
+//    var category = CategoryList(category: passedCategory, items: masterList[passedCategory]! )
+//    var item = category.items[indexPath.row]
    
-    
     
     // set cell labels
     var itemLabel = cell.contentView.viewWithTag(1) as! UILabel
     var itemCountLabel = cell.contentView.viewWithTag(5) as! UILabel
+    var itemCountField = cell.contentView.viewWithTag(15) as! UITextField
     var increaseButton:UIButton = cell.contentView.viewWithTag(10) as! UIButton
     var decreaseButton:UIButton = cell.contentView.viewWithTag(11) as! UIButton
+    
     if itemCountLabel.text == "0" {
       decreaseButton.hidden = true
     }
@@ -60,60 +69,41 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     decreaseButton.addTarget(self, action: "changeItemCount:", forControlEvents: .TouchUpInside)
     
     
-    itemLabel.text = item
-    itemCountLabel.text = "0"
+    itemLabel.text = item.itemName
+    itemCountLabel.text = "\(item.itemCount)"
+    itemCountField.text = "\(item.itemCount)"
+    
+    itemCountField.addTarget(self, action: "itemCountChanged:", forControlEvents: .EditingDidEnd)
     
     
     return cell
   }
   
-  
-//  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//    println(indexPath.row)
-//    let cell = tableView.cellForRowAtIndexPath(indexPath)!
-//    println(cell.textLabel?.text)
-//    
-//    var category = CategoryList(category: passedCategory, items: masterList[passedCategory]! )
-//    var selectedItem = category.items[indexPath.row]
-//    var newItem = Item()
-//    newItem.id = NSUUID().UUIDString
-//    newItem.itemName = selectedItem
-//    newItem.itemCount = 1
-//    realm.write {
-//      self.passedList.items.append(newItem)
-//    }
-//    
-//  }
+  func itemCountChanged(sender : UITextField!) {
+    println("text field changed")
+  }
   
   func changeItemCount(sender : UIButton!) {
     var cell = sender.superview!.superview! as! UITableViewCell
+    
     var itemLabel = cell.viewWithTag(1) as! UILabel
-    var countLabel = cell.viewWithTag(5) as! UILabel
-    var currentCount = countLabel.text?.toInt()
+    var countField = cell.viewWithTag(15) as! UITextField
+    var currentCount = countField.text?.toInt()
+    
     if sender.tag == 10 {
       var updatedCount = currentCount! + 1
-      countLabel.text = "\(updatedCount)"
+      countField.text = "\(updatedCount)"
     } else {
       var updatedCount = currentCount! - 1
       if updatedCount < 0 {
-        countLabel.text = "0"
+        countField.text = "0"
       } else {
-        countLabel.text = "\(updatedCount)"
+        countField.text = "\(updatedCount)"
       }
     }
     
-//    var category = CategoryList(category: passedCategory, items: masterList[passedCategory]! )
-//    var selectedItem = category.items[indexPath.row]
-    var newItem = Item()
-    newItem.id = NSUUID().UUIDString
-    newItem.itemName = itemLabel.text!
-    newItem.itemCount = countLabel.text!.toInt()!
-    realm.write {
-      self.passedList.items.append(newItem)
-    }
     
-    
-    println(countLabel.text!)
+    println(countField.text!)
   }
 
 
