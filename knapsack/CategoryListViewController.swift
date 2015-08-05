@@ -42,6 +42,9 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
   
   // show cell
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    
+
+    
     var masterItemCount = 0
     let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemCell", forIndexPath: indexPath) as! UITableViewCell
     
@@ -59,6 +62,8 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     var itemLabel = cell.contentView.viewWithTag(1) as! UILabel
     var itemCountLabel = cell.contentView.viewWithTag(5) as! UILabel
     var itemCountField = cell.contentView.viewWithTag(15) as! UITextField
+    
+    
     var increaseButton:UIButton = cell.contentView.viewWithTag(10) as! UIButton
     var decreaseButton:UIButton = cell.contentView.viewWithTag(11) as! UIButton
     
@@ -85,26 +90,40 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
   
   func changeItemCount(sender : UIButton!) {
     var cell = sender.superview!.superview! as! UITableViewCell
-    
     var itemLabel = cell.viewWithTag(1) as! UILabel
     var countField = cell.viewWithTag(15) as! UITextField
     var currentCount = countField.text?.toInt()
     
+    // this is an array of items
+    var existingListItem = passedList.items.filter("itemName = '\(itemLabel.text!)'").first!
+    
+    println(existingListItem.itemName)
+    
+    
     if sender.tag == 10 {
       var updatedCount = currentCount! + 1
       countField.text = "\(updatedCount)"
+      
+      realm.write{
+        existingListItem.itemCount = updatedCount
+      }
     } else {
       var updatedCount = currentCount! - 1
       if updatedCount < 0 {
         countField.text = "0"
       } else {
         countField.text = "\(updatedCount)"
+        realm.write{
+          existingListItem.itemCount = updatedCount
+        }
       }
     }
     
     
     println(countField.text!)
   }
+  
+ 
 
 
 }
