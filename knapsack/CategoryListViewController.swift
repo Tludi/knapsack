@@ -91,6 +91,7 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
   func changeItemCount(sender : UIButton!) {
     var cell = sender.superview!.superview! as! UITableViewCell
     var itemLabel = cell.viewWithTag(1) as! UILabel
+    var itemCountLabel = cell.viewWithTag(5) as! UILabel
     var countField = cell.viewWithTag(15) as! UITextField
     var currentCount = countField.text?.toInt()
     
@@ -103,6 +104,7 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     if sender.tag == 10 {
       var updatedCount = currentCount! + 1
       countField.text = "\(updatedCount)"
+      itemCountLabel.text = "\(updatedCount)"
       
       realm.write{
         existingListItem.itemCount = updatedCount
@@ -113,6 +115,7 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
         countField.text = "0"
       } else {
         countField.text = "\(updatedCount)"
+        itemCountLabel.text = "\(updatedCount)"
         realm.write{
           existingListItem.itemCount = updatedCount
         }

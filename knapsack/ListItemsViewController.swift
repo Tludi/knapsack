@@ -32,6 +32,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     listItemTable.backgroundView = UIImageView(image: bgImage)
     
     println(chosenList.items.count)
+    println(chosenList.items.filter("itemCount > 0").count)
     
   }
   
@@ -46,47 +47,39 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if chosenList.items.count == 0 {
-      return 1
-    } else {
-      return chosenList.items.count
-    }
-//    return chosenList.items.count
+    var itemsWithCount = chosenList.items.filter("itemCount > 0")
+    
+    return itemsWithCount.count
+ 
+
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    if chosenList.items.count == 0 {
-      let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! UITableViewCell
-      // no items cell
-      var listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
-      var noItemLabel = cell.contentView.viewWithTag(100) as! UILabel
-      var itemCircle = cell.contentView.viewWithTag(50)
-      var checkButton:UIButton = cell.contentView.viewWithTag(10) as! UIButton
-      noItemLabel.text = "No Items Yet"
-      itemCircle!.hidden = true
-      checkButton.hidden = true
-      return cell
-    } else {
-      let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! UITableViewCell
-      // List Name
-      var listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
-      var noItemLabel = cell.contentView.viewWithTag(100) as! UILabel
-      var itemCircle = cell.contentView.viewWithTag(50)
-      var checkButton:UIButton = cell.contentView.viewWithTag(10) as! UIButton
-      var testLabel = cell.contentView.viewWithTag(20) as! UILabel
-      
-      checkButton.addTarget(self, action: "clicked:", forControlEvents: .TouchUpInside)
-      
+    var itemsWithCount = chosenList.items.filter("itemCount > 0")
+    var item = itemsWithCount[indexPath.row]
+
+    let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! UITableViewCell
+    // List Name
+    var listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
+    var noItemLabel = cell.contentView.viewWithTag(100) as! UILabel
+    var itemCircle = cell.contentView.viewWithTag(50)
+    var checkButton:UIButton = cell.contentView.viewWithTag(10) as! UIButton
+    var testLabel = cell.contentView.viewWithTag(20) as! UILabel
+    
+    listNameLabel.text = item.itemName
+    testLabel.text = "\(item.itemCount)"
+    checkButton.addTarget(self, action: "clicked:", forControlEvents: .TouchUpInside)
+    
 
       
-      
-      if chosenList.items[indexPath.row].packed == true {
-        checkButton.setImage(checkedButtonImage, forState: .Normal)
-      } else {
-        checkButton.setImage(uncheckedButtonImage, forState: .Normal)
-      }
-      listNameLabel.text = "\(chosenList.items[indexPath.row].itemName)"
-      testLabel.text = "\(chosenList.items[indexPath.row].itemCount)"
+//      
+//      if itemsWithCount[indexPath.row].packed == true {
+//        checkButton.setImage(checkedButtonImage, forState: .Normal)
+//      } else {
+//        checkButton.setImage(uncheckedButtonImage, forState: .Normal)
+//      }
+//      listNameLabel.text = "\(chosenList.items[indexPath.row].itemName)"
+//      testLabel.text = "\(chosenList.items[indexPath.row].itemCount)"
 //      if chosenList.items.count == 0 {
 //          println(chosenList.items.count)
 //          noItemLabel.text = "No Items Yet"
@@ -96,7 +89,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
 //      }
 
       return cell
-    }
+    
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
