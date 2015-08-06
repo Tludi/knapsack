@@ -227,11 +227,12 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
   // Clear database for testing
 
   func clearDatabase() {
-    let realm = Realm()
-    realm.write {
-      realm.deleteAll()
-    }
-    self.itemTable.reloadData()
+//    let realm = Realm()
+//    realm.write {
+//      realm.deleteAll()
+//    }
+//    self.itemTable.reloadData()
+    println("disabled")
   }
 
 }

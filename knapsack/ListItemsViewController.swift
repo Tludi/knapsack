@@ -68,36 +68,28 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     
     listNameLabel.text = item.itemName
     testLabel.text = "\(item.itemCount)"
-    checkButton.addTarget(self, action: "clicked:", forControlEvents: .TouchUpInside)
     
+//    checkButton.addTarget(self, action: "clicked:", forControlEvents: .TouchUpInside)
+//    
+    // set checked image based on being packed
+    if itemsWithCount[indexPath.row].packed == true {
+      checkButton.setImage(checkedButtonImage, forState: .Normal)
+    } else {
+      checkButton.setImage(uncheckedButtonImage, forState: .Normal)
+    }
 
-      
-//      
-//      if itemsWithCount[indexPath.row].packed == true {
-//        checkButton.setImage(checkedButtonImage, forState: .Normal)
-//      } else {
-//        checkButton.setImage(uncheckedButtonImage, forState: .Normal)
-//      }
-//      listNameLabel.text = "\(chosenList.items[indexPath.row].itemName)"
-//      testLabel.text = "\(chosenList.items[indexPath.row].itemCount)"
-//      if chosenList.items.count == 0 {
-//          println(chosenList.items.count)
-//          noItemLabel.text = "No Items Yet"
-//          itemCircle!.hidden = true
-//      } else {
-//        listNameLabel.text = "\(chosenList.items[indexPath.row].itemName)"
-//      }
-
-      return cell
+    return cell
     
   }
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     var cell = tableView.cellForRowAtIndexPath(indexPath)
+    var itemsWithCount = chosenList.items.filter("itemCount > 0")
+    var item = itemsWithCount[indexPath.row]
+    
     var checkButton:UIButton = cell?.contentView.viewWithTag(10) as! UIButton
     if checkButton.hidden == false {
-      var selectedItem = chosenList.items[indexPath.row]
-      toggleCheckButton(selectedItem)
+      toggleCheckButton(item)
     }
   }
   
@@ -122,14 +114,14 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     listItemTable.reloadData()
   }
   
-  func clicked(sender : UIButton!) {
-    var cell = sender.superview!.superview!
-    var testLabel = cell.viewWithTag(20)! as! UILabel
-    var currentCount = testLabel.text?.toInt()
-    var updatedCount = currentCount! + 1
-    testLabel.text = "\(updatedCount)"
-    println(testLabel.text!)
-  }
+//    func clicked(sender : UIButton!) {
+//      var cell = sender.superview!.superview!
+//      var testLabel = cell.viewWithTag(20)! as! UILabel
+//      var currentCount = testLabel.text?.toInt()
+//      var updatedCount = currentCount! + 1
+//      testLabel.text = "\(updatedCount)"
+//      println(testLabel.text!)
+//    }
 
 
 

@@ -55,6 +55,7 @@ class NewTripViewController: UIViewController {
         
         let trip = Trip()
         trip.id = NSUUID().UUIDString
+        // check for empty name
         if newTripName == "" {
           var noNameAlert = UIAlertController(title: "Trip Name", message: "Name Can Not Be Blank", preferredStyle: .Alert)
           noNameAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
