@@ -7,15 +7,19 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+  let masterList = Realm().objects(ItemList).filter("id = '1'")
   var window: UIWindow?
 
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
     // Override point for customization after application launch.
+    checkIfMasterListExists()
+    
     return true
   }
 
@@ -39,6 +43,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func applicationWillTerminate(application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+  }
+  
+  func checkIfMasterListExists() {
+
+    if masterList.count == 0 {
+      println("Master List Being Created")
+      DataManager.populateRealm()
+    } else {
+      var first = masterList.first!
+      println("Master List Exists")
+    }
   }
 
 

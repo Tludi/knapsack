@@ -53,7 +53,9 @@ class NewTripViewController: UIViewController {
         let masterItems = masterList[0].items
         let masterCategories = MasterItemList().categories
         
+        // create new empty trip
         let trip = Trip()
+        // set trip id
         trip.id = NSUUID().UUIDString
         // check for empty name
         if newTripName == "" {

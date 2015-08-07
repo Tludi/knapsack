@@ -25,6 +25,7 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
       super.viewDidLoad()
     self.title = passedCategory.capitalizedString
     println("\(passedList.items.count) - passed list items ")
+    println("\(passedList.items.first)")
   }
   
   
@@ -35,6 +36,7 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //    return masterList[passedCategory]!.count
     var categoryItemList = passedList.items.filter("itemCategory = '\(passedCategory)'")
+    println("\(categoryItemList.count) items in \(passedCategory)")
     return categoryItemList.count
   }
   

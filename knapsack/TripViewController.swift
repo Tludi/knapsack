@@ -82,6 +82,8 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let trip = presentedTrips[indexPath.row]
     
     //**** hard coded --- FIX!
+    // only counts the items in the default 'All Items List'
+    // which is ok if ALl Items List includes items from other lists
     var allTripItems = trip.lists.first?.items.count
     
     // tripName
@@ -115,41 +117,78 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
   
   //  Trip table cell actions - Copy, Edit, Delete
   func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+   
     
-    // Copy trip functions
+    
+    
+    
+    //****************** Copy trip functions
+    //************* need to correct code for when there are more than one lists
+    
     var copyCellAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "    "){ (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
       
       self.selectedTrip = self.presentedTrips[indexPath.row]
+      // set new trip
       let copiedTrip = Trip()
-      var originalList = ItemList()
-      var newList = ItemList()
-      var originalItem = Item()
-      var newItem = Item()
 
-      for originalList in self.selectedTrip.lists {
-        newList.id = NSUUID().UUIDString
-        newList.listName = originalList.listName
-        for originalItem in originalList.items {
-          newItem.id = NSUUID().UUIDString
-          newItem.itemName = originalItem.itemName
-          newList.items.append(newItem)
-        }
-        copiedTrip.lists.append(newList)
-      }
+//      var originalList = ItemList()
+//      var originalItem = Item()
+      
+//      var newList = ItemList()
+
+
       copiedTrip.id = NSUUID().UUIDString
       copiedTrip.tripName = "\(self.selectedTrip.tripName)Copy"
       copiedTrip.startDate = self.selectedTrip.startDate
       copiedTrip.numberOfDays = self.selectedTrip.numberOfDays
-
       self.realm.write {
         self.realm.add(copiedTrip, update: false)
       }
+      
+      
+      for originalList in self.selectedTrip.lists {
+        var newList = ItemList()
+        newList.id = NSUUID().UUIDString
+        newList.listName = originalList.listName
+        var originalItems = originalList.items
+
+        self.realm.write {
+          copiedTrip.lists.append(newList)
+        }
+      }
+      
+      // only copies the first list items
+      for eachItem in self.selectedTrip.lists.first!.items {
+        var newItem = Item()
+        newItem.id = NSUUID().UUIDString
+        newItem.itemName = eachItem.itemName
+        newItem.itemCount = eachItem.itemCount
+        newItem.itemCategory = eachItem.itemCategory
+        self.realm.write {
+          copiedTrip.lists.first!.items.append(newItem)
+        }
+//        println(eachItem.itemName)
+      }
+      
+      
+      // print the names of lists in the copied list
+//      for eachList in copiedTrip.lists {
+//        println(eachList.listName)
+//        
+//      }
+      
+
       println("copy trip")
       self.itemTable.reloadData()
     }
     
     var copyimage = UIImage(named: "copybox.png")!
     copyCellAction.backgroundColor = UIColor(patternImage: copyimage)
+    
+    
+    
+    
+    
     
     // Archive trip functions
     var archiveCellAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "    ") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in

@@ -48,7 +48,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     var itemsWithCount = chosenList.items.filter("itemCount > 0")
-    
+//    var itemsWithCount = chosenList.items
     return itemsWithCount.count
  
 
@@ -56,6 +56,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var itemsWithCount = chosenList.items.filter("itemCount > 0")
+//    var itemsWithCount = chosenList.items
     var item = itemsWithCount[indexPath.row]
 
     let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! UITableViewCell
