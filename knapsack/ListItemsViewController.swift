@@ -14,8 +14,8 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   let realm = Realm()
   
   var chosenList = ItemList()
-  let checkedButtonImage = UIImage(named: "filledCheck.png")
-  let uncheckedButtonImage = UIImage(named: "emptyCheck.png")
+  let checkedButtonImage = UIImage(named: "squareCheck.png")
+  let uncheckedButtonImage = UIImage(named: "squareCount.png")
   
   
   @IBOutlet weak var listName: UILabel!
@@ -62,12 +62,15 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! UITableViewCell
     // List Name
     var listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
+    var categoryNameLabel = cell.contentView.viewWithTag(2) as! UILabel
     var noItemLabel = cell.contentView.viewWithTag(100) as! UILabel
     var itemCircle = cell.contentView.viewWithTag(50)
     var checkButton:UIButton = cell.contentView.viewWithTag(10) as! UIButton
     var testLabel = cell.contentView.viewWithTag(20) as! UILabel
+    var itemOverlay = cell.contentView.viewWithTag(15)
     
     listNameLabel.text = item.itemName
+    categoryNameLabel.text = item.itemCategory.capitalizedString
     testLabel.text = "\(item.itemCount)"
     
 //    checkButton.addTarget(self, action: "clicked:", forControlEvents: .TouchUpInside)
@@ -75,8 +78,10 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     // set checked image based on being packed
     if itemsWithCount[indexPath.row].packed == true {
       checkButton.setImage(checkedButtonImage, forState: .Normal)
+      itemOverlay?.hidden = false
     } else {
       checkButton.setImage(uncheckedButtonImage, forState: .Normal)
+      itemOverlay?.hidden = true
     }
 
     return cell
@@ -93,6 +98,48 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
       toggleCheckButton(item)
     }
   }
+  
+  
+  func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    return true
+  }
+  
+  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+  }
+  
+  
+  
+  func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [AnyObject]? {
+    
+    // Delete trip functions
+    var deleteCellAction = UITableViewRowAction(style: .Normal, title: "    ") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+      println("delete action")
+      var deleteAlert = UIAlertController(title: "Confirm Removal", message: "Selected Item Will Be Removed From List!", preferredStyle: .Alert)
+      deleteAlert.addAction(UIAlertAction(title: "Remove", style: .Default, handler: { (action: UIAlertAction!) in
+        
+        var itemsWithCount = self.chosenList.items.filter("itemCount > 0")
+        //    var itemsWithCount = chosenList.items
+        var item = itemsWithCount[indexPath.row]
+        self.realm.write {
+          let selectedItem = itemsWithCount[indexPath.row]
+          selectedItem.itemCount = 0
+        }
+        
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+      }))
+      deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+        return
+      }))
+      self.presentViewController(deleteAlert, animated: true, completion: nil)
+    }
+    
+    var deleteImage = UIImage(named: "deletebox.png")!
+    deleteCellAction.backgroundColor = UIColor(patternImage: deleteImage)
+    
+    return [deleteCellAction]
+  }
+  
+  
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "showAddItem" {

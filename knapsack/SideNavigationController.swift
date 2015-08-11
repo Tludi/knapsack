@@ -17,11 +17,11 @@ class SideNavigationController: ENSideMenuNavigationController, ENSideMenuDelega
 //        let storyboard = UIStoryboard(name: "Main", bundle: nil)
         // create the menu for the side controller
 //        let menu = storyboard.instantiateViewControllerWithIdentifier("MenuTableViewController") as! MenuTableViewController
-        sideMenu = ENSideMenu(sourceView: self.view, menuViewController: MenuTableViewController(), menuPosition: .Left)
+//        sideMenu = ENSideMenu(sourceView: self.view, menuViewController: MenuTableViewController(), menuPosition: .Left)
 //        sideMenu = ENSideMenu(sourceView: self.view, menuViewController: MyMenuTableViewController(), menuPosition:.Left)
-        sideMenu?.menuWidth = 250
-        sideMenu?.bouncingEnabled = false
-        view.bringSubviewToFront(navigationBar)
+//        sideMenu?.menuWidth = 250
+//        sideMenu?.bouncingEnabled = false
+//        view.bringSubviewToFront(navigationBar)
     }
 
 }

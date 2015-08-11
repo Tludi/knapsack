@@ -21,15 +21,7 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   var allItems = MasterItemList()
   var categories = MasterItemList().categories
   
-  @IBAction func addItemButton(sender: UIButton) {
-    var firstTrip = trips.first!
-    var itemToAdd = Item()
-    itemToAdd.id = NSUUID().UUIDString
-    itemToAdd.itemName = "Toothbrush"
-    realm.write {
-      self.passedList.items.append(itemToAdd)
-    }
-  }
+
   
   @IBOutlet weak var categoryTable: UITableView!
   
@@ -50,9 +42,11 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     var cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! UITableViewCell
-      let item = allItems.categories[indexPath.row]
-      cell.textLabel?.text = item.capitalizedString
-      return cell
+    let item = allItems.categories[indexPath.row]
+    let categoryLabelName = cell.contentView.viewWithTag(1) as! UILabel
+    
+    categoryLabelName.text = item.capitalizedString
+    return cell
     
   }
 

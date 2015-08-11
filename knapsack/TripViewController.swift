@@ -73,6 +73,10 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
   // **** Formatting the tableView *****//
   
+  func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return 1
+  }
+  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return presentedTrips.count
   }
