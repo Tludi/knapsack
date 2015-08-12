@@ -43,6 +43,8 @@
 		0063AC961B6B13D600059646 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0063AC941B6B13D600059646 /* CategoriesViewController.swift */; };
 		007F621F1B6E81D800D2A36B /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007F621E1B6E81D800D2A36B /* CategoryListViewController.swift */; };
 		007F62201B6E81D800D2A36B /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 007F621E1B6E81D800D2A36B /* CategoryListViewController.swift */; };
+		009EC42F1B7BC3F30091A2E1 /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009EC42E1B7BC3F30091A2E1 /* ArchiveViewController.swift */; };
+		009EC4301B7BC3F30091A2E1 /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009EC42E1B7BC3F30091A2E1 /* ArchiveViewController.swift */; };
 		00CFC2DB1B715E5E00B4B325 /* MasterItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CFC2DA1B715E5E00B4B325 /* MasterItemList.swift */; };
 		00CFC2DC1B715E5E00B4B325 /* MasterItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CFC2DA1B715E5E00B4B325 /* MasterItemList.swift */; };
 		00D0C8D71B67DFEC00823D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D0C8D61B67DFEC00823D22 /* AppDelegate.swift */; };
@@ -90,6 +92,7 @@
 		0063AC911B6ADAE500059646 /* ListItemsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemsViewController.swift; sourceTree = "<group>"; };
 		0063AC941B6B13D600059646 /* CategoriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		007F621E1B6E81D800D2A36B /* CategoryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
+		009EC42E1B7BC3F30091A2E1 /* ArchiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveViewController.swift; sourceTree = "<group>"; };
 		00CFC2DA1B715E5E00B4B325 /* MasterItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterItemList.swift; sourceTree = "<group>"; };
 		00D0C8D11B67DFEC00823D22 /* knapsack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = knapsack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D0C8D51B67DFEC00823D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -165,6 +168,7 @@
 				EF98D4681B6DB4B200175C53 /* MasterItems.swift */,
 				007F621E1B6E81D800D2A36B /* CategoryListViewController.swift */,
 				00CFC2DA1B715E5E00B4B325 /* MasterItemList.swift */,
+				009EC42E1B7BC3F30091A2E1 /* ArchiveViewController.swift */,
 			);
 			path = knapsack;
 			sourceTree = "<group>";
@@ -434,6 +438,7 @@
 				00D0C8D71B67DFEC00823D22 /* AppDelegate.swift in Sources */,
 				003217551B6ABA300092E36E /* TripListViewController.swift in Sources */,
 				00CFC2DB1B715E5E00B4B325 /* MasterItemList.swift in Sources */,
+				009EC42F1B7BC3F30091A2E1 /* ArchiveViewController.swift in Sources */,
 				005F809A1B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				005F80961B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				007F621F1B6E81D800D2A36B /* CategoryListViewController.swift in Sources */,
@@ -474,6 +479,7 @@
 				005F809F1B69F83000D46FB1 /* ENSideMenuNavigationController.swift in Sources */,
 				005F80991B69F83000D46FB1 /* TPKeyboardAvoidingTableView.m in Sources */,
 				0063AC961B6B13D600059646 /* CategoriesViewController.swift in Sources */,
+				009EC4301B7BC3F30091A2E1 /* ArchiveViewController.swift in Sources */,
 				005F807F1B69F68400D46FB1 /* NewTripViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
