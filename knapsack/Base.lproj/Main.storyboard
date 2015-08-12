@@ -138,6 +138,9 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                <connections>
+                                                    <segue destination="i5e-8q-tCR" kind="show" identifier="showTripListsFromArchive" id="i7j-yu-VQ5"/>
+                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                         <connections>
@@ -170,7 +173,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JzC-qc-aXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="583" y="-835"/>
+            <point key="canvasLocation" x="763" y="-915"/>
         </scene>
         <!--Trips-->
         <scene sceneID="Vqo-Ai-4SJ">
@@ -1318,5 +1321,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="p27-nK-bfl"/>
+        <segue reference="i7j-yu-VQ5"/>
     </inferredMetricsTieBreakers>
 </document>

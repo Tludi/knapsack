@@ -29,7 +29,7 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
     // Set the background image of the trips table
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     archiveTable.backgroundView = UIImageView(image: bgImage)
-
+    self.title = "Archives"
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -162,6 +162,17 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
     
     // first item in array is far right in cell
     return [deleteCellAction, copyCellAction]
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "showTripListsFromArchive" {
+      if let destinationController = segue.destinationViewController as? TripListViewController {
+        if let tripIndex = archiveTable.indexPathForSelectedRow() {
+          let chosenTrip = archivedTrips[tripIndex.row]
+          destinationController.chosenTrip = chosenTrip
+        }
+      }
+    }
   }
 
 }
