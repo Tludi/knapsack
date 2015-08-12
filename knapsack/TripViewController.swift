@@ -129,7 +129,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //****************** Copy trip functions
     //************* need to correct code for when there are more than one lists
     
-    var copyCellAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "    "){ (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+    var copyCellAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "    "){ (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
       
       self.selectedTrip = self.presentedTrips[indexPath.row]
       // set new trip
@@ -195,7 +195,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     
     // Archive trip functions
-    var archiveCellAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "    ") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+    var archiveCellAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "    ") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
       
       self.editing = false
       self.selectedTrip = self.presentedTrips[indexPath.row]
@@ -208,7 +208,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     archiveCellAction.backgroundColor = UIColor(patternImage: archiveimage)
     
     // Edit trip functions
-    var editCellAction = UITableViewRowAction(style: UITableViewRowActionStyle.Default, title: "    ") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
+    var editCellAction = UITableViewRowAction(style: UITableViewRowActionStyle.Normal, title: "    ") { (action:UITableViewRowAction!, indexPath:NSIndexPath!) -> Void in
       
       self.editing = false
       self.selectedTrip = self.presentedTrips[indexPath.row]

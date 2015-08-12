@@ -56,12 +56,14 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     
     var increaseButton:UIButton = cell.contentView.viewWithTag(10) as! UIButton
     var decreaseButton:UIButton = cell.contentView.viewWithTag(11) as! UIButton
+    var decreaseBackground = cell.viewWithTag(12)
     
     itemLabel.text = item.itemName
     itemCountLabel.text = "\(item.itemCount)"
     
     if itemCountLabel.text! == "0" {
       decreaseButton.hidden = true
+      decreaseBackground!.hidden = true
     }
     
     increaseButton.addTarget(self, action: "changeItemCount:", forControlEvents: .TouchUpInside)
@@ -81,6 +83,7 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     var itemLabel = cell.viewWithTag(1) as! UILabel
     var itemCountLabel = cell.viewWithTag(5) as! UILabel
     var decreaseButton:UIButton = cell.viewWithTag(11) as! UIButton
+    var decreaseBackground = cell.viewWithTag(12)
     var currentCount = itemCountLabel.text?.toInt()
     
     
@@ -92,6 +95,7 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
       var updatedCount = currentCount! + 1
       itemCountLabel.text = "\(updatedCount)"
       decreaseButton.hidden = false
+      decreaseBackground!.hidden = false
       realm.write{
         existingListItem.itemCount = updatedCount
       }
@@ -103,6 +107,7 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
       } else {
         if updatedCount == 0 {
           decreaseButton.hidden = true
+          decreaseBackground?.hidden = true
         }
         itemCountLabel.text = "\(updatedCount)"
         realm.write{
