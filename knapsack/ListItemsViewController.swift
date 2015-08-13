@@ -63,24 +63,28 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     // List Name
     var listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
     var categoryNameLabel = cell.contentView.viewWithTag(2) as! UILabel
+    // label when there are no items - not currently used
     var noItemLabel = cell.contentView.viewWithTag(100) as! UILabel
+    // ItemTagBox
     var itemCircle = cell.contentView.viewWithTag(50)
-    var checkButton:UIButton = cell.contentView.viewWithTag(10) as! UIButton
-    var testLabel = cell.contentView.viewWithTag(20) as! UILabel
+    // box around item count that toggles when item is packed
+    var checkBox:UIImageView = cell.contentView.viewWithTag(11) as!UIImageView
+    // item count
+    var itemCountLabel = cell.contentView.viewWithTag(20) as! UILabel
+    // overlay to show when items are packed
     var itemOverlay = cell.contentView.viewWithTag(15)
+    
     
     listNameLabel.text = item.itemName
     categoryNameLabel.text = item.itemCategory.capitalizedString
-    testLabel.text = "\(item.itemCount)"
+    itemCountLabel.text = "\(item.itemCount)"
     
-//    checkButton.addTarget(self, action: "clicked:", forControlEvents: .TouchUpInside)
-//    
     // set checked image based on being packed
     if itemsWithCount[indexPath.row].packed == true {
-      checkButton.setImage(checkedButtonImage, forState: .Normal)
+      checkBox.image = checkedButtonImage
       itemOverlay?.hidden = false
     } else {
-      checkButton.setImage(uncheckedButtonImage, forState: .Normal)
+      checkBox.image = uncheckedButtonImage
       itemOverlay?.hidden = true
     }
 
@@ -93,8 +97,9 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     var itemsWithCount = chosenList.items.filter("itemCount > 0")
     var item = itemsWithCount[indexPath.row]
     
-    var checkButton:UIButton = cell?.contentView.viewWithTag(10) as! UIButton
-    if checkButton.hidden == false {
+    
+    var checkBox:UIImageView = cell?.contentView.viewWithTag(11) as! UIImageView
+    if checkBox.hidden == false {
       toggleCheckButton(item)
     }
   }
