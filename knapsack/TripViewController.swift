@@ -86,7 +86,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //**** hard coded --- FIX!
     // only counts the items in the default 'All Items List'
     // which is ok if ALl Items List includes items from other lists
-    var allTripItems = trip.lists.first?.items.count
+    var allTripItems = trip.lists.first?.items.filter("itemCount > 0").count
     
     // tripName
     var tripNameLabel = cell.contentView.viewWithTag(1) as! UILabel
