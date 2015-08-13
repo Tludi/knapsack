@@ -44,9 +44,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
   }
   
   
-  @IBAction func clearTrips(sender: UIBarButtonItem) {
-    clearDatabase()
-  }
+
   @IBAction func cancelToNewTripViewController(segue:UIStoryboardSegue) {
     // this is set to unwind segues to the NewTripController
   }
@@ -92,6 +90,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // tripName
     var tripNameLabel = cell.contentView.viewWithTag(1) as! UILabel
+    tripNameLabel.adjustsFontSizeToFitWidth = true
     tripNameLabel.text = "\(trip.tripName)"
     // tripStartDate
     var dateLabel = cell.contentView.viewWithTag(3) as! UILabel
@@ -266,16 +265,6 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
   } // end prepareforsegue
 
-  
-  // Clear database for testing
 
-  func clearDatabase() {
-//    let realm = Realm()
-//    realm.write {
-//      realm.deleteAll()
-//    }
-//    self.itemTable.reloadData()
-    println("disabled")
-  }
 
 }

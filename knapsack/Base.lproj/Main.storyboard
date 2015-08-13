@@ -209,7 +209,7 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TripName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSM-Rs-WmG">
-                                                    <rect key="frame" x="60" y="23" width="200" height="28"/>
+                                                    <rect key="frame" x="20" y="23" width="280" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="Zmc-vA-QKL"/>
                                                         <constraint firstAttribute="height" constant="28" id="zFC-Mm-tNC"/>
@@ -217,6 +217,11 @@
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="24"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="Zmc-vA-QKL"/>
+                                                        </mask>
+                                                    </variation>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluePill" translatesAutoresizingMaskIntoConstraints="NO" id="ypS-yS-h74">
                                                     <rect key="frame" x="110" y="70" width="100" height="30"/>
@@ -284,8 +289,11 @@
                                                 <constraint firstItem="VZk-7m-sRY" firstAttribute="leading" secondItem="XFM-YU-0Ik" secondAttribute="trailing" constant="-22" id="AAm-Vm-q8J"/>
                                                 <constraint firstItem="boc-CR-9kB" firstAttribute="centerY" secondItem="VZk-7m-sRY" secondAttribute="centerY" constant="-1.5" id="GQs-yd-mNv"/>
                                                 <constraint firstItem="XFM-YU-0Ik" firstAttribute="leading" secondItem="boc-CR-9kB" secondAttribute="trailing" constant="-35" id="HCy-F2-JYd"/>
+                                                <constraint firstItem="rSM-Rs-WmG" firstAttribute="leading" secondItem="wdy-64-Ciq" secondAttribute="leadingMargin" constant="12" id="Hui-Z4-opI"/>
+                                                <constraint firstItem="rSM-Rs-WmG" firstAttribute="leading" secondItem="XNc-de-bM4" secondAttribute="trailing" constant="-288" id="MSG-Vt-q9q"/>
                                                 <constraint firstItem="XFM-YU-0Ik" firstAttribute="top" secondItem="boc-CR-9kB" secondAttribute="bottom" constant="-23" id="O31-Qs-BKF"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="XNc-de-bM4" secondAttribute="trailing" constant="2" id="Pl0-IV-HYb"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="rSM-Rs-WmG" secondAttribute="trailing" constant="12" id="QJd-36-R0D"/>
                                                 <constraint firstItem="7mZ-1C-4hB" firstAttribute="top" secondItem="Gc6-yW-CTA" secondAttribute="bottom" constant="32" id="RGt-I5-9x8"/>
                                                 <constraint firstAttribute="centerX" secondItem="ypS-yS-h74" secondAttribute="centerX" id="Tjq-gk-Hz7"/>
                                                 <constraint firstItem="Gxy-Uc-2bD" firstAttribute="centerX" secondItem="7mZ-1C-4hB" secondAttribute="centerX" id="Vnt-6D-piI"/>
@@ -298,11 +306,19 @@
                                                 <constraint firstItem="VZk-7m-sRY" firstAttribute="top" secondItem="XFM-YU-0Ik" secondAttribute="bottom" constant="-25" id="mPD-6h-ZUy"/>
                                                 <constraint firstItem="7mZ-1C-4hB" firstAttribute="top" secondItem="wdy-64-Ciq" secondAttribute="topMargin" constant="62" id="n0f-9x-knB"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ZQw-06-VVX" secondAttribute="bottom" constant="17" id="qQN-ek-CKF"/>
+                                                <constraint firstItem="rSM-Rs-WmG" firstAttribute="leading" secondItem="XNc-de-bM4" secondAttribute="trailing" constant="-290" id="v9A-s7-9en"/>
                                                 <constraint firstItem="XFM-YU-0Ik" firstAttribute="leading" secondItem="wdy-64-Ciq" secondAttribute="leadingMargin" constant="12" id="vqy-gm-g0D"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="7mZ-1C-4hB" secondAttribute="trailing" constant="12" id="yNV-Wd-YbV"/>
                                                 <constraint firstItem="Gxy-Uc-2bD" firstAttribute="centerY" secondItem="7mZ-1C-4hB" secondAttribute="centerY" constant="-0.5" id="z25-sV-kee"/>
                                                 <constraint firstItem="rSM-Rs-WmG" firstAttribute="top" secondItem="wdy-64-Ciq" secondAttribute="topMargin" constant="15" id="zwl-wt-CXI"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="MSG-Vt-q9q"/>
+                                                    <exclude reference="d6Y-Sb-GNf"/>
+                                                    <exclude reference="v9A-s7-9en"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
@@ -361,12 +377,7 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Trips" id="NTK-Ki-nv0">
-                        <barButtonItem key="leftBarButtonItem" title="Clear Trips" id="4NZ-WX-jbo">
-                            <connections>
-                                <action selector="clearTrips:" destination="5wy-3a-QpZ" id="9JO-uH-LjK"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="archiveFlag" id="QIM-LY-OIT">
+                        <barButtonItem key="leftBarButtonItem" image="archiveFlag" id="QIM-LY-OIT">
                             <connections>
                                 <action selector="toggleTripType:" destination="5wy-3a-QpZ" id="yyk-iF-uK0"/>
                                 <segue destination="PV1-Gp-f7P" kind="show" id="DGn-lQ-Emg"/>
