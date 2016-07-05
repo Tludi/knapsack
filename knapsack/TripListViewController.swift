@@ -35,68 +35,84 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
     listTable.reloadData()
   }
 
-  
+  // set two sections - One for "All Items" and one for Categories
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 2
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // Return the number of rows in the section.
-    if section == 1 {
-      return 1
-    } else {
-      return 1
-    }
-    
-  }
-  
-  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("listCell", forIndexPath: indexPath) 
     let tripLists = chosenTrip.lists
-    let tripList = tripLists[indexPath.row]
-    let selectedItems = tripList.items.filter("itemCount > 0")
-//    print(selectedItems)
-//    var selectedCategories = []
-    
-    // create an array of selectedCategories that have been selected
+    let selectedItems = tripLists[0].items.filter("itemCount > 0")
     var selectedCategories = [String]()
     for i in 0..<selectedItems.count {
       if selectedCategories.contains(selectedItems[i].itemCategory) == false {
         selectedCategories.append(selectedItems[i].itemCategory)
       }
     }
-    print(selectedCategories)
-    
+    // Return the number of rows in the section.
+    if section == 1 {
+      print(selectedCategories.count)
+      return selectedCategories.count
+    } else {
+      return 1
+    }
+  }
+  
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCellWithIdentifier("listCell", forIndexPath: indexPath) 
+    let tripList = chosenTrip.lists[0]
+    let selectedItems = tripList.items.filter("itemCount > 0")
+//    print(selectedItems)
+//
+//    // create an array of selectedCategories that have been selected
+    var selectedCategories = [String]()
+    for i in 0..<selectedItems.count {
+      if selectedCategories.contains(selectedItems[i].itemCategory) == false {
+        selectedCategories.append(selectedItems[i].itemCategory)
+      }
+    }
+//    print(selectedCategories)
+//    
+//    // Get items that have not been packed yet
     let unpackedItems = selectedItems.filter("packed = false")
     
-    // List Name
-    let listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
+
 //    print(tripList.listName)
 //    listNameLabel.text = "\(tripList.listName)"
     
     
     if indexPath.section == 0 {
+      // List Name - has a tag of 1
+      let listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
+      // get the default "All Items" List Name and assign to first section
       listNameLabel.text = "\(tripList.listName)"
-      // Item Name
+//      // Item Name
       let listItemNameLabel = cell.contentView.viewWithTag(2) as! UILabel
       listItemNameLabel.text = "\(selectedItems.count) items"
-      
-      // Items Left to pack
+//
+//      // Items Left to pack
       let itemsLeft = cell.contentView.viewWithTag(3) as! UILabel
       itemsLeft.text = "\(unpackedItems.count) left"
 
-    } else {
-
+    } else if indexPath.section == 1 {
+      // List Name - has a tag of 1
+        let listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
       
-      listNameLabel.text = "fix me"
-      //listNameLabel.text = "\(selectedCategories[indexPath.row])"
-      // Item Name
-      let listItemNameLabel = cell.contentView.viewWithTag(2) as! UILabel
-      listItemNameLabel.text = "\(selectedItems.count) items"
+        let currentCategory = selectedCategories[indexPath.row]
+        listNameLabel.text = currentCategory.capitalizedString
+      
+      
+      // Category List
+        let listItemNameLabel = cell.contentView.viewWithTag(2) as! UILabel
+        print(selectedItems[1])
+        let categoryItems = selectedItems.filter("itemCategory = '\(currentCategory)'")
+        print(categoryItems)
+        listItemNameLabel.text = "\(categoryItems.count) items"
       
       // Items Left to pack
-      let itemsLeft = cell.contentView.viewWithTag(3) as! UILabel
-      itemsLeft.text = "\(unpackedItems.count) left"
+        let itemsLeft = cell.contentView.viewWithTag(3) as! UILabel
+        let categoryItemsLeft = categoryItems.filter("packed = false")
+        itemsLeft.text = "\(categoryItemsLeft.count) left"
       
 
 
