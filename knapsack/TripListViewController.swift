@@ -113,22 +113,23 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
         let itemsLeft = cell.contentView.viewWithTag(3) as! UILabel
         let categoryItemsLeft = categoryItems.filter("packed = false")
         itemsLeft.text = "\(categoryItemsLeft.count) left"
-      
-
 
     }
     
     return cell
   }
   
+  
+  
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "showListItems" {
       if let destinationController = segue.destinationViewController as? ListItemsViewController {
-        if let listIndex = listTable.indexPathForSelectedRow {
-          print("clicked show list")
-          
-          let list = chosenTrip.lists[listIndex.row]
+        if let listPath = listTable.indexPathForSelectedRow {
+          let cell = tableView(listTable, cellForRowAtIndexPath: listPath)
+          let category = cell.contentView.viewWithTag(1) as! UILabel
+          let list = chosenTrip.lists[0]
           destinationController.chosenList = list
+          destinationController.chosenCategory = category.text!
         }
       }
     }

@@ -14,6 +14,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   let realm = try! Realm()
   
   var chosenList = ItemList()
+  var chosenCategory = String()
   let checkedButtonImage = UIImage(named: "squareCheck.png")
   let uncheckedButtonImage = UIImage(named: "squareCount.png")
   
@@ -26,7 +27,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    listName.text = chosenList.listName
+    listName.text = chosenCategory
     // Set the background image of the listItem table
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     listItemTable.backgroundView = UIImageView(image: bgImage)
