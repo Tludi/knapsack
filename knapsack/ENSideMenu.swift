@@ -58,7 +58,7 @@ public extension UIViewController {
     /**
     Returns a Boolean value indicating whether the side menu is showed.
     
-    :returns: BOOL value
+    - returns: BOOL value
     */
     public func isSideMenuOpen () -> Bool {
         let sieMenuOpen = self.sideMenuController()?.sideMenu?.isMenuOpen
@@ -78,14 +78,14 @@ public extension UIViewController {
     /**
     Returns a view controller containing a side menu
     
-    :returns: A `UIViewController`responding to `ENSideMenuProtocol` protocol
+    - returns: A `UIViewController`responding to `ENSideMenuProtocol` protocol
     */
     public func sideMenuController () -> ENSideMenuProtocol? {
         var iteration : UIViewController? = self.parentViewController
         if (iteration == nil) {
             return topMostController()
         }
-        do {
+        repeat {
             if (iteration is ENSideMenuProtocol) {
                 return iteration as? ENSideMenuProtocol
             } else if (iteration?.parentViewController != nil && iteration?.parentViewController != iteration) {
@@ -140,10 +140,10 @@ public class ENSideMenu : NSObject, UIGestureRecognizerDelegate {
     /**
     Initializes an instance of a `ENSideMenu` object.
     
-    :param: sourceView   The parent view of the side menu view.
-    :param: menuPosition The position of the side menu view.
+    - parameter sourceView:   The parent view of the side menu view.
+    - parameter menuPosition: The position of the side menu view.
     
-    :returns: An initialized `ENSideMenu` object, added to the specified view.
+    - returns: An initialized `ENSideMenu` object, added to the specified view.
     */
     public init(sourceView: UIView, menuPosition: ENSideMenuPosition) {
         super.init()
@@ -154,12 +154,12 @@ public class ENSideMenu : NSObject, UIGestureRecognizerDelegate {
         animator = UIDynamicAnimator(referenceView:sourceView)
         
         // Add right swipe gesture recognizer
-        let rightSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleGesture:")
+        let rightSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(ENSideMenu.handleGesture(_:)))
         rightSwipeGestureRecognizer.delegate = self
         rightSwipeGestureRecognizer.direction =  UISwipeGestureRecognizerDirection.Right
         
         // Add left swipe gesture recognizer
-        let leftSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: "handleGesture:")
+        let leftSwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(ENSideMenu.handleGesture(_:)))
         leftSwipeGestureRecognizer.delegate = self
         leftSwipeGestureRecognizer.direction = UISwipeGestureRecognizerDirection.Left
         
@@ -176,17 +176,17 @@ public class ENSideMenu : NSObject, UIGestureRecognizerDelegate {
     /**
     Initializes an instance of a `ENSideMenu` object.
     
-    :param: sourceView         The parent view of the side menu view.
-    :param: menuViewController A menu view controller object which will be placed in the side menu view.
-    :param: menuPosition       The position of the side menu view.
+    - parameter sourceView:         The parent view of the side menu view.
+    - parameter menuViewController: A menu view controller object which will be placed in the side menu view.
+    - parameter menuPosition:       The position of the side menu view.
     
-    :returns: An initialized `ENSideMenu` object, added to the specified view, containing the specified menu view controller.
+    - returns: An initialized `ENSideMenu` object, added to the specified view, containing the specified menu view controller.
     */
     public convenience init(sourceView: UIView, menuViewController: UIViewController, menuPosition: ENSideMenuPosition) {
         self.init(sourceView: sourceView, menuPosition: menuPosition)
         self.menuViewController = menuViewController
         self.menuViewController.view.frame = sideMenuContainerView.bounds
-        self.menuViewController.view.autoresizingMask = .FlexibleHeight | .FlexibleWidth
+        self.menuViewController.view.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
         sideMenuContainerView.addSubview(self.menuViewController.view)
     }
 /*
@@ -245,9 +245,9 @@ public class ENSideMenu : NSObject, UIGestureRecognizerDelegate {
         
         if (NSClassFromString("UIVisualEffectView") != nil) {
             // Add blur view
-            var visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light)) as UIVisualEffectView
+            let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .Light)) as UIVisualEffectView
             visualEffectView.frame = sideMenuContainerView.bounds
-            visualEffectView.autoresizingMask = .FlexibleHeight | .FlexibleWidth
+            visualEffectView.autoresizingMask = [.FlexibleHeight, .FlexibleWidth]
             sideMenuContainerView.addSubview(visualEffectView)
         }
         else {

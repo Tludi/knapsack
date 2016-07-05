@@ -13,8 +13,8 @@ import RealmSwift
 
 class CategoriesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-  var realm = Realm()
-  var trips = Realm().objects(Trip)
+  var realm = try! Realm()
+  var trips = try! Realm().objects(Trip)
   
   var passedList = ItemList()
   
@@ -41,7 +41,7 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    var cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) as! UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) 
     let item = allItems.categories[indexPath.row]
     let categoryLabelName = cell.contentView.viewWithTag(1) as! UILabel
     
@@ -54,8 +54,8 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "showCategoryItems" {
       if let destinationController = segue.destinationViewController as? CategoryListViewController {
-        if let categoryIndex = categoryTable.indexPathForSelectedRow() {
-          var categoryToPass = allItems.categories[categoryIndex.row]
+        if let categoryIndex = categoryTable.indexPathForSelectedRow {
+          let categoryToPass = allItems.categories[categoryIndex.row]
           destinationController.passedCategory = categoryToPass
           destinationController.passedList = passedList
         }

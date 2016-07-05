@@ -5,12 +5,12 @@ use_frameworks!
 
 
 target 'knapsack' do
-  pod "Realm"
+#  pod "Realm"
   pod "RealmSwift"
 end
 
 target 'knapsackTests' do
-  pod "Realm"
+#  pod "Realm"
   pod "RealmSwift"
 end
 

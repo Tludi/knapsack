@@ -41,7 +41,7 @@ class MenuTableViewController: UITableViewController {
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
-    var cell = tableView.dequeueReusableCellWithIdentifier("CELL") as? UITableViewCell
+    var cell = tableView.dequeueReusableCellWithIdentifier("CELL")
     
     if (cell == nil) {
       cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "CELL")
@@ -61,9 +61,9 @@ class MenuTableViewController: UITableViewController {
     let header: UITableViewHeaderFooterView = view as! UITableViewHeaderFooterView
     header.contentView.backgroundColor = UIColor.whiteColor()
     
-    header.textLabel.textColor = UIColor.darkGrayColor()
+    header.textLabel!.textColor = UIColor.darkGrayColor()
     header.alpha = 0.3
-    header.textLabel.textAlignment = NSTextAlignment.Center
+    header.textLabel!.textAlignment = NSTextAlignment.Center
   }
   
   override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -85,7 +85,7 @@ class MenuTableViewController: UITableViewController {
     let storyboard = UIStoryboard(name: "Main", bundle: nil)
     var destinationViewController: UIViewController!
     
-    var selectedCell = tableView.cellForRowAtIndexPath(indexPath)!
+    let selectedCell = tableView.cellForRowAtIndexPath(indexPath)!
     selectedCell.contentView.backgroundColor = UIColor.blueColor()
     
     switch (indexPath.row) {

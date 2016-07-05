@@ -20,8 +20,6 @@
 #ifndef REALM_COMMIT_LOG_HPP
 #define REALM_COMMIT_LOG_HPP
 
-#ifdef REALM_ENABLE_REPLICATION
-
 #include <stdexcept>
 #include <string>
 
@@ -41,9 +39,9 @@ public:
     /// See get_history_entries() for information about the period of validity
     /// of the referenced changeset memory.
     virtual void get_changesets(version_type begin_version, version_type end_version,
-                                BinaryData* buffer) const REALM_NOEXCEPT override = 0;
+                                BinaryData* buffer) const noexcept override = 0;
 
-    virtual ~ClientHistory() REALM_NOEXCEPT {}
+    virtual ~ClientHistory() noexcept {}
 };
 
 
@@ -68,5 +66,4 @@ std::unique_ptr<ClientHistory> make_client_history(const std::string& path,
 } // namespace realm
 
 
-#endif // REALM_ENABLE_REPLICATION
 #endif // REALM_COMMIT_LOG_HPP

@@ -15,18 +15,18 @@ const std::size_t detached_ref = std::size_t(-1);
 class RowIndexes
 {
 public:
-    RowIndexes(Column::unattached_root_tag urt, realm::Allocator& alloc) : 
+    RowIndexes(IntegerColumn::unattached_root_tag urt, realm::Allocator& alloc) :
 #ifdef REALM_COOKIE_CHECK
-        cookie(cookie_expected), 
+        cookie(cookie_expected),
 #endif
         m_row_indexes(urt, alloc)
     {}
 
-    RowIndexes(Column&& col) : 
+    RowIndexes(IntegerColumn&& col) :
 #ifdef REALM_COOKIE_CHECK
         cookie(cookie_expected),
 #endif
-        m_row_indexes(std::move(col)) 
+        m_row_indexes(std::move(col))
     {}
 
     RowIndexes(const RowIndexes& source, ConstSourcePayload mode);
@@ -60,15 +60,16 @@ public:
     struct Sorter
     {
         Sorter(){}
-        Sorter(std::vector<size_t> columns, std::vector<bool> ascending) : m_column_indexes(columns), m_ascending(ascending) {}
+        Sorter(const std::vector<size_t>& columns, const std::vector<bool>& ascending) 
+            : m_column_indexes(columns), m_ascending(ascending) {}
         bool operator()(size_t i, size_t j) const
         {
             for (size_t t = 0; t < m_columns.size(); t++) {
-                // todo/fixme, special treatment of ColumnStringEnum by calling ColumnStringEnum::compare_values()
-                // instead of the general ColumnTemplate::compare_values() becuse it cannot overload inherited 
-                // `int64_t get_val()` of Column. Such column inheritance needs to be cleaned up 
+                // todo/fixme, special treatment of StringEnumColumn by calling StringEnumColumn::compare_values()
+                // instead of the general ColumnTemplate::compare_values() becuse it cannot overload inherited
+                // `int64_t get_val()` of Column. Such column inheritance needs to be cleaned up
                 int c;
-                if (const ColumnStringEnum* cse = m_string_enum_columns[t])
+                if (const StringEnumColumn* cse = m_string_enum_columns[t])
                     c = cse->compare_values(i, j);
                 else
                     c = m_columns[t]->compare_values(i, j);
@@ -90,7 +91,7 @@ public:
                 const ColumnBase& cb = row_indexes->get_column_base(m_column_indexes[i]);
                 const ColumnTemplateBase* ctb = dynamic_cast<const ColumnTemplateBase*>(&cb);
                 REALM_ASSERT(ctb);
-                if (const ColumnStringEnum* cse = dynamic_cast<const ColumnStringEnum*>(&cb))
+                if (const StringEnumColumn* cse = dynamic_cast<const StringEnumColumn*>(&cb))
                     m_string_enum_columns[i] = cse;
                 else
                     m_columns[i] = ctb;
@@ -100,7 +101,7 @@ public:
         std::vector<size_t> m_column_indexes;
         std::vector<bool> m_ascending;
         std::vector<const ColumnTemplateBase*> m_columns;
-        std::vector<const ColumnStringEnum*> m_string_enum_columns;
+        std::vector<const StringEnumColumn*> m_string_enum_columns;
     };
 
     void sort(Sorter& sorting_predicate);
@@ -110,7 +111,7 @@ public:
     uint64_t cookie;
 #endif
 
-    Column m_row_indexes;
+    IntegerColumn m_row_indexes;
 };
 
 } // namespace realm

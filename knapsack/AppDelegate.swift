@@ -11,8 +11,9 @@ import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
-  let masterList = Realm().objects(ItemList).filter("id = '1'")
+  let realm = try! Realm()
+  
+  let masterList = try! Realm().objects(ItemList).filter("id = '1'")
   var window: UIWindow?
 
 
@@ -48,11 +49,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func checkIfMasterListExists() {
 
     if masterList.count == 0 {
-      println("Master List Being Created")
+      print("Master List Being Created")
       DataManager.populateRealm()
     } else {
-      var first = masterList.first!
-      println("Master List Exists")
+      _ = masterList.first!
+      print("Master List Exists")
     }
   }
 

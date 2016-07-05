@@ -11,7 +11,7 @@ import RealmSwift
 
 class DataManager {
   class func populateRealm() -> Void {
-    let realm = Realm()
+    let realm = try! Realm()
     
     let masterCategories = MasterItemList().categories
     let masterItems = MasterItemList().itemList
@@ -19,24 +19,24 @@ class DataManager {
     let masterListWithAllItems = ItemList()
     masterListWithAllItems.id = "1"
     masterListWithAllItems.listName = "Master Item List"
-    realm.write {
+    try! realm.write {
       realm.add(masterListWithAllItems)
-      println("added master list")
+      print("added master list")
     }
     
     for category in masterCategories {
-      var categoryList = masterItems[category]!
+      let categoryList = masterItems[category]!
       for item in categoryList {
-        var categoryItem = item
+//        let categoryItem = item
         
-        var newItem = Item()
+        let newItem = Item()
         newItem.id = NSUUID().UUIDString
         newItem.itemCategory = category
         newItem.itemName = item
         
-        realm.write {
+        try! realm.write {
           masterListWithAllItems.items.append(newItem)
-          println("added \(newItem.itemName)")
+          print("added \(newItem.itemName)")
         }
       }
     }

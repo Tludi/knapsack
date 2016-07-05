@@ -29,25 +29,25 @@
 namespace realm {
 
 template<class T, class cond> class FloatDoubleNode;
-template<class T, class cond> class IntegerNode;
+template <class ColType, class Cond> class IntegerNode;
 template<class T> class SequentialGetter;
 
 template<class cond, class T> struct ColumnTypeTraits2;
 
 template<class cond> struct ColumnTypeTraits2<cond, int64_t> {
-    typedef Column column_type;
+    typedef IntegerColumn column_type;
     typedef ArrayInteger array_type;
 };
 template<class cond> struct ColumnTypeTraits2<cond, bool> {
-    typedef Column column_type;
+    typedef IntegerColumn column_type;
     typedef ArrayInteger array_type;
 };
 template<class cond> struct ColumnTypeTraits2<cond, float> {
-    typedef ColumnFloat column_type;
+    typedef FloatColumn column_type;
     typedef ArrayFloat array_type;
 };
 template<class cond> struct ColumnTypeTraits2<cond, double> {
-    typedef ColumnDouble column_type;
+    typedef DoubleColumn column_type;
     typedef ArrayDouble array_type;
 };
 
@@ -63,9 +63,11 @@ struct FindInLeaf {
     {
         Condition cond;
         bool cont = true;
+        // todo, make an additional loop with hard coded `false` instead of is_null(v) for non-nullable columns
+        bool null_target = null::is_null_float(target);
         for (size_t local_index = local_start; cont && local_index < local_end; local_index++) {
             auto v = leaf.get(local_index);
-            if (cond(v, target)) {
+            if (cond(v, target, null::is_null_float(v), null_target)) {
                 cont = state.template match<action, false>(leaf_start + local_index , 0, static_cast<R>(v));
             }
         }
@@ -74,8 +76,8 @@ struct FindInLeaf {
 };
 
 template <bool Nullable>
-struct FindInLeaf<TColumn<int64_t, Nullable>> {
-    using LeafType = typename TColumn<int64_t, Nullable>::LeafType;
+struct FindInLeaf<Column<int64_t, Nullable>> {
+    using LeafType = typename Column<int64_t, Nullable>::LeafType;
 
     template <Action action, class Condition, class T, class R>
     static bool find(const LeafType& leaf, T target, std::size_t local_start, std::size_t local_end, std::size_t leaf_start, QueryState<R>& state)

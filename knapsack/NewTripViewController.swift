@@ -12,7 +12,7 @@ import RealmSwift
 
 class NewTripViewController: UIViewController {
 
-  let realm = Realm()
+  let realm = try! Realm()
   var editedTrip = Trip()
   var editToggle = false
   
@@ -26,14 +26,17 @@ class NewTripViewController: UIViewController {
   
   @IBAction func dateTextFieldEditing(sender: UITextField) {
     // configure the date picker
-    var datePickerView:UIDatePicker = UIDatePicker()
+    let datePickerView:UIDatePicker = UIDatePicker()
     datePickerView.datePickerMode = UIDatePickerMode.Date
     sender.inputView = datePickerView
-    datePickerView.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+    datePickerView.addTarget(self, action: #selector(NewTripViewController.datePickerValueChanged(_:)), forControlEvents: UIControlEvents.ValueChanged)
+    
+    // The above code used to be the following. Changed by swift 2.2 and 3
+    //  datePickerView.addTarget(self, action: Selector("datePickerValueChanged:"), forControlEvents: UIControlEvents.ValueChanged)
   }
   
   @IBAction func nightsSlider(sender: UISlider) {
-    var nights = Int(sender.value)
+    let nights = Int(sender.value)
     nightsCount.text = "\(nights)"
   }
   
@@ -42,14 +45,14 @@ class NewTripViewController: UIViewController {
     
     // check if edit or add was selected in previous view
     if editToggle == true { // Edit existing Trip()
-      realm.write {
-        self.editedTrip.tripName = self.tripNameField.text
-        self.editedTrip.startDate = self.dateTextField.text
+      try! realm.write {
+        self.editedTrip.tripName = self.tripNameField.text!
+        self.editedTrip.startDate = self.dateTextField.text!
         self.editedTrip.numberOfDays = self.nightsCount.text!
       }
     } else {  // add new Trip()
-      if var newTripName = tripNameField.text {
-        let masterList = Realm().objects(ItemList).filter("id = '1'")
+      if let newTripName = tripNameField.text {
+        let masterList = try! Realm().objects(ItemList).filter("id = '1'")
         let masterItems = masterList[0].items
         let masterCategories = MasterItemList().categories
         
@@ -59,23 +62,23 @@ class NewTripViewController: UIViewController {
         trip.id = NSUUID().UUIDString
         // check for empty name
         if newTripName == "" {
-          var noNameAlert = UIAlertController(title: "Trip Name", message: "Name Can Not Be Blank", preferredStyle: .Alert)
-          noNameAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
+          let noNameAlert = UIAlertController(title: "Trip Name", message: "Name Can Not Be Blank", preferredStyle: .Alert)
+          noNameAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
             return
           }))
           self.presentViewController(noNameAlert, animated: true, completion: nil)
         } else {
           trip.tripName = newTripName
-          trip.startDate = dateTextField.text
+          trip.startDate = dateTextField.text!
           trip.numberOfDays = nightsCount.text!
           
-          var newList = ItemList()
+          let newList = ItemList()
           newList.id = NSUUID().UUIDString
           newList.listName = "All Items"
           
 
           for item in masterItems {
-            var newItem = Item()
+            let newItem = Item()
             newItem.id = NSUUID().UUIDString
             newItem.itemCategory = item.itemCategory
             newItem.itemName = item.itemName
@@ -85,7 +88,7 @@ class NewTripViewController: UIViewController {
           trip.lists.append(newList)
           
           
-          realm.write {
+          try! realm.write {
             self.realm.add(trip)
             
           }
@@ -107,7 +110,7 @@ class NewTripViewController: UIViewController {
       tripNameField.text = editedTrip.tripName
       dateTextField.text = editedTrip.startDate
       // convert String to Float
-      var sliderValueConversion = NSNumberFormatter().numberFromString(editedTrip.numberOfDays)?.floatValue
+      let sliderValueConversion = NSNumberFormatter().numberFromString(editedTrip.numberOfDays)?.floatValue
       slider.value = sliderValueConversion!
       // set detail label to Edit 'Trip'
       tripDetailLabel.text = "Edit \(editedTrip.tripName)"
@@ -125,7 +128,7 @@ class NewTripViewController: UIViewController {
     let trips = realm.objects(Trip)
     numberOfTrips.text = "\(trips.count)"
     
-    var nights = Int(slider.value)
+    let nights = Int(slider.value)
     nightsCount.text = "\(nights)"
   }
   
@@ -139,7 +142,7 @@ class NewTripViewController: UIViewController {
 
   
   func datePickerValueChanged(sender:UIDatePicker) {
-    var dateFormatter = NSDateFormatter()
+    let dateFormatter = NSDateFormatter()
     
     dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
     dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle

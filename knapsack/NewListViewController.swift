@@ -11,8 +11,8 @@ import RealmSwift
 
 
 class NewListViewController: UIViewController {
-  let allLists = Realm().objects(ItemList)
-  let masterList = Realm().objects(ItemList).filter("id = '1'")
+  let allLists = try! Realm().objects(ItemList)
+  let masterList = try! Realm().objects(ItemList).filter("id = '1'")
   
 
   @IBOutlet weak var masterItemCount: UILabel!
@@ -36,26 +36,26 @@ class NewListViewController: UIViewController {
   
   func checkForData() {
     if masterList.count == 0 {
-      println("Master List Being Created")
+      print("Master List Being Created")
       DataManager.populateRealm()
       masterItemCount.text = "\(masterList.count)"
       allListsCount.text = "All Lists \(allLists.count)"
     } else {
-      var first = masterList.first!
-      println("Master List Exists")
-      println("\(first.items.count) items")
+      let first = masterList.first!
+      print("Master List Exists")
+      print("\(first.items.count) items")
       masterItemCount.text = "\(masterList.count)-\(first.listName)"
     }
     
   }
   
   func deleteMasterList() {
-    let realm = Realm()
+    let realm = try! Realm()
     if masterList.count >= 1 {
-      realm.write {
+      try! realm.write {
         realm.delete(self.masterList)
       }
-      println("Deleted Master List")
+      print("Deleted Master List")
     }
     masterItemCount.text = "\(masterList.count)"
     allListsCount.text = "All Lists \(allLists.count)"
