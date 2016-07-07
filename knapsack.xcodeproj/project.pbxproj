@@ -51,8 +51,10 @@
 		00D0C8DE1B67DFEC00823D22 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 00D0C8DD1B67DFEC00823D22 /* Images.xcassets */; };
 		00D0C8FA1B67E0A900823D22 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 00D0C8F91B67E0A900823D22 /* Podfile */; };
 		00D0C8FB1B67E0A900823D22 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 00D0C8F91B67E0A900823D22 /* Podfile */; };
+		D61FF6AAFDB9CD9A6E57FEEE /* Pods_knapsackTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0CDD8F283E9D4ABB6A4FC24 /* Pods_knapsackTests.framework */; };
 		EF98D4691B6DB4B200175C53 /* MasterItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF98D4681B6DB4B200175C53 /* MasterItems.swift */; };
 		EF98D46A1B6DB4B200175C53 /* MasterItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF98D4681B6DB4B200175C53 /* MasterItems.swift */; };
+		F6E447BBF584936D2F2C8F80 /* Pods_knapsack.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531B30F961971D1F1C31D090 /* Pods_knapsack.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +101,12 @@
 		00D0C8E61B67DFEC00823D22 /* knapsackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = knapsackTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00D0C8EB1B67DFEC00823D22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00D0C8F91B67E0A900823D22 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		41E8CA4B5543E32606DEF5D2 /* Pods-knapsackTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knapsackTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-knapsackTests/Pods-knapsackTests.release.xcconfig"; sourceTree = "<group>"; };
+		531B30F961971D1F1C31D090 /* Pods_knapsack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_knapsack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0CDD8F283E9D4ABB6A4FC24 /* Pods_knapsackTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_knapsackTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B315A3D2D227921E41EDEBBD /* Pods-knapsack.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knapsack.release.xcconfig"; path = "Pods/Target Support Files/Pods-knapsack/Pods-knapsack.release.xcconfig"; sourceTree = "<group>"; };
+		B86EEC1379F86FF9C436AD27 /* Pods-knapsackTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knapsackTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-knapsackTests/Pods-knapsackTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D179C5199E71B0EA39068EBA /* Pods-knapsack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-knapsack.debug.xcconfig"; path = "Pods/Target Support Files/Pods-knapsack/Pods-knapsack.debug.xcconfig"; sourceTree = "<group>"; };
 		EF98D4681B6DB4B200175C53 /* MasterItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterItems.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -107,6 +115,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6E447BBF584936D2F2C8F80 /* Pods_knapsack.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,6 +123,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D61FF6AAFDB9CD9A6E57FEEE /* Pods_knapsackTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,7 +136,8 @@
 				00D0C8D31B67DFEC00823D22 /* knapsack */,
 				00D0C8E91B67DFEC00823D22 /* knapsackTests */,
 				00D0C8D21B67DFEC00823D22 /* Products */,
-				C750E633FBF4E6EBD2AA352F /* Frameworks */,
+				BE7CD67C67D0084DFD25BD22 /* Pods */,
+				E1855406F68CCFAAEF00226A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -201,9 +212,22 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		C750E633FBF4E6EBD2AA352F /* Frameworks */ = {
+		BE7CD67C67D0084DFD25BD22 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				D179C5199E71B0EA39068EBA /* Pods-knapsack.debug.xcconfig */,
+				B315A3D2D227921E41EDEBBD /* Pods-knapsack.release.xcconfig */,
+				B86EEC1379F86FF9C436AD27 /* Pods-knapsackTests.debug.xcconfig */,
+				41E8CA4B5543E32606DEF5D2 /* Pods-knapsackTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E1855406F68CCFAAEF00226A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				531B30F961971D1F1C31D090 /* Pods_knapsack.framework */,
+				B0CDD8F283E9D4ABB6A4FC24 /* Pods_knapsackTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -215,9 +239,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00D0C8F01B67DFEC00823D22 /* Build configuration list for PBXNativeTarget "knapsack" */;
 			buildPhases = (
+				8144A80255C896635F0B6A7D /* [CP] Check Pods Manifest.lock */,
 				00D0C8CD1B67DFEC00823D22 /* Sources */,
 				00D0C8CE1B67DFEC00823D22 /* Frameworks */,
 				00D0C8CF1B67DFEC00823D22 /* Resources */,
+				C9D8F1D70C2ED67D38F40DEA /* [CP] Embed Pods Frameworks */,
+				772A45BD9E9281278A223875 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -329,6 +356,36 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-knapsackTests/Pods-knapsackTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		772A45BD9E9281278A223875 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-knapsack/Pods-knapsack-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8144A80255C896635F0B6A7D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		94661DDFC40A2189DAD03793 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -357,6 +414,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-knapsackTests/Pods-knapsackTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9D8F1D70C2ED67D38F40DEA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-knapsack/Pods-knapsack-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -521,6 +593,7 @@
 		};
 		00D0C8F11B67DFEC00823D22 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D179C5199E71B0EA39068EBA /* Pods-knapsack.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -538,6 +611,7 @@
 		};
 		00D0C8F21B67DFEC00823D22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B315A3D2D227921E41EDEBBD /* Pods-knapsack.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -554,6 +628,7 @@
 		};
 		00D0C8F41B67DFEC00823D22 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B86EEC1379F86FF9C436AD27 /* Pods-knapsackTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
@@ -577,6 +652,7 @@
 		};
 		00D0C8F51B67DFEC00823D22 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 41E8CA4B5543E32606DEF5D2 /* Pods-knapsackTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
