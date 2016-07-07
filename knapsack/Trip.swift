@@ -38,9 +38,7 @@ class ItemList: Object {
   
   let items = List<Item>()
   
-  var listsTrip: [Trip] {
-    return linkingObjects(Trip.self, forProperty: "lists")
-  }
+  var listsTrip = LinkingObjects(fromType: Trip.self, property: "lists")
 }
 
 
@@ -56,8 +54,6 @@ class Item: Object {
     return "id"
   }
   
-  var itemsList: [ItemList] {
-    return linkingObjects(ItemList.self, forProperty: "items")
-  }
+  var itemsList = LinkingObjects(fromType: ItemList.self, property: "items")
   
 }
