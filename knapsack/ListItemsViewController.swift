@@ -17,7 +17,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   var chosenCategory = String()
   let checkedButtonImage = UIImage(named: "squareCheck.png")
   let uncheckedButtonImage = UIImage(named: "squareCount.png")
-  
+  var filterCat :String = ""
   
   @IBOutlet weak var listName: UILabel!
   @IBOutlet weak var listItemTable: UITableView!
@@ -32,9 +32,16 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     listItemTable.backgroundView = UIImageView(image: bgImage)
     
+    if chosenCategory == "All Items" {
+      filterCat = "itemCount > 0"
+      print(filterCat)
+    } else {
+      filterCat = "itemCount > 0 AND itemCategory == '\(chosenCategory.lowercaseString)'"
+      print(filterCat)
+    }
     print(chosenList.items.count)
     print(chosenList.items.filter("itemCount > 0").count)
-    
+    print(chosenList.items.filter(filterCat).count)
   }
   
   
@@ -48,7 +55,8 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let itemsWithCount = chosenList.items.filter("itemCount > 0")
+//    let itemsWithCount = chosenList.items.filter("itemCount > 0")
+    let itemsWithCount = chosenList.items.filter(filterCat)
 //    var itemsWithCount = chosenList.items
     return itemsWithCount.count
  
@@ -56,8 +64,11 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let itemsWithCount = chosenList.items.filter("itemCount > 0")
-//    var itemsWithCount = chosenList.items
+    print("\(filterCat) from the cell for row at index path")
+    
+//    let itemsWithCount = chosenList.items.filter("itemCount > 0")
+    let itemsWithCount = chosenList.items.filter(filterCat)
+    //    var itemsWithCount = chosenList.items
     let item = itemsWithCount[indexPath.row]
 
     let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) 
@@ -95,7 +106,8 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let cell = tableView.cellForRowAtIndexPath(indexPath)
-    let itemsWithCount = chosenList.items.filter("itemCount > 0")
+//    let itemsWithCount = chosenList.items.filter("itemCount > 0")
+    let itemsWithCount = chosenList.items.filter(filterCat)
     let item = itemsWithCount[indexPath.row]
     
     
@@ -123,7 +135,8 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
       let deleteAlert = UIAlertController(title: "Confirm Removal", message: "Selected Item Will Be Removed From List!", preferredStyle: .Alert)
       deleteAlert.addAction(UIAlertAction(title: "Remove", style: .Default, handler: { (action: UIAlertAction) in
         
-        let itemsWithCount = self.chosenList.items.filter("itemCount > 0")
+//        let itemsWithCount = self.chosenList.items.filter("itemCount > 0")
+        let itemsWithCount = self.chosenList.items.filter(self.filterCat)
         //    var itemsWithCount = chosenList.items
         let item = itemsWithCount[indexPath.row]
         try! self.realm.write {
