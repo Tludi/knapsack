@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Rectangle 106.png",
+      "filename" : "documentsIcon.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Rectangle 106@2x.png",
+      "filename" : "documentsIcon@2x.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Rectangle 106@3x.png",
+      "filename" : "documentsIcon@3x.png",
       "scale" : "3x"
     }
   ],

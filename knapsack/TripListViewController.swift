@@ -86,33 +86,42 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
       let listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
       // get the default "All Items" List Name and assign to first section
       listNameLabel.text = "\(tripList.listName)"
-//      // Item Name
+      // Item Name
       let listItemNameLabel = cell.contentView.viewWithTag(2) as! UILabel
       listItemNameLabel.text = "\(selectedItems.count) items"
-//
-//      // Items Left to pack
+      // Items Left to pack
       let itemsLeft = cell.contentView.viewWithTag(3) as! UILabel
       itemsLeft.text = "\(unpackedItems.count) left"
+      
+      // Image for All Items
+      let categoryImage = cell.contentView.viewWithTag(5) as! UIImageView
+      categoryImage.image = UIImage(named: "knapsackIcon")
+      
 
     } else if indexPath.section == 1 {
       // List Name - has a tag of 1
         let listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
-      
         let currentCategory = selectedCategories[indexPath.row]
         listNameLabel.text = currentCategory.capitalizedString
       
-      
       // Category List
         let listItemNameLabel = cell.contentView.viewWithTag(2) as! UILabel
-        print(selectedItems[1])
+//        print(selectedItems[1])
         let categoryItems = selectedItems.filter("itemCategory = '\(currentCategory)'")
-        print(categoryItems)
+//        print(categoryItems)
         listItemNameLabel.text = "\(categoryItems.count) items"
       
       // Items Left to pack
         let itemsLeft = cell.contentView.viewWithTag(3) as! UILabel
         let categoryItemsLeft = categoryItems.filter("packed = false")
         itemsLeft.text = "\(categoryItemsLeft.count) left"
+      
+      // Image for Category
+      // Image Icon needs to be named 'category'Icon
+        let categoryImage = cell.contentView.viewWithTag(5) as! UIImageView
+      print("\(currentCategory)Icon")
+//        categoryImage.image = UIImage(named: "clothingIcon")
+        categoryImage.image = UIImage(named: "\(currentCategory)Icon")
 
     }
     
