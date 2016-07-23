@@ -42,10 +42,19 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) 
-    let item = allItems.categories[indexPath.row]
+    let category = allItems.categories[indexPath.row]
     let categoryLabelName = cell.contentView.viewWithTag(1) as! UILabel
     
-    categoryLabelName.text = item.capitalizedString
+    categoryLabelName.text = category.capitalizedString
+    
+    // Image for Category
+    // Image Icon needs to be named 'category'Icon
+    let categoryImage = cell.contentView.viewWithTag(5) as! UIImageView
+    print("\(category)Icon")
+    //        categoryImage.image = UIImage(named: "clothingIcon")
+    categoryImage.image = UIImage(named: "\(category)Icon")
+    
+    
     return cell
     
   }
