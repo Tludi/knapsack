@@ -68,8 +68,8 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     
 //    let itemsWithCount = chosenList.items.filter("itemCount > 0")
     let itemsWithCount = chosenList.items.filter(filterCat)
-    //    var itemsWithCount = chosenList.items
-    let item = itemsWithCount[indexPath.row]
+    let sortedItemsWithCount = itemsWithCount.sorted("itemName")
+    let item = sortedItemsWithCount[indexPath.row]
 
     let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) 
     // List Name

@@ -19,7 +19,7 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   var passedList = ItemList()
   
   var allItems = MasterItemList()
-  var categories = MasterItemList().categories
+  var categories = MasterItemList().categories.sort()
   
 
   
@@ -41,8 +41,8 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) 
-    let category = allItems.categories[indexPath.row]
+    let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath)
+    let category = categories[indexPath.row]
     let categoryLabelName = cell.contentView.viewWithTag(1) as! UILabel
     
     categoryLabelName.text = category.capitalizedString
@@ -63,8 +63,9 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "showCategoryItems" {
       if let destinationController = segue.destinationViewController as? CategoryListViewController {
+        
         if let categoryIndex = categoryTable.indexPathForSelectedRow {
-          let categoryToPass = allItems.categories[categoryIndex.row]
+          let categoryToPass = categories[categoryIndex.row]
           destinationController.passedCategory = categoryToPass
           destinationController.passedList = passedList
         }

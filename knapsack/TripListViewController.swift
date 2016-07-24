@@ -82,6 +82,7 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
     
     
     if indexPath.section == 0 {
+      // Show All Items cell in first section
       // List Name - has a tag of 1
       let listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
       // get the default "All Items" List Name and assign to first section
@@ -99,9 +100,11 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
       
 
     } else if indexPath.section == 1 {
+      // Show item categories if any items are added to list
       // List Name - has a tag of 1
+        let sortedCategories = selectedCategories.sort()
         let listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
-        let currentCategory = selectedCategories[indexPath.row]
+        let currentCategory = sortedCategories[indexPath.row]
         listNameLabel.text = currentCategory.capitalizedString
       
       // Category List
@@ -119,8 +122,6 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
       // Image for Category
       // Image Icon needs to be named 'category'Icon
         let categoryImage = cell.contentView.viewWithTag(5) as! UIImageView
-      print("\(currentCategory)Icon")
-//        categoryImage.image = UIImage(named: "clothingIcon")
         categoryImage.image = UIImage(named: "\(currentCategory)Icon")
 
     }

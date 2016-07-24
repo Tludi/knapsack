@@ -42,13 +42,14 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
   // show cell
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
-    let masterItemCount = 0
-    let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemCell", forIndexPath: indexPath) 
+//    let masterItemCount = 0
+    let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemCell", forIndexPath: indexPath)
     
     // get current saved items from the passed list
-    let passedListItems = passedList.items
+//    let passedListItems = passedList.items
     let categoryItemList = passedList.items.filter("itemCategory = '\(passedCategory)'")
-    let item = categoryItemList[indexPath.row]
+    let sortedCategoryItemList = categoryItemList.sorted("itemName")
+    let item = sortedCategoryItemList[indexPath.row]
     
     // set cell labels
     let itemLabel = cell.contentView.viewWithTag(1) as! UILabel
