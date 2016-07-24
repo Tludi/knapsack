@@ -234,7 +234,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
       self.presentViewController(deleteAlert, animated: true, completion: nil)
     }
     
-    let deleteImage = UIImage(named: "deletebox.png")!
+    let deleteImage = UIImage(named: "deleteBoxLG.png")!
     deleteCellAction.backgroundColor = UIColor(patternImage: deleteImage)
     
     // first item in array is far right in cell

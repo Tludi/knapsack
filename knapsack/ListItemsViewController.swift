@@ -152,7 +152,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
       self.presentViewController(deleteAlert, animated: true, completion: nil)
     }
     
-    let deleteImage = UIImage(named: "deletebox.png")!
+    let deleteImage = UIImage(named: "deleteBoxSM.png")!
     deleteCellAction.backgroundColor = UIColor(patternImage: deleteImage)
     
     return [deleteCellAction]
