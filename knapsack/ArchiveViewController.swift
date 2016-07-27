@@ -48,7 +48,7 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
     
     //**** hard coded --- FIX!
     // only counts the items in the default 'All Items List'
-    // which is ok if ALl Items List includes items from other lists
+    // which is ok if All Items List includes items from other lists
     let allTripItems = trip.lists.first?.items.count
     
     
@@ -61,7 +61,7 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
     let itemLabel = cell.contentView.viewWithTag(4) as! UILabel
     itemLabel.text = "\(allTripItems!) items"
     // toggle archive flag based on trip status
-    let archiveFlag = cell.contentView.viewWithTag(5)
+//    let archiveFlag = cell.contentView.viewWithTag(5)
     
     // daysToGo label
 //    let daysToGo = cell.contentView.viewWithTag(6) as! UILabel
@@ -87,13 +87,6 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
       self.selectedTrip = self.archivedTrips[indexPath.row]
       // set new trip
       let copiedTrip = Trip()
-      
-      //      var originalList = ItemList()
-      //      var originalItem = Item()
-      
-      //      var newList = ItemList()
-      
-      
       copiedTrip.id = NSUUID().UUIDString
       copiedTrip.tripName = "\(self.selectedTrip.tripName)Copy"
       copiedTrip.startDate = self.selectedTrip.startDate
@@ -107,7 +100,6 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
         let newList = ItemList()
         newList.id = NSUUID().UUIDString
         newList.listName = originalList.listName
-        let originalItems = originalList.items
         
         try! self.realm.write {
           copiedTrip.lists.append(newList)
@@ -124,18 +116,8 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
         try! self.realm.write {
           copiedTrip.lists.first!.items.append(newItem)
         }
-        //        println(eachItem.itemName)
       }
-      
-      
-      // print the names of lists in the copied list
-      //      for eachList in copiedTrip.lists {
-      //        println(eachList.listName)
-      //
-      //      }
-      
-      
-      print("copy trip")
+
       self.archiveTable.reloadData()
     }
     

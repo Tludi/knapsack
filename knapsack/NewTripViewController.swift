@@ -54,7 +54,7 @@ class NewTripViewController: UIViewController {
       if let newTripName = tripNameField.text {
         let masterList = try! Realm().objects(ItemList).filter("id = '1'")
         let masterItems = masterList[0].items
-        let masterCategories = MasterItemList().categories
+//        let masterCategories = MasterItemList().categories
         
         // create new empty trip
         let trip = Trip()
@@ -122,7 +122,7 @@ class NewTripViewController: UIViewController {
     }
     
     
-    let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
+//    let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     self.view.backgroundColor = UIColor(patternImage: UIImage(named: "iPhone5bg.png")!)
 
     let trips = realm.objects(Trip)

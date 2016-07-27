@@ -66,9 +66,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//    let itemsWithCount = chosenList.items.filter("itemCount > 0")
     let itemsWithCount = chosenList.items.filter(filterCat)
-//    var itemsWithCount = chosenList.items
     return itemsWithCount.count
  
 
@@ -77,7 +75,6 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     print("\(filterCat) from the cell for row at index path")
     
-//    let itemsWithCount = chosenList.items.filter("itemCount > 0")
     let itemsWithCount = chosenList.items.filter(filterCat)
     let sortedItemsWithCount = itemsWithCount.sorted("itemName")
     let item = sortedItemsWithCount[indexPath.row]
@@ -86,10 +83,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     // List Name
     let listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
     let categoryNameLabel = cell.contentView.viewWithTag(2) as! UILabel
-    // label when there are no items - not currently used
-    let noItemLabel = cell.contentView.viewWithTag(100) as! UILabel
-    // ItemTagBox
-    let itemCircle = cell.contentView.viewWithTag(50)
+
     // box around item count that toggles when item is packed
     let checkBox:UIImageView = cell.contentView.viewWithTag(11) as!UIImageView
     // item count
@@ -117,10 +111,8 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let cell = tableView.cellForRowAtIndexPath(indexPath)
-//    let itemsWithCount = chosenList.items.filter("itemCount > 0")
     let itemsWithCount = chosenList.items.filter(filterCat)
     let item = itemsWithCount[indexPath.row]
-    
     
     let checkBox:UIImageView = cell?.contentView.viewWithTag(11) as! UIImageView
     if checkBox.hidden == false {
@@ -146,10 +138,8 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
       let deleteAlert = UIAlertController(title: "Confirm Removal", message: "Selected Item Will Be Removed From List!", preferredStyle: .Alert)
       deleteAlert.addAction(UIAlertAction(title: "Remove", style: .Default, handler: { (action: UIAlertAction) in
         
-//        let itemsWithCount = self.chosenList.items.filter("itemCount > 0")
         let itemsWithCount = self.chosenList.items.filter(self.filterCat)
-        //    var itemsWithCount = chosenList.items
-        let item = itemsWithCount[indexPath.row]
+
         try! self.realm.write {
           let selectedItem = itemsWithCount[indexPath.row]
           selectedItem.itemCount = 0
@@ -196,16 +186,5 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     listItemTable.reloadData()
   }
-  
-//    func clicked(sender : UIButton!) {
-//      var cell = sender.superview!.superview!
-//      var testLabel = cell.viewWithTag(20)! as! UILabel
-//      var currentCount = testLabel.text?.toInt()
-//      var updatedCount = currentCount! + 1
-//      testLabel.text = "\(updatedCount)"
-//      println(testLabel.text!)
-//    }
-
-
 
 }

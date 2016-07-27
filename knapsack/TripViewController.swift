@@ -33,14 +33,12 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
       showActiveTrips = false
       presentedTrips = try! Realm().objects(Trip).filter("archived = true")
       self.title = "Archives"
-//      let archiveImage: UIImage = UIImage(named: "archiveFlag.png")!
-//      toggleTripType.setBackgroundImage(archiveImage, forState: .Normal, barMetrics: .Default)
+
     } else {
       showActiveTrips = true
       presentedTrips = try! Realm().objects(Trip).filter("archived = false")
       self.title = "Active Trips"
-//      var archiveImage: UIImage = UIImage(named: "archiveFlag.png")!
-//      toggleTripType.setBackgroundImage(archiveImage, forState: .Normal, barMetrics: .Default)
+
     }
     itemTable.reloadData()
   }
@@ -168,7 +166,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let newList = ItemList()
         newList.id = NSUUID().UUIDString
         newList.listName = originalList.listName
-        var originalItems = originalList.items
+//        var originalItems = originalList.items
 
         try! self.realm.write {
           copiedTrip.lists.append(newList)
