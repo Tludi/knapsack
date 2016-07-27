@@ -16,8 +16,10 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
   var presentedTrips = try! Realm().objects(Trip).filter("archived = false").sorted("startDate")
   var selectedTrip = Trip()
   var showActiveTrips = true
+  let date = NSDate()
   
 
+  @IBOutlet weak var addTripBox: UIView!
   
   @IBOutlet weak var itemTable: UITableView!
 //  @IBOutlet weak var addButtonView: UIView!
@@ -31,13 +33,13 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
       showActiveTrips = false
       presentedTrips = try! Realm().objects(Trip).filter("archived = true")
       self.title = "Archives"
-      let archiveImage: UIImage = UIImage(named: "archiveFlag.png")!
+//      let archiveImage: UIImage = UIImage(named: "archiveFlag.png")!
 //      toggleTripType.setBackgroundImage(archiveImage, forState: .Normal, barMetrics: .Default)
     } else {
       showActiveTrips = true
       presentedTrips = try! Realm().objects(Trip).filter("archived = false")
       self.title = "Active Trips"
-      var archiveImage: UIImage = UIImage(named: "archiveFlag.png")!
+//      var archiveImage: UIImage = UIImage(named: "archiveFlag.png")!
 //      toggleTripType.setBackgroundImage(archiveImage, forState: .Normal, barMetrics: .Default)
     }
     itemTable.reloadData()
@@ -56,16 +58,20 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     itemTable.backgroundView = UIImageView(image: bgImage)
     
-    // give the lower add button rounded corners and shadow
-    // addButtonView.layer.cornerRadius = 30
-    // addButtonView.layer.shadowOffset = CGSizeMake(2, 2)
-//    addButtonView.layer.shadowRadius = 2
-//    addButtonView.layer.shadowOpacity = 0.7
+
     
   }
   
   override func viewWillAppear(animated: Bool) {
     // reload the table when coming back from another view
+    addTripBox.layer.cornerRadius = 20
+    
+    if allTrips.count > 0 {
+      addTripBox.hidden = true
+    } else {
+      addTripBox.hidden = false
+    }
+    
     itemTable.reloadData()
   }
 
@@ -95,6 +101,18 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // tripStartDate
     let dateLabel = cell.contentView.viewWithTag(3) as! UILabel
     dateLabel.text = "\(trip.startDate)"
+    
+    let dateFormatter = NSDateFormatter()
+    dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
+    let convertedDate = dateFormatter.stringFromDate(date)
+    
+    
+    print("Today's Date")
+    print(convertedDate)
+    print("trip date")
+    print(trip.startDate)
+    
+    
     // tripItems Total
     let itemLabel = cell.contentView.viewWithTag(4) as! UILabel
     itemLabel.text = "\(allTripItems!) items"
@@ -105,6 +123,9 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     } else {
       archiveFlag?.hidden = true
     }
+    // daysToGo label
+    let daysToGo = cell.contentView.viewWithTag(6) as! UILabel
+    daysToGo.text = "55"
     
     return cell
   }
@@ -133,12 +154,6 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
       self.selectedTrip = self.presentedTrips[indexPath.row]
       // set new trip
       let copiedTrip = Trip()
-
-//      var originalList = ItemList()
-//      var originalItem = Item()
-      
-//      var newList = ItemList()
-
 
       copiedTrip.id = NSUUID().UUIDString
       copiedTrip.tripName = "\(self.selectedTrip.tripName)Copy"
@@ -170,16 +185,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
         try! self.realm.write {
           copiedTrip.lists.first!.items.append(newItem)
         }
-//        println(eachItem.itemName)
       }
-      
-      
-      // print the names of lists in the copied list
-//      for eachList in copiedTrip.lists {
-//        println(eachList.listName)
-//        
-//      }
-      
 
       print("copy trip")
       self.itemTable.reloadData()

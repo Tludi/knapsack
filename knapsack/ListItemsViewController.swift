@@ -21,17 +21,20 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   
   @IBOutlet weak var listName: UILabel!
   @IBOutlet weak var listItemTable: UITableView!
+  @IBOutlet weak var addItemBox: UIView!
+  @IBAction func addItemBoxButton(sender: UIButton) {
+  }
 
 
 
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    listName.text = chosenCategory
+    
     // Set the background image of the listItem table
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     listItemTable.backgroundView = UIImageView(image: bgImage)
-    
+
     if chosenCategory == "All Items" {
       filterCat = "itemCount > 0"
       print(filterCat)
@@ -46,8 +49,16 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   
   
   override func viewWillAppear(animated: Bool) {
+    listName.text = chosenCategory
+    addItemBox.layer.cornerRadius = 20
+    if chosenList.items.filter("itemCount > 0").count > 0 {
+      addItemBox.hidden = true
+    } else {
+      addItemBox.hidden = false
+    }
     
     listItemTable.reloadData()
+    
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -165,6 +176,11 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
       if let destinationController = segue.destinationViewController as? CategoriesViewController {
           print("clicked add item")
           destinationController.passedList = chosenList
+      }
+    } else if segue.identifier == "addItemBox" {
+      if let destinationController = segue.destinationViewController as? CategoriesViewController {
+        print("clicked add item")
+        destinationController.passedList = chosenList
       }
     }
   }

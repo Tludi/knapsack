@@ -108,7 +108,9 @@ class MasterItemList {
       "Batteries",
       "Memory Card",
       "Watch",
-      "Music"
+      "Music",
+      "Exercise Monitor",
+      "Exercise Monitor Charger"
     ],
     "documents": [
       "Drivers License/ID",
@@ -145,7 +147,7 @@ class MasterItemList {
     ],
     "food": [
       "Granola Bars",
-      "Protien Bars",
+      "Protein Bars",
       "Oatmeal Packets",
       "Dried Fruit",
       "Nuts",

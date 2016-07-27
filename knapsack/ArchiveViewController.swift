@@ -63,6 +63,9 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
     // toggle archive flag based on trip status
     let archiveFlag = cell.contentView.viewWithTag(5)
     
+    // daysToGo label
+//    let daysToGo = cell.contentView.viewWithTag(6) as! UILabel
+    
     return cell
   }
   
@@ -157,7 +160,7 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
       self.presentViewController(deleteAlert, animated: true, completion: nil)
     }
     
-    let deleteImage = UIImage(named: "deletebox.png")!
+    let deleteImage = UIImage(named: "deleteBoxLG.png")!
     deleteCellAction.backgroundColor = UIColor(patternImage: deleteImage)
     
     // first item in array is far right in cell
