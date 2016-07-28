@@ -16,7 +16,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
   var presentedTrips = try! Realm().objects(Trip).filter("archived = false").sorted("startDate")
   var selectedTrip = Trip()
   var showActiveTrips = true
-  let date = NSDate()
+  let currentDate = NSDate()
   
 
   @IBOutlet weak var addTripBox: UIView!
@@ -100,15 +100,15 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let dateLabel = cell.contentView.viewWithTag(3) as! UILabel
     dateLabel.text = "\(trip.startDate)"
     
+    // Get days until Trip date
     let dateFormatter = NSDateFormatter()
     dateFormatter.dateStyle = NSDateFormatterStyle.MediumStyle
-    let convertedDate = dateFormatter.stringFromDate(date)
+    let calendar = NSCalendar.currentCalendar()
+    let unit:NSCalendarUnit = .Day
     
-    
-    print("Today's Date")
-    print(convertedDate)
-    print("trip date")
-    print(trip.startDate)
+    let convertedCurrentDate = (calendar.startOfDayForDate(currentDate))
+    let startDate = (calendar.startOfDayForDate(dateFormatter.dateFromString(trip.startDate)!))
+    let daysUntilTrip = calendar.components(unit, fromDate: convertedCurrentDate, toDate: startDate, options: [] ).day
     
     
     // tripItems Total
@@ -123,7 +123,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     // daysToGo label
     let daysToGo = cell.contentView.viewWithTag(6) as! UILabel
-    daysToGo.text = "55"
+    daysToGo.text = "\(daysUntilTrip)"
     
     return cell
   }

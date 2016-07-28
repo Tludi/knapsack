@@ -18,7 +18,6 @@ class NewTripViewController: UIViewController {
   
   @IBOutlet weak var tripDetailLabel: UILabel!
   @IBOutlet var newTripView: UIView!
-  @IBOutlet weak var numberOfTrips: UILabel!
   @IBOutlet weak var tripNameField: UITextField!
   @IBOutlet weak var dateTextField: UITextField!
   @IBOutlet weak var nightsCount: UILabel!
@@ -95,7 +94,6 @@ class NewTripViewController: UIViewController {
         }
       }
     }
-    numberOfTrips.text = "\(realm.objects(Trip).count)"
   }
   
   
@@ -125,8 +123,8 @@ class NewTripViewController: UIViewController {
 //    let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     self.view.backgroundColor = UIColor(patternImage: UIImage(named: "iPhone5bg.png")!)
 
-    let trips = realm.objects(Trip)
-    numberOfTrips.text = "\(trips.count)"
+//    let trips = realm.objects(Trip)
+//    numberOfTrips.text = "\(trips.count)"
     
     let nights = Int(slider.value)
     nightsCount.text = "\(nights)"
