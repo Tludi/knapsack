@@ -143,6 +143,9 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
         try! self.realm.write {
           let selectedItem = itemsWithCount[indexPath.row]
           selectedItem.itemCount = 0
+          if self.chosenList.items.count < 1 {
+            self.addItemBox.hidden = false
+          }
         }
         
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)

@@ -64,7 +64,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // reload the table when coming back from another view
     addTripBox.layer.cornerRadius = 20
     
-    if allTrips.count > 0 {
+    if presentedTrips.count > 0 {
       addTripBox.hidden = true
     } else {
       addTripBox.hidden = false
@@ -229,7 +229,11 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
         try! self.realm.write {
           let selectedTrip = self.presentedTrips[indexPath.row]
           self.realm.delete(selectedTrip)
+          if self.presentedTrips.count == 0 {
+            self.addTripBox.hidden = false
+          }
         }
+        
         tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
       }))
       deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction) in

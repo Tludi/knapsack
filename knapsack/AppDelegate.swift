@@ -11,7 +11,7 @@ import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-  let realm = try! Realm()
+  
   
   let masterList = try! Realm().objects(ItemList).filter("id = '1'")
   var window: UIWindow?
@@ -21,6 +21,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // Override point for customization after application launch.
     UITableViewCell.appearance().backgroundColor = UIColor.clearColor()
     checkIfMasterListExists()
+    
+    let config = Realm.Configuration(
+      schemaVersion: 1,
+      
+      migrationBlock: { migration, oldSchemaVersion in
+      if (oldSchemaVersion < 1) {
+      
+      }
+    
+    })
+    
+    Realm.Configuration.defaultConfiguration = config
+
+    let realm = try! Realm()
     
     return true
   }
