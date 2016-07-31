@@ -19,9 +19,12 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
   @IBOutlet weak var listTable: UITableView!
   @IBOutlet weak var tripNameLabel: UILabel!
   
+  @IBOutlet weak var addButton: UIBarButtonItem!
+  
   override func viewDidLoad() {
-      super.viewDidLoad()
-
+    super.viewDidLoad()
+    // try to hide the addButton. Show for testing
+    addButton.tintColor = UIColor.clearColor()
     // set trip label to name of current trip
     tripNameLabel.text = chosenTrip.tripName
     // Set label of current page

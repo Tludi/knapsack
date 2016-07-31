@@ -120,47 +120,49 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     }
   }
   
+  //*** disabled deleting items from list due to it not actually removing items, just the cell ***//
   
-  func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-    return true
-  }
+//  func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+//    return true
+//  }
+//  
+//  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+//  }
   
-  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-  }
   
   
   
-  func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
-    
-    // Delete trip functions
-    let deleteCellAction = UITableViewRowAction(style: .Normal, title: "    ") { (action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
-      print("delete action")
-      let deleteAlert = UIAlertController(title: "Confirm Removal", message: "Selected Item Will Be Removed From List!", preferredStyle: .Alert)
-      deleteAlert.addAction(UIAlertAction(title: "Remove", style: .Default, handler: { (action: UIAlertAction) in
-        
-        let itemsWithCount = self.chosenList.items.filter(self.filterCat)
-
-        try! self.realm.write {
-          let selectedItem = itemsWithCount[indexPath.row]
-          selectedItem.itemCount = 0
-          if self.chosenList.items.count < 1 {
-            self.addItemBox.hidden = false
-          }
-        }
-        
-        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-      }))
-      deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction) in
-        return
-      }))
-      self.presentViewController(deleteAlert, animated: true, completion: nil)
-    }
-    
-    let deleteImage = UIImage(named: "deleteBoxSM.png")!
-    deleteCellAction.backgroundColor = UIColor(patternImage: deleteImage)
-    
-    return [deleteCellAction]
-  }
+//  func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+//    
+//    // Delete trip functions
+//    let deleteCellAction = UITableViewRowAction(style: .Normal, title: "    ") { (action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
+//      print("delete action")
+//      let deleteAlert = UIAlertController(title: "Confirm Removal", message: "Selected Item Will Be Removed From List!", preferredStyle: .Alert)
+//      deleteAlert.addAction(UIAlertAction(title: "Remove", style: .Default, handler: { (action: UIAlertAction) in
+//        
+//        let itemsWithCount = self.chosenList.items.filter(self.filterCat)
+//
+//        try! self.realm.write {
+//          let selectedItem = itemsWithCount[indexPath.row]
+//          selectedItem.itemCount = 0
+//          if self.chosenList.items.count < 1 {
+//            self.addItemBox.hidden = false
+//          }
+//        }
+//        
+//        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+//      }))
+//      deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction) in
+//        return
+//      }))
+//      self.presentViewController(deleteAlert, animated: true, completion: nil)
+//    }
+//    
+//    let deleteImage = UIImage(named: "deleteBoxSM.png")!
+//    deleteCellAction.backgroundColor = UIColor(patternImage: deleteImage)
+//    
+//    return [deleteCellAction]
+//  }
   
   
   
