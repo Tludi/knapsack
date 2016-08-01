@@ -534,7 +534,6 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="addTripButton:" destination="11I-Sm-pTb" eventType="touchUpInside" id="ICk-2W-2Sf"/>
-                                                    <segue destination="gzH-wl-5Yr" kind="unwind" unwindAction="cancelToNewTripViewController:" id="bOa-2u-3CO"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -563,7 +562,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <segue destination="gzH-wl-5Yr" kind="unwind" unwindAction="cancelToNewTripViewController:" id="2Qg-EY-OVO"/>
+                                            <segue destination="gzH-wl-5Yr" kind="unwind" identifier="cancelButtonUnwind" unwindAction="cancelToNewTripViewController:" id="qN9-QM-Uci"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -653,6 +652,7 @@
                         <outlet property="slider" destination="PeT-W9-gas" id="GpT-Vn-odc"/>
                         <outlet property="tripDetailLabel" destination="MeM-eV-28j" id="Wcd-6D-gLi"/>
                         <outlet property="tripNameField" destination="8mh-NE-x9z" id="Hu4-l1-sQy"/>
+                        <segue destination="gzH-wl-5Yr" kind="unwind" identifier="addTripButtonUnwind" unwindAction="cancelToNewTripViewController:" id="Qb4-b8-KzV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lxs-aU-uj6" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -111,7 +111,7 @@ class MenuTableViewController: UITableViewController {
       break
     }
     
-    sideMenuController()?.setContentViewController(destinationViewController)
+//    sideMenuController()?.setContentViewController(destinationViewController)
   }
 
 }

@@ -61,14 +61,22 @@ class NewTripViewController: UIViewController {
         trip.id = NSUUID().UUIDString
         // check for empty name
         if newTripName == "" {
-          let noNameAlert = UIAlertController(title: "Trip Name", message: "Name Can Not Be Blank", preferredStyle: .Alert)
+          let noNameAlert = UIAlertController(title: "Trip Name", message: "Destination Can Not Be Blank", preferredStyle: .Alert)
           noNameAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
             return
           }))
           self.presentViewController(noNameAlert, animated: true, completion: nil)
+        } else if dateTextField.text! == "" {
+          print("trip start date not chosen > '\(dateTextField.text!)'")
+          let noDateAlert = UIAlertController(title: "Trip Date", message: "Select a Start Date", preferredStyle: .Alert)
+          noDateAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
+            return
+          }))
+          self.presentViewController(noDateAlert, animated: true, completion: nil)
         } else {
           trip.tripName = newTripName
           trip.startDate = dateTextField.text!
+          print("starDate after selection '\(trip.startDate)'")
           trip.numberOfDays = nightsCount.text!
           
           let newList = ItemList()
@@ -91,9 +99,11 @@ class NewTripViewController: UIViewController {
             self.realm.add(trip)
             
           }
+          
         }
       }
     }
+    self.performSegueWithIdentifier("addTripButtonUnwind", sender: self)
   }
   
   
