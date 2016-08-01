@@ -62,17 +62,19 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     itemLabel.text = item.itemName
     itemCountLabel.text = "\(item.itemCount)"
     
-    if itemCountLabel.text! == "0" {
+    print("item count '\(item.itemCount)'")
+    
+    if item.itemCount > 0 {
+      decreaseButton.hidden = false
+      decreaseBackground!.hidden = false
+    } else {
       decreaseButton.hidden = true
-      decreaseBackground!.hidden = true
+      decreaseBackground?.hidden = true
     }
     
     // #selector was updated from swift 2
     increaseButton.addTarget(self, action: #selector(CategoryListViewController.changeItemCount(_:)), forControlEvents: .TouchUpInside)
     decreaseButton.addTarget(self, action: #selector(CategoryListViewController.changeItemCount(_:)), forControlEvents: .TouchUpInside)
-    
-    
-
     
     return cell
   }
@@ -103,21 +105,24 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
       }
     } else {
       // if sender is decrease button
-      let updatedCount = currentCount! - 1
-      if updatedCount < 0 {
+      var updatedCount = currentCount! - 1
+      if updatedCount < 1 {
         itemCountLabel.text = "0"
-      } else {
-        if updatedCount == 0 {
-          decreaseButton.hidden = true
-          decreaseBackground?.hidden = true
-        }
-        itemCountLabel.text = "\(updatedCount)"
-        try! realm.write{
-          existingListItem.itemCount = updatedCount
-        }
+        decreaseButton.hidden = true
+        decreaseBackground?.hidden = true
       }
+//        if updatedCount < 1 {
+//          decreaseButton.hidden = true
+//          decreaseBackground?.hidden = true
+//        }
+      itemCountLabel.text = "\(updatedCount)"
+      try! realm.write{
+        existingListItem.itemCount = updatedCount
+      }
+      self.itemTable.reloadData()
     }
 
+    
   }
   
  

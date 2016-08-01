@@ -49,11 +49,11 @@ class NewTripViewController: UIViewController {
         self.editedTrip.startDate = self.dateTextField.text!
         self.editedTrip.numberOfDays = self.nightsCount.text!
       }
+      self.performSegueWithIdentifier("addTripButtonUnwind", sender: self)
     } else {  // add new Trip()
       if let newTripName = tripNameField.text {
         let masterList = try! Realm().objects(ItemList).filter("id = '1'")
         let masterItems = masterList[0].items
-//        let masterCategories = MasterItemList().categories
         
         // create new empty trip
         let trip = Trip()
@@ -99,11 +99,12 @@ class NewTripViewController: UIViewController {
             self.realm.add(trip)
             
           }
-          
+          self.performSegueWithIdentifier("addTripButtonUnwind", sender: self)
+
         }
       }
     }
-    self.performSegueWithIdentifier("addTripButtonUnwind", sender: self)
+
   }
   
   

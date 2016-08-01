@@ -33,7 +33,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     })
     
     Realm.Configuration.defaultConfiguration = config
-
+    
+    // for migrating database if needed
     let realm = try! Realm()
     
     return true
