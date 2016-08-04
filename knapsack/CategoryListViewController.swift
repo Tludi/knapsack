@@ -105,16 +105,13 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
       }
     } else {
       // if sender is decrease button
-      var updatedCount = currentCount! - 1
+      let updatedCount = currentCount! - 1
       if updatedCount < 1 {
         itemCountLabel.text = "0"
         decreaseButton.hidden = true
         decreaseBackground?.hidden = true
       }
-//        if updatedCount < 1 {
-//          decreaseButton.hidden = true
-//          decreaseBackground?.hidden = true
-//        }
+
       itemCountLabel.text = "\(updatedCount)"
       try! realm.write{
         existingListItem.itemCount = updatedCount
