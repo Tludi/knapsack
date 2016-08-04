@@ -392,13 +392,23 @@
                                     <constraint firstAttribute="height" constant="160" id="zla-6J-FGV"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vnS-8M-zim" customClass="GADBannerView">
+                                <rect key="frame" x="140" y="550" width="320" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="6Ah-lr-3tK"/>
+                                    <constraint firstAttribute="width" constant="320" id="M8U-kj-gjS"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.25490196079999999" green="0.23137254900000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="9pX-bt-eTc" secondAttribute="bottom" id="0jo-8P-4SR"/>
                             <constraint firstItem="Ss6-Oa-7i3" firstAttribute="centerX" secondItem="AV6-k5-k7a" secondAttribute="centerX" id="KWA-4Z-hqG"/>
+                            <constraint firstItem="vnS-8M-zim" firstAttribute="centerX" secondItem="AV6-k5-k7a" secondAttribute="centerX" id="MdE-7F-CkL"/>
                             <constraint firstItem="9pX-bt-eTc" firstAttribute="leading" secondItem="AV6-k5-k7a" secondAttribute="leadingMargin" constant="-16" id="Q0c-4F-Z9C"/>
                             <constraint firstItem="9pX-bt-eTc" firstAttribute="top" secondItem="AV6-k5-k7a" secondAttribute="topMargin" constant="5" id="SVp-fX-bTe"/>
+                            <constraint firstItem="7t3-35-WCm" firstAttribute="top" secondItem="vnS-8M-zim" secondAttribute="bottom" id="Zcq-fo-BZB"/>
                             <constraint firstItem="7t3-35-WCm" firstAttribute="top" secondItem="9pX-bt-eTc" secondAttribute="bottom" constant="-64" id="shG-dV-T4N"/>
                             <constraint firstAttribute="trailingMargin" secondItem="9pX-bt-eTc" secondAttribute="trailing" constant="-16" id="uTb-BS-K8r"/>
                             <constraint firstItem="Ss6-Oa-7i3" firstAttribute="centerY" secondItem="AV6-k5-k7a" secondAttribute="centerY" constant="-10" id="w9q-fD-Nzm"/>
@@ -424,6 +434,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addTripBox" destination="Ss6-Oa-7i3" id="nMC-kz-apS"/>
+                        <outlet property="bannerView" destination="vnS-8M-zim" id="im5-yI-e8C"/>
                         <outlet property="itemTable" destination="9pX-bt-eTc" id="RBo-Qd-Pkc"/>
                         <outlet property="toggleTripType" destination="QIM-LY-OIT" id="tFs-kp-uWP"/>
                         <segue destination="11I-Sm-pTb" kind="presentation" identifier="editTripData" modalPresentationStyle="pageSheet" modalTransitionStyle="crossDissolve" id="f4S-Xp-zWy"/>
