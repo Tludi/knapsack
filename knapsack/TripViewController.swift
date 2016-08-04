@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import GoogleMobileAds
 
 class TripViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -18,6 +19,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
   var showActiveTrips = true
   let currentDate = NSDate()
   
+  @IBOutlet weak var bannerView: GADBannerView!
 
   @IBOutlet weak var addTripBox: UIView!
   
@@ -56,7 +58,14 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     itemTable.backgroundView = UIImageView(image: bgImage)
     
-
+    // AdMob code
+    print("Google Mobile Ads SDK version: " + GADRequest.sdkVersion())
+    // This is a test ID, use for testing
+//    bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+    // This is the app unit ID for Admob - knapsack banner ad - front page
+    bannerView.adUnitID = "ca-app-pub-9078081310752371/9311362449"
+    bannerView.rootViewController = self
+    bannerView.loadRequest(GADRequest())
     
   }
   
