@@ -611,13 +611,13 @@
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
+                                        <exclude reference="1IB-mS-Bd7"/>
+                                        <exclude reference="Kqs-1e-uus"/>
                                         <exclude reference="1Jj-66-wYz"/>
                                         <exclude reference="3up-t9-fo7"/>
                                         <exclude reference="9Z9-3h-Am0"/>
                                         <exclude reference="Ify-wg-0I7"/>
                                         <exclude reference="eIu-10-RdJ"/>
-                                        <exclude reference="1IB-mS-Bd7"/>
-                                        <exclude reference="Kqs-1e-uus"/>
                                         <exclude reference="WXL-tp-dum"/>
                                         <exclude reference="S63-p5-n25"/>
                                         <exclude reference="Sga-qc-iif"/>
