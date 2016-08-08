@@ -43,6 +43,10 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
     return 2
   }
   
+  
+  //*** Get number of rows per section **//
+  //*** First section has only 1 row for all items ***//
+  //*** Second section has rows based on categories that have items selected ***//
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let tripLists = chosenTrip.lists
     let selectedItems = tripLists[0].items.filter("itemCount > 0")
@@ -53,37 +57,33 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
       }
     }
     // Return the number of rows in the section.
-    if section == 1 {
-      print(selectedCategories.count)
+    if section == 1 {  // SECOND SECTION
+//      print(selectedCategories.count)
       return selectedCategories.count
     } else {
-      return 1
+      return 1 // FIRST SECTION
     }
   }
   
+  
+  //*** Print the cells based on (1)all items and (2)categories of items selected  ***//
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("listCell", forIndexPath: indexPath) 
     let tripList = chosenTrip.lists[0]
     let selectedItems = tripList.items.filter("itemCount > 0")
-//    print(selectedItems)
-//
-//    // create an array of selectedCategories that have been selected
+
+    // create an array of selectedCategories that have been selected
     var selectedCategories = [String]()
     for i in 0..<selectedItems.count {
       if selectedCategories.contains(selectedItems[i].itemCategory) == false {
         selectedCategories.append(selectedItems[i].itemCategory)
       }
     }
-//    print(selectedCategories)
-//    
-//    // Get items that have not been packed yet
+
+    // Get items that have not been packed yet
     let unpackedItems = selectedItems.filter("packed = false")
     
-
-//    print(tripList.listName)
-//    listNameLabel.text = "\(tripList.listName)"
-    
-    
+    //*** FIRST SECTION ***//
     if indexPath.section == 0 {
       // Show All Items cell in first section
       // List Name - has a tag of 1
@@ -96,12 +96,11 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
       // Items Left to pack
       let itemsLeft = cell.contentView.viewWithTag(3) as! UILabel
       itemsLeft.text = "\(unpackedItems.count) left"
-      
       // Image for All Items
       let categoryImage = cell.contentView.viewWithTag(5) as! UIImageView
       categoryImage.image = UIImage(named: "knapsackIcon")
       
-
+    //*** SECOND SECTION ***//
     } else if indexPath.section == 1 {
       // Show item categories if any items are added to list
       // List Name - has a tag of 1
@@ -112,21 +111,16 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
       
       // Category List
         let listItemNameLabel = cell.contentView.viewWithTag(2) as! UILabel
-//        print(selectedItems[1])
         let categoryItems = selectedItems.filter("itemCategory = '\(currentCategory)'")
-//        print(categoryItems)
         listItemNameLabel.text = "\(categoryItems.count) items"
-      
       // Items Left to pack
         let itemsLeft = cell.contentView.viewWithTag(3) as! UILabel
         let categoryItemsLeft = categoryItems.filter("packed = false")
         itemsLeft.text = "\(categoryItemsLeft.count) left"
-      
       // Image for Category
       // Image Icon needs to be named 'category'Icon
         let categoryImage = cell.contentView.viewWithTag(5) as! UIImageView
         categoryImage.image = UIImage(named: "\(currentCategory)Icon")
-
     }
     
     return cell

@@ -22,7 +22,7 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
   @IBOutlet weak var itemTable: UITableView!
   
   override func viewDidLoad() {
-      super.viewDidLoad()
+    super.viewDidLoad()
     self.title = passedCategory.capitalizedString
   }
   
@@ -31,8 +31,8 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     return 1
   }
   
+  
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//    return masterList[passedCategory]!.count
     let categoryItemList = passedList.items.filter("itemCategory = '\(passedCategory)'")
     return categoryItemList.count
   }
@@ -42,11 +42,9 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
   // show cell
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     
-//    let masterItemCount = 0
     let cell = tableView.dequeueReusableCellWithIdentifier("categoryItemCell", forIndexPath: indexPath)
     
     // get current saved items from the passed list
-//    let passedListItems = passedList.items
     let categoryItemList = passedList.items.filter("itemCategory = '\(passedCategory)'")
     let sortedCategoryItemList = categoryItemList.sorted("itemName")
     let item = sortedCategoryItemList[indexPath.row]
@@ -62,8 +60,6 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     itemLabel.text = item.itemName
     itemCountLabel.text = "\(item.itemCount)"
     
-    print("item count '\(item.itemCount)'")
-    
     if item.itemCount > 0 {
       decreaseButton.hidden = false
       decreaseBackground!.hidden = false
@@ -78,7 +74,6 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     
     return cell
   }
-  
   
   
   

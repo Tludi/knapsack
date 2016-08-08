@@ -24,7 +24,6 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
   @IBOutlet weak var addTripBox: UIView!
   
   @IBOutlet weak var itemTable: UITableView!
-//  @IBOutlet weak var addButtonView: UIView!
   
   @IBAction func addButton(sender: UIButton) {
   }
@@ -64,6 +63,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
 //    bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
     // This is the app unit ID for Admob - knapsack banner ad - front page
     bannerView.adUnitID = "ca-app-pub-9078081310752371/9311362449"
+    print("remember to reset adUnitID to production if using testing ID")
     bannerView.rootViewController = self
     bannerView.loadRequest(GADRequest())
     

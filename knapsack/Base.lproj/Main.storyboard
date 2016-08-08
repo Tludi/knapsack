@@ -402,6 +402,7 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="0.25490196079999999" green="0.23137254900000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="bottomMargin" secondItem="9pX-bt-eTc" secondAttribute="bottom" id="0jo-8P-4SR"/>
                             <constraint firstItem="Ss6-Oa-7i3" firstAttribute="centerX" secondItem="AV6-k5-k7a" secondAttribute="centerX" id="KWA-4Z-hqG"/>
@@ -750,7 +751,7 @@
             </objects>
             <point key="canvasLocation" x="1144" y="592"/>
         </scene>
-        <!--Categories View Controller-->
+        <!--Title-->
         <scene sceneID="emu-P6-wA9">
             <objects>
                 <viewController id="UkA-HE-Mce" customClass="CategoriesViewController" customModule="knapsack" customModuleProvider="target" sceneMemberID="viewController">
@@ -861,6 +862,13 @@
                             </mask>
                         </variation>
                     </view>
+                    <navigationItem key="navigationItem" title="Title" id="sbR-C8-lXx">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" id="AgM-LZ-yYq">
+                            <connections>
+                                <segue destination="O56-2c-EtV" kind="show" id="jpM-Tt-Eny"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="categoryTable" destination="2k7-aa-7EE" id="flI-iW-vO2"/>
                     </connections>
@@ -868,6 +876,52 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pyr-lm-RU1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1825" y="592"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="C8V-de-akH">
+            <objects>
+                <viewController id="O56-2c-EtV" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TCR-ae-a9u"/>
+                        <viewControllerLayoutGuide type="bottom" id="hvf-tW-Nb4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AwE-vH-3M5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yVP-ey-eH0">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="yVP-ey-eH0" firstAttribute="leading" secondItem="AwE-vH-3M5" secondAttribute="leading" id="9A8-l0-Xuz"/>
+                            <constraint firstItem="yVP-ey-eH0" firstAttribute="top" secondItem="TCR-ae-a9u" secondAttribute="bottom" id="Eso-8M-8p0"/>
+                            <constraint firstAttribute="trailing" secondItem="yVP-ey-eH0" secondAttribute="trailing" id="Ffw-1r-18X"/>
+                            <constraint firstItem="hvf-tW-Nb4" firstAttribute="top" secondItem="yVP-ey-eH0" secondAttribute="bottom" id="FjV-Fm-pc7"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yVP-ey-eH0" secondAttribute="trailing" id="QL8-3M-YtD"/>
+                            <constraint firstAttribute="trailing" secondItem="yVP-ey-eH0" secondAttribute="trailing" id="ZIJ-VG-uof"/>
+                            <constraint firstItem="yVP-ey-eH0" firstAttribute="leading" secondItem="AwE-vH-3M5" secondAttribute="leading" id="bxb-JQ-dbu"/>
+                            <constraint firstItem="yVP-ey-eH0" firstAttribute="top" secondItem="TCR-ae-a9u" secondAttribute="bottom" id="hpK-od-eId"/>
+                            <constraint firstItem="hvf-tW-Nb4" firstAttribute="top" secondItem="yVP-ey-eH0" secondAttribute="bottom" id="lmU-RQ-C0M"/>
+                            <constraint firstItem="yVP-ey-eH0" firstAttribute="leading" secondItem="AwE-vH-3M5" secondAttribute="leadingMargin" id="otc-Wj-KWC"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="9A8-l0-Xuz"/>
+                                <exclude reference="Eso-8M-8p0"/>
+                                <exclude reference="Ffw-1r-18X"/>
+                                <exclude reference="QL8-3M-YtD"/>
+                                <exclude reference="otc-Wj-KWC"/>
+                                <exclude reference="lmU-RQ-C0M"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mfI-8B-bHj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2524" y="-196"/>
         </scene>
         <!--Category List View Controller-->
         <scene sceneID="g9b-cm-4BP">
@@ -1544,6 +1598,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Jaf-LD-1ci">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="barTintColor" red="0.25490196079999999" green="0.23137254900000001" blue="0.3803921569" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

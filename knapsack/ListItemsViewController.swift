@@ -12,7 +12,6 @@ import RealmSwift
 class ListItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
   let realm = try! Realm()
-  
   var chosenList = ItemList()
   var chosenCategory = String()
   let checkedButtonImage = UIImage(named: "squareCheck.png")
@@ -26,58 +25,57 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   }
 
 
-
   override func viewDidLoad() {
     super.viewDidLoad()
-    
     
     // Set the background image of the listItem table
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     listItemTable.backgroundView = UIImageView(image: bgImage)
 
+    //*** create a filter based on category passed or all items
     if chosenCategory == "All Items" {
       filterCat = "itemCount > 0"
-      print(filterCat)
+//      print(filterCat)
     } else {
       filterCat = "itemCount > 0 AND itemCategory == '\(chosenCategory.lowercaseString)'"
-      print(filterCat)
+//      print(filterCat)
     }
-    print(chosenList.items.count)
-    print(chosenList.items.filter("itemCount > 0").count)
-    print(chosenList.items.filter(filterCat).count)
+    // for testing
+//    print(chosenList.items.count)  // number of overall items (119)
+//    print(chosenList.items.filter("itemCount > 0").count)  // number of items with a count greater than 0
+//    print(chosenList.items.filter(filterCat).count) // number of items using filtercat
   }
   
   
   override func viewWillAppear(animated: Bool) {
     listName.text = chosenCategory
+    
+    // show/hide addItemBox based on if there are any items in the list
     addItemBox.layer.cornerRadius = 20
     if chosenList.items.filter("itemCount > 0").count > 0 {
       addItemBox.hidden = true
     } else {
       addItemBox.hidden = false
     }
-    
     listItemTable.reloadData()
-    
   }
   
+  //*** Only one section in this table ***//
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
   }
   
+  //*** Number of rows based on selected items with a count ***//
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     let itemsWithCount = chosenList.items.filter(filterCat)
     return itemsWithCount.count
- 
-
   }
   
+  //*** show cells based on All Items or individual category selected from segue
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    print("\(filterCat) from the cell for row at index path")
-    
     let itemsWithCount = chosenList.items.filter(filterCat)
-    let sortedItemsWithCount = itemsWithCount.sorted("itemName")
-    let item = sortedItemsWithCount[indexPath.row]
+//    let sortedItemsWithCount = itemsWithCount.sorted("itemName") - Removed since sorting in database
+    let item = itemsWithCount[indexPath.row]
 
     let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) 
     // List Name
@@ -169,12 +167,10 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "showAddItem" {
       if let destinationController = segue.destinationViewController as? CategoriesViewController {
-          print("clicked add item")
-          destinationController.passedList = chosenList
+        destinationController.passedList = chosenList
       }
     } else if segue.identifier == "addItemBox" {
       if let destinationController = segue.destinationViewController as? CategoriesViewController {
-        print("clicked add item")
         destinationController.passedList = chosenList
       }
     }

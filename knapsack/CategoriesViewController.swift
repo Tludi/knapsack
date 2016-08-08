@@ -10,18 +10,15 @@ import UIKit
 import RealmSwift
 
 
-
 class CategoriesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
   var realm = try! Realm()
   var trips = try! Realm().objects(Trip)
-  
   var passedList = ItemList()
   
   var allItems = MasterItemList()
   var categories = MasterItemList().categories.sort()
   
-
   
   @IBOutlet weak var categoryTable: UITableView!
   
@@ -50,8 +47,7 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
     // Image for Category
     // Image Icon needs to be named 'category'Icon
     let categoryImage = cell.contentView.viewWithTag(5) as! UIImageView
-    print("\(category)Icon")
-    //        categoryImage.image = UIImage(named: "clothingIcon")
+//    print("\(category)Icon")
     categoryImage.image = UIImage(named: "\(category)Icon")
     
     
