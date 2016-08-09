@@ -17,6 +17,7 @@ struct CategoryList {
 class MasterItemList {
 
   let categories: [String] = [
+    "custom",
     "camping",
     "clothing",
     "documents",
@@ -35,6 +36,8 @@ class MasterItemList {
   ]
 
   let itemList: [String:[String]] = [
+    "custom": [
+    ],
     "camping": [
       "Camp Shovel",
       "Camp Stove",
