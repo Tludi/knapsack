@@ -25,7 +25,7 @@ class CustomItemViewController: UIViewController, UITableViewDelegate, UITableVi
     
     let newItem = Item()
     newItem.id = NSUUID().UUIDString
-    newItem.itemCategory = "custom"
+    newItem.itemCategory = "custom items"
     newItem.itemName = (addItemField.text?.capitalizedString)!
     
     try! realm.write {

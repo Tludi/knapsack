@@ -17,6 +17,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   let checkedButtonImage = UIImage(named: "squareCheck.png")
   let uncheckedButtonImage = UIImage(named: "squareCount.png")
   var filterCat :String = ""
+  let customList = try! Realm().objects(ItemList).filter("id = '2'").first!
   
   @IBOutlet weak var listName: UILabel!
   @IBOutlet weak var listItemTable: UITableView!
@@ -35,10 +36,13 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     //*** create a filter based on category passed or all items
     if chosenCategory == "All Items" {
       filterCat = "itemCount > 0"
+      print(chosenList.items.count)
 //      print(filterCat)
     } else {
       filterCat = "itemCount > 0 AND itemCategory == '\(chosenCategory.lowercaseString)'"
-//      print(filterCat)
+      print(filterCat)
+      // passed list total item count
+      print(chosenList.items.count)
     }
     // for testing
 //    print(chosenList.items.count)  // number of overall items (119)
@@ -62,22 +66,51 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   
   //*** Only one section in this table ***//
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 1
+    return 2
   }
   
   //*** Number of rows based on selected items with a count ***//
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let itemsWithCount = chosenList.items.filter(filterCat)
-    return itemsWithCount.count
+    if chosenList.listName == "All Items" {
+      if section == 0 {
+        print("section 0 has \(customList.items.filter(filterCat).count)")
+        return customList.items.filter(filterCat).count
+      } else {
+        let itemsWithCount = chosenList.items.filter(filterCat)
+        print("section 1 has \(itemsWithCount.count)")
+        return itemsWithCount.count      }
+    } else {
+      if section == 0 {
+        print(filterCat)
+        let itemsWithCount = chosenList.items.filter(filterCat)
+        print(itemsWithCount.count)
+        return itemsWithCount.count
+      } else {
+        return 0
+        
+      }
+    }
   }
+  
+  
+  
   
   //*** show cells based on All Items or individual category selected from segue
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let itemsWithCount = chosenList.items.filter(filterCat)
+    var itemsWithCount = chosenList.items.filter(filterCat)
+    
+    if indexPath.section == 0 {
+      itemsWithCount = customList.items.filter(filterCat)
+    } else {
+      itemsWithCount = chosenList.items.filter(filterCat)
+    }
 //    let sortedItemsWithCount = itemsWithCount.sorted("itemName") - Removed since sorting in database
+    
+    
     let item = itemsWithCount[indexPath.row]
-
-    let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) 
+    let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath)
+    
+    
     // List Name
     let listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
     let categoryNameLabel = cell.contentView.viewWithTag(2) as! UILabel
@@ -107,9 +140,17 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     
   }
   
+  
+  
+  
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let cell = tableView.cellForRowAtIndexPath(indexPath)
-    let itemsWithCount = chosenList.items.filter(filterCat)
+    var itemsWithCount = chosenList.items.filter(filterCat)
+    if indexPath.section == 0 {
+      itemsWithCount = customList.items.filter(filterCat)
+    } else {
+      itemsWithCount = chosenList.items.filter(filterCat)
+    }
     let item = itemsWithCount[indexPath.row]
     
     let checkBox:UIImageView = cell?.contentView.viewWithTag(11) as! UIImageView

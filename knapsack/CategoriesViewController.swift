@@ -75,7 +75,7 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
           var categoryToPass = ""
           var listToPass = passedList
           if categoryIndex.section == 0 {
-            categoryToPass = "custom"
+            categoryToPass = "custom items"
             listToPass = customList
           } else {
             categoryToPass = categories[categoryIndex.row]

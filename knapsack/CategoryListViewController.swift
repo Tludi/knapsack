@@ -105,12 +105,15 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
         itemCountLabel.text = "0"
         decreaseButton.hidden = true
         decreaseBackground?.hidden = true
+        try! realm.write{
+          existingListItem.packed = false
+        }
       }
 
-      itemCountLabel.text = "\(updatedCount)"
       try! realm.write{
         existingListItem.itemCount = updatedCount
       }
+      itemCountLabel.text = "\(updatedCount)"
       self.itemTable.reloadData()
     }
 

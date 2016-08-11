@@ -46,7 +46,7 @@ class DataManager {
     
     let customItemList = ItemList()
     customItemList.id = "2"
-    customItemList.listName = "Custom Item List"
+    customItemList.listName = "Custom Items"
     
     try! realm.write {
       realm.add(customItemList)
