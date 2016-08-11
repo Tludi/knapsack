@@ -10,6 +10,7 @@ import UIKit
 import RealmSwift
 
 class CustomItemViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+  var realm = try! Realm()
   let customList = try! Realm().objects(ItemList).filter("id = '2'").first!
 
   
@@ -61,16 +62,51 @@ class CustomItemViewController: UIViewController, UITableViewDelegate, UITableVi
     return cell
   }
   
+  
+  
+  
+  //*** Edit and Delete Custom Items
 
-  /*
-  // MARK: - Navigation
-
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-      // Get the new view controller using segue.destinationViewController.
-      // Pass the selected object to the new view controller.
+  func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    return true
   }
-  */
+  
+  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+  }
+  
+  
+  
+  //  Trip table cell actions - Edit, Delete
+  func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]? {
+    
+    
+    
+    
+    // Delete trip functions
+    let deleteCellAction = UITableViewRowAction(style: .Normal, title: "    ") { (action:UITableViewRowAction, indexPath:NSIndexPath) -> Void in
+      print("delete action")
+      let deleteAlert = UIAlertController(title: "Confirm Delete", message: "Selected Trip Will be DELETED!", preferredStyle: .Alert)
+      deleteAlert.addAction(UIAlertAction(title: "Delete", style: .Default, handler: { (action: UIAlertAction) in
+        try! self.realm.write {
+          let selectedItem = self.customList.items[indexPath.row]
+          self.realm.delete(selectedItem)
+        }
+        
+        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+      }))
+      deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction) in
+        return
+      }))
+      self.presentViewController(deleteAlert, animated: true, completion: nil)
+    }
+    
+    let deleteImage = UIImage(named: "deleteBoxSM.png")!
+    deleteCellAction.backgroundColor = UIColor(patternImage: deleteImage)
+    
+    // first item in array is far right in cell
+    return [deleteCellAction]
+  }
+
 
 
 }
