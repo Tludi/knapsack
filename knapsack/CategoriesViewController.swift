@@ -18,7 +18,7 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   
   var allItems = MasterItemList()
   var categories = MasterItemList().categories.sort()
-  
+  let customList = try! Realm().objects(ItemList).filter("id = '2'").first!
   
   @IBOutlet weak var categoryTable: UITableView!
   
@@ -26,30 +26,41 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
     super.viewDidLoad()
 
     self.title = "Categories"
-      // Do any additional setup after loading the view.
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 1
+    return 2
   }
   
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return allItems.categories.count
+    if section == 1 {
+      return allItems.categories.count
+    } else {
+      if customList.items.count > 0 {
+        return 1
+      } else {
+        return 0
+      }
+    }
   }
   
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath)
-    let category = categories[indexPath.row]
     let categoryLabelName = cell.contentView.viewWithTag(1) as! UILabel
+    let categoryImage = cell.contentView.viewWithTag(5) as! UIImageView
     
-    categoryLabelName.text = category.capitalizedString
+    if indexPath.section == 0 {
+      categoryLabelName.text = "Custom"
+    } else if indexPath.section == 1 {
+      
+      let category = categories[indexPath.row]
+      categoryLabelName.text = category.capitalizedString
     
     // Image for Category
     // Image Icon needs to be named 'category'Icon
-    let categoryImage = cell.contentView.viewWithTag(5) as! UIImageView
 //    print("\(category)Icon")
-    categoryImage.image = UIImage(named: "\(category)Icon")
-    
+      categoryImage.image = UIImage(named: "\(category)Icon")
+    }
     
     return cell
     
@@ -61,9 +72,21 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
       if let destinationController = segue.destinationViewController as? CategoryListViewController {
         
         if let categoryIndex = categoryTable.indexPathForSelectedRow {
-          let categoryToPass = categories[categoryIndex.row]
+          var categoryToPass = ""
+          var listToPass = passedList
+          if categoryIndex.section == 0 {
+            categoryToPass = "custom"
+            listToPass = customList
+          } else {
+            categoryToPass = categories[categoryIndex.row]
+            listToPass = passedList
+          }
+          
+          print(categoryToPass)
+          print(listToPass.listName)
+          
           destinationController.passedCategory = categoryToPass
-          destinationController.passedList = passedList
+          destinationController.passedList = listToPass
         }
       }
     }

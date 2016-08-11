@@ -1678,7 +1678,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="CkM-ti-5Zh">
-                                <rect key="frame" x="0.0" y="180" width="600" height="422"/>
+                                <rect key="frame" x="0.0" y="120" width="600" height="480"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -1824,13 +1824,13 @@
                             <constraint firstItem="CkM-ti-5Zh" firstAttribute="leading" secondItem="au1-wJ-exN" secondAttribute="leading" id="Jgc-R8-rXB"/>
                             <constraint firstItem="ocA-A6-NCI" firstAttribute="leading" secondItem="au1-wJ-exN" secondAttribute="leading" constant="8" id="QKG-qU-Jry"/>
                             <constraint firstItem="ocA-A6-NCI" firstAttribute="top" secondItem="bC3-5V-YXK" secondAttribute="bottom" constant="8" id="R1H-EI-vaR"/>
-                            <constraint firstItem="CkM-ti-5Zh" firstAttribute="top" secondItem="ocA-A6-NCI" secondAttribute="bottom" constant="8" id="WHe-ZJ-cDQ"/>
+                            <constraint firstItem="CkM-ti-5Zh" firstAttribute="top" secondItem="ocA-A6-NCI" secondAttribute="bottom" constant="-52" id="WHe-ZJ-cDQ"/>
                             <constraint firstItem="CkM-ti-5Zh" firstAttribute="leading" secondItem="au1-wJ-exN" secondAttribute="leadingMargin" constant="-16" id="Xha-4N-RCR"/>
                             <constraint firstAttribute="trailing" secondItem="ocA-A6-NCI" secondAttribute="trailing" constant="8" id="Yvq-OF-nBp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="CkM-ti-5Zh" secondAttribute="trailing" constant="-16" id="fj4-ye-Wc8"/>
                             <constraint firstItem="2KG-30-hAL" firstAttribute="top" secondItem="ocA-A6-NCI" secondAttribute="bottom" constant="400" id="mMT-Rf-mX3"/>
-                            <constraint firstItem="2KG-30-hAL" firstAttribute="top" secondItem="CkM-ti-5Zh" secondAttribute="bottom" constant="-2" id="mP0-WX-Bb5"/>
-                            <constraint firstItem="CkM-ti-5Zh" firstAttribute="top" secondItem="bC3-5V-YXK" secondAttribute="bottom" constant="116" id="ycd-bT-LHm"/>
+                            <constraint firstItem="2KG-30-hAL" firstAttribute="top" secondItem="CkM-ti-5Zh" secondAttribute="bottom" id="mP0-WX-Bb5"/>
+                            <constraint firstItem="CkM-ti-5Zh" firstAttribute="top" secondItem="bC3-5V-YXK" secondAttribute="bottom" constant="56" id="ycd-bT-LHm"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">

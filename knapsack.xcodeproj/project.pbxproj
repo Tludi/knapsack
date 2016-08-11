@@ -148,18 +148,18 @@
 			isa = PBXGroup;
 			children = (
 				005F806F1B69F5F700D46FB1 /* Main.storyboard */,
-				0058C1DC1D59419700FEEA3B /* CustomItemViewController.swift */,
-				00150B561B71504300AE47C7 /* NewListViewController.swift */,
 				003217511B6A90EA0092E36E /* TripViewController.swift */,
-				005F80751B69F68400D46FB1 /* NewTripViewController.swift */,
 				003217541B6ABA300092E36E /* TripListViewController.swift */,
+				005F80751B69F68400D46FB1 /* NewTripViewController.swift */,
 				0063AC911B6ADAE500059646 /* ListItemsViewController.swift */,
 				0063AC941B6B13D600059646 /* CategoriesViewController.swift */,
-				005F80771B69F68400D46FB1 /* MenuTableViewController.swift */,
 				007F621E1B6E81D800D2A36B /* CategoryListViewController.swift */,
-				005F80791B69F68400D46FB1 /* Trip.swift */,
+				0058C1DC1D59419700FEEA3B /* CustomItemViewController.swift */,
+				00150B561B71504300AE47C7 /* NewListViewController.swift */,
+				005F80771B69F68400D46FB1 /* MenuTableViewController.swift */,
 				00D0C8D41B67DFEC00823D22 /* Supporting Files */,
 				EF98D4681B6DB4B200175C53 /* MasterItems.swift */,
+				005F80791B69F68400D46FB1 /* Trip.swift */,
 				00CFC2DA1B715E5E00B4B325 /* MasterItemList.swift */,
 				009EC42E1B7BC3F30091A2E1 /* ArchiveViewController.swift */,
 			);
