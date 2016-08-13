@@ -1756,14 +1756,19 @@
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="categoryBox" translatesAutoresizingMaskIntoConstraints="NO" id="Iwh-Fx-l9M">
                                         <rect key="frame" x="0.0" y="0.0" width="584" height="100"/>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H6y-bT-Pvc">
-                                        <rect key="frame" x="242" y="35" width="100" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New Custom Item" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H6y-bT-Pvc">
+                                        <rect key="frame" x="84" y="35" width="416" height="30"/>
                                         <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="7hE-29-oyw"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="7hE-29-oyw"/>
+                                            </mask>
+                                        </variation>
                                     </textField>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCn-eH-6dJ">
                                         <rect key="frame" x="22" y="39" width="42" height="21"/>
@@ -1771,9 +1776,9 @@
                                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pjw-cE-bO2">
-                                        <rect key="frame" x="516" y="39" width="46" height="21"/>
-                                        <state key="normal" title="Button"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pjw-cE-bO2">
+                                        <rect key="frame" x="516" y="34" width="46" height="30"/>
+                                        <state key="normal" title="Add"/>
                                         <connections>
                                             <action selector="addItemButton:" destination="lqh-fc-5TX" eventType="touchUpInside" id="oAa-vd-IT1"/>
                                         </connections>
@@ -1789,6 +1794,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Pjw-cE-bO2" secondAttribute="bottom" constant="40" id="EKY-fW-wu2"/>
                                     <constraint firstAttribute="trailing" secondItem="Iwh-Fx-l9M" secondAttribute="trailing" id="IZN-md-7Y3"/>
                                     <constraint firstItem="Pjw-cE-bO2" firstAttribute="top" secondItem="ocA-A6-NCI" secondAttribute="top" constant="39" id="J93-3l-EhO"/>
+                                    <constraint firstItem="Pjw-cE-bO2" firstAttribute="leading" secondItem="H6y-bT-Pvc" secondAttribute="trailing" constant="20" id="JyG-b2-2Fd"/>
                                     <constraint firstItem="H6y-bT-Pvc" firstAttribute="centerX" secondItem="ocA-A6-NCI" secondAttribute="centerX" id="MwG-K6-K06"/>
                                     <constraint firstAttribute="bottom" secondItem="Pjw-cE-bO2" secondAttribute="bottom" constant="49" id="SI3-e9-4JU"/>
                                     <constraint firstAttribute="trailing" secondItem="Pjw-cE-bO2" secondAttribute="trailing" constant="22" id="Sjh-Wc-79t"/>
@@ -1798,6 +1804,7 @@
                                     <constraint firstAttribute="bottom" secondItem="Iwh-Fx-l9M" secondAttribute="bottom" id="aKV-X6-Jgm"/>
                                     <constraint firstItem="Pjw-cE-bO2" firstAttribute="top" secondItem="ocA-A6-NCI" secondAttribute="top" constant="49" id="gvq-Yd-O51"/>
                                     <constraint firstItem="H6y-bT-Pvc" firstAttribute="leading" secondItem="LCn-eH-6dJ" secondAttribute="trailing" constant="166" id="kMM-Nx-d1z"/>
+                                    <constraint firstItem="H6y-bT-Pvc" firstAttribute="leading" secondItem="LCn-eH-6dJ" secondAttribute="trailing" constant="20" id="lfu-fa-EYO"/>
                                     <constraint firstItem="LCn-eH-6dJ" firstAttribute="top" secondItem="ocA-A6-NCI" secondAttribute="top" constant="39" id="oSJ-QC-zC5"/>
                                 </constraints>
                                 <variation key="default">
