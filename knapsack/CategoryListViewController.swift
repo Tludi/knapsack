@@ -12,18 +12,22 @@ import RealmSwift
 class CategoryListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
   var realm = try! Realm()
+  var passedTrip = Trip()
   var passedCategory = "clothing"
   var passedList = ItemList()
   var masterList = MasterItemList().itemList
   
   
   
+  @IBOutlet weak var tripLengthLabel: UILabel!
   
   @IBOutlet weak var itemTable: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = passedCategory.capitalizedString
+    tripLengthLabel.text = "Packing for \(passedTrip.numberOfDays) days"
+    print(passedTrip.numberOfDays + " days - +- items list")
   }
   
   

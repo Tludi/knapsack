@@ -12,6 +12,7 @@ import RealmSwift
 class ListItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
   let realm = try! Realm()
+  var passedTrip = Trip()
   var chosenList = ItemList()
   var chosenCategory = String()
   let checkedButtonImage = UIImage(named: "squareCheck.png")
@@ -48,6 +49,8 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
 //    print(chosenList.items.count)  // number of overall items (119)
 //    print(chosenList.items.filter("itemCount > 0").count)  // number of items with a count greater than 0
 //    print(chosenList.items.filter(filterCat).count) // number of items using filtercat
+    
+    print(passedTrip.numberOfDays + " days - Items list")
   }
   
   
@@ -209,10 +212,12 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     if segue.identifier == "showAddItem" {
       if let destinationController = segue.destinationViewController as? CategoriesViewController {
         destinationController.passedList = chosenList
+        destinationController.passedTrip = passedTrip
       }
     } else if segue.identifier == "addItemBox" {
       if let destinationController = segue.destinationViewController as? CategoriesViewController {
         destinationController.passedList = chosenList
+        destinationController.passedTrip = passedTrip
       }
     }
   }

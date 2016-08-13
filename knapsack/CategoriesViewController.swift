@@ -15,17 +15,21 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   var realm = try! Realm()
   var trips = try! Realm().objects(Trip)
   var passedList = ItemList()
+  var passedTrip = Trip()
   
   var allItems = MasterItemList()
   var categories = MasterItemList().categories.sort()
   let customList = try! Realm().objects(ItemList).filter("id = '2'").first!
   
   @IBOutlet weak var categoryTable: UITableView!
+  @IBOutlet weak var tripLengthLabel: UILabel!
   
   override func viewDidLoad() {
     super.viewDidLoad()
 
     self.title = "Categories"
+    tripLengthLabel.text = "Packing for \(passedTrip.numberOfDays) days"
+    print(passedTrip.numberOfDays + " days - add items list")
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -87,6 +91,7 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
           
           destinationController.passedCategory = categoryToPass
           destinationController.passedList = listToPass
+          destinationController.passedTrip = passedTrip
         }
       }
     }

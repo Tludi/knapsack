@@ -33,6 +33,9 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
     // Set the background image of the trips table
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     listTable.backgroundView = UIImageView(image: bgImage)
+    
+    
+    print(chosenTrip.numberOfDays + " days - packing list")
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -181,6 +184,7 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
           
           destinationController.chosenList = list
           destinationController.chosenCategory = category.text!
+          destinationController.passedTrip = chosenTrip
         }
       }
     }

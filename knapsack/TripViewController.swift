@@ -66,6 +66,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     print("remember to reset adUnitID to production if using testing ID")
     bannerView.rootViewController = self
     bannerView.loadRequest(GADRequest())
+
     
   }
   
