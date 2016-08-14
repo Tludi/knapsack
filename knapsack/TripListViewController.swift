@@ -133,7 +133,7 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
         itemsLeft.text = "\(customItemsLeft.count) left"
         // Image for All Items
         let categoryImage = cell.contentView.viewWithTag(5) as! UIImageView
-        categoryImage.image = UIImage(named: "knapsackIcon")
+        categoryImage.image = UIImage(named: "customIcon")
       
       
       

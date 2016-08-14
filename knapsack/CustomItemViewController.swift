@@ -33,7 +33,8 @@ class CustomItemViewController: UIViewController, UITableViewDelegate, UITableVi
       customList.items.append(newItem)
       print("added \(newItem.itemName)")
     }
-  
+    addItemField.text = ""
+    addItemField.resignFirstResponder()
     customItemTable.reloadData()
   }
 
@@ -57,8 +58,9 @@ class CustomItemViewController: UIViewController, UITableViewDelegate, UITableVi
     let customItems = customList.items
     let customItem = customItems[indexPath.row]
     let customItemLabel = cell.contentView.viewWithTag(1) as! UILabel
+    let customIcon = cell.contentView.viewWithTag(5) as! UIImageView
     customItemLabel.text = customItem.itemName
-    
+    customIcon.image = UIImage(named: "customIcon")
     return cell
   }
   

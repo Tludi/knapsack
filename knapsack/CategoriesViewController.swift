@@ -55,6 +55,7 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
     
     if indexPath.section == 0 {
       categoryLabelName.text = "Custom"
+      categoryImage.image = UIImage(named: "customIcon")
     } else if indexPath.section == 1 {
       
       let category = categories[indexPath.row]
@@ -62,7 +63,6 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
     
     // Image for Category
     // Image Icon needs to be named 'category'Icon
-//    print("\(category)Icon")
       categoryImage.image = UIImage(named: "\(category)Icon")
     }
     
