@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:knapsack/CustomItemViewController.swift">
+   </FileRef>
+   <FileRef
       location = "group:knapsack.xcodeproj">
    </FileRef>
    <FileRef
