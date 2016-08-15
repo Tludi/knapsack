@@ -37,20 +37,9 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     //*** create a filter based on category passed or all items
     if chosenCategory == "All Items" {
       filterCat = "itemCount > 0"
-      print(chosenList.items.count)
-//      print(filterCat)
     } else {
       filterCat = "itemCount > 0 AND itemCategory == '\(chosenCategory.lowercaseString)'"
-      print(filterCat)
-      // passed list total item count
-      print(chosenList.items.count)
     }
-    // for testing
-//    print(chosenList.items.count)  // number of overall items (119)
-//    print(chosenList.items.filter("itemCount > 0").count)  // number of items with a count greater than 0
-//    print(chosenList.items.filter(filterCat).count) // number of items using filtercat
-    
-    print(passedTrip.numberOfDays + " days - Items list")
   }
   
   
@@ -60,6 +49,8 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     // show/hide addItemBox based on if there are any items in the list
     addItemBox.layer.cornerRadius = 20
     if chosenList.items.filter("itemCount > 0").count > 0 {
+      addItemBox.hidden = true
+    } else if customList.items.filter("itemCount > 0").count > 0 {
       addItemBox.hidden = true
     } else {
       addItemBox.hidden = false
@@ -76,17 +67,17 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if chosenList.listName == "All Items" {
       if section == 0 {
-        print("section 0 has \(customList.items.filter(filterCat).count)")
+//        print("section 0 has \(customList.items.filter(filterCat).count)")
         return customList.items.filter(filterCat).count
       } else {
         let itemsWithCount = chosenList.items.filter(filterCat)
-        print("section 1 has \(itemsWithCount.count)")
+//        print("section 1 has \(itemsWithCount.count)")
         return itemsWithCount.count      }
     } else {
       if section == 0 {
-        print(filterCat)
+//        print(filterCat)
         let itemsWithCount = chosenList.items.filter(filterCat)
-        print(itemsWithCount.count)
+//        print(itemsWithCount.count)
         return itemsWithCount.count
       } else {
         return 0
@@ -117,6 +108,7 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     // List Name
     let listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
     let categoryNameLabel = cell.contentView.viewWithTag(2) as! UILabel
+    let itemIcon = cell.contentView.viewWithTag(3) as! UIImageView
 
     // box around item count that toggles when item is packed
     let checkBox:UIImageView = cell.contentView.viewWithTag(11) as!UIImageView
@@ -129,6 +121,12 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     listNameLabel.text = item.itemName
     categoryNameLabel.text = item.itemCategory.capitalizedString
     itemCountLabel.text = "\(item.itemCount)"
+    
+    if indexPath.section == 0 {
+      itemIcon.image = UIImage(named: "customIcon")
+    } else {
+      itemIcon.image = UIImage(named: "\(item.itemCategory)Icon")
+    }
     
     // set checked image based on being packed
     if itemsWithCount[indexPath.row].packed == true {

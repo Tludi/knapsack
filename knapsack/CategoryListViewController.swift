@@ -27,7 +27,6 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     super.viewDidLoad()
     self.title = passedCategory.capitalizedString
     tripLengthLabel.text = "Packing for \(passedTrip.numberOfDays) days"
-    print(passedTrip.numberOfDays + " days - +- items list")
   }
   
   

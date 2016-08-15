@@ -34,8 +34,6 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     listTable.backgroundView = UIImageView(image: bgImage)
     
-    
-    print(chosenTrip.numberOfDays + " days - packing list")
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -68,7 +66,6 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
         return 0
       }
     } else if section == 2 { // THIRD SECTION
-//      print(selectedCategories.count)
       return selectedCategories.count
     } else {
       return 1 // FIRST and SECOND SECTION
@@ -179,8 +176,6 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
           } else {
             list = chosenTrip.lists[0]
           }
-          
-          print("\(list.listName) list name")
           
           destinationController.chosenList = list
           destinationController.chosenCategory = category.text!

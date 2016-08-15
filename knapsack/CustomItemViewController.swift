@@ -20,7 +20,7 @@ class CustomItemViewController: UIViewController, UITableViewDelegate, UITableVi
   @IBOutlet weak var addItemField: UITextField!
   
   @IBAction func addItemButton(sender: UIButton) {
-    testLabel.text = addItemField.text!
+//    testLabel.text = addItemField.text!
     
     let realm = try! Realm()
     
@@ -38,11 +38,14 @@ class CustomItemViewController: UIViewController, UITableViewDelegate, UITableVi
     customItemTable.reloadData()
   }
 
-  override func viewDidLoad() {
-      super.viewDidLoad()
 
-      testLabel.text = "test"
-      // Do any additional setup after loading the view.
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    testLabel.layer.masksToBounds = true
+    testLabel.layer.cornerRadius = 7
+    testLabel.text = "Add your custom item."
+    
   }
 
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -102,7 +105,7 @@ class CustomItemViewController: UIViewController, UITableViewDelegate, UITableVi
       self.presentViewController(deleteAlert, animated: true, completion: nil)
     }
     
-    let deleteImage = UIImage(named: "deleteBoxSM.png")!
+    let deleteImage = UIImage(named: "deleteBoxMD.png")!
     deleteCellAction.backgroundColor = UIColor(patternImage: deleteImage)
     
     // first item in array is far right in cell

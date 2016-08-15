@@ -24,12 +24,16 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
   @IBOutlet weak var categoryTable: UITableView!
   @IBOutlet weak var tripLengthLabel: UILabel!
   
+  
+  override func viewWillAppear(animated: Bool) {
+    categoryTable.reloadData()
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
 
     self.title = "Categories"
     tripLengthLabel.text = "Packing for \(passedTrip.numberOfDays) days"
-    print(passedTrip.numberOfDays + " days - add items list")
   }
   
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -86,8 +90,6 @@ class CategoriesViewController: UIViewController, UITableViewDataSource, UITable
             listToPass = passedList
           }
           
-          print(categoryToPass)
-          print(listToPass.listName)
           
           destinationController.passedCategory = categoryToPass
           destinationController.passedList = listToPass
