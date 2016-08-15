@@ -12,11 +12,13 @@ import RealmSwift
 class ListItemsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
   let realm = try! Realm()
+  var passedTrip = Trip()
   var chosenList = ItemList()
   var chosenCategory = String()
   let checkedButtonImage = UIImage(named: "squareCheck.png")
   let uncheckedButtonImage = UIImage(named: "squareCount.png")
   var filterCat :String = ""
+  let customList = try! Realm().objects(ItemList).filter("id = '2'").first!
   
   @IBOutlet weak var listName: UILabel!
   @IBOutlet weak var listItemTable: UITableView!
@@ -35,15 +37,9 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     //*** create a filter based on category passed or all items
     if chosenCategory == "All Items" {
       filterCat = "itemCount > 0"
-//      print(filterCat)
     } else {
       filterCat = "itemCount > 0 AND itemCategory == '\(chosenCategory.lowercaseString)'"
-//      print(filterCat)
     }
-    // for testing
-//    print(chosenList.items.count)  // number of overall items (119)
-//    print(chosenList.items.filter("itemCount > 0").count)  // number of items with a count greater than 0
-//    print(chosenList.items.filter(filterCat).count) // number of items using filtercat
   }
   
   
@@ -54,6 +50,8 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     addItemBox.layer.cornerRadius = 20
     if chosenList.items.filter("itemCount > 0").count > 0 {
       addItemBox.hidden = true
+    } else if customList.items.filter("itemCount > 0").count > 0 {
+      addItemBox.hidden = true
     } else {
       addItemBox.hidden = false
     }
@@ -62,25 +60,55 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   
   //*** Only one section in this table ***//
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 1
+    return 2
   }
   
   //*** Number of rows based on selected items with a count ***//
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    let itemsWithCount = chosenList.items.filter(filterCat)
-    return itemsWithCount.count
+    if chosenList.listName == "All Items" {
+      if section == 0 {
+//        print("section 0 has \(customList.items.filter(filterCat).count)")
+        return customList.items.filter(filterCat).count
+      } else {
+        let itemsWithCount = chosenList.items.filter(filterCat)
+//        print("section 1 has \(itemsWithCount.count)")
+        return itemsWithCount.count      }
+    } else {
+      if section == 0 {
+//        print(filterCat)
+        let itemsWithCount = chosenList.items.filter(filterCat)
+//        print(itemsWithCount.count)
+        return itemsWithCount.count
+      } else {
+        return 0
+        
+      }
+    }
   }
+  
+  
+  
   
   //*** show cells based on All Items or individual category selected from segue
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let itemsWithCount = chosenList.items.filter(filterCat)
+    var itemsWithCount = chosenList.items.filter(filterCat)
+    
+    if indexPath.section == 0 {
+      itemsWithCount = customList.items.filter(filterCat)
+    } else {
+      itemsWithCount = chosenList.items.filter(filterCat)
+    }
 //    let sortedItemsWithCount = itemsWithCount.sorted("itemName") - Removed since sorting in database
+    
+    
     let item = itemsWithCount[indexPath.row]
-
-    let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath) 
+    let cell = tableView.dequeueReusableCellWithIdentifier("itemCell", forIndexPath: indexPath)
+    
+    
     // List Name
     let listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
     let categoryNameLabel = cell.contentView.viewWithTag(2) as! UILabel
+    let itemIcon = cell.contentView.viewWithTag(3) as! UIImageView
 
     // box around item count that toggles when item is packed
     let checkBox:UIImageView = cell.contentView.viewWithTag(11) as!UIImageView
@@ -93,6 +121,12 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     listNameLabel.text = item.itemName
     categoryNameLabel.text = item.itemCategory.capitalizedString
     itemCountLabel.text = "\(item.itemCount)"
+    
+    if indexPath.section == 0 {
+      itemIcon.image = UIImage(named: "customIcon")
+    } else {
+      itemIcon.image = UIImage(named: "\(item.itemCategory)Icon")
+    }
     
     // set checked image based on being packed
     if itemsWithCount[indexPath.row].packed == true {
@@ -107,9 +141,17 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     
   }
   
+  
+  
+  
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     let cell = tableView.cellForRowAtIndexPath(indexPath)
-    let itemsWithCount = chosenList.items.filter(filterCat)
+    var itemsWithCount = chosenList.items.filter(filterCat)
+    if indexPath.section == 0 {
+      itemsWithCount = customList.items.filter(filterCat)
+    } else {
+      itemsWithCount = chosenList.items.filter(filterCat)
+    }
     let item = itemsWithCount[indexPath.row]
     
     let checkBox:UIImageView = cell?.contentView.viewWithTag(11) as! UIImageView
@@ -168,10 +210,12 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
     if segue.identifier == "showAddItem" {
       if let destinationController = segue.destinationViewController as? CategoriesViewController {
         destinationController.passedList = chosenList
+        destinationController.passedTrip = passedTrip
       }
     } else if segue.identifier == "addItemBox" {
       if let destinationController = segue.destinationViewController as? CategoriesViewController {
         destinationController.passedList = chosenList
+        destinationController.passedTrip = passedTrip
       }
     }
   }

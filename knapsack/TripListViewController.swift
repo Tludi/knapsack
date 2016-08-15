@@ -13,6 +13,7 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
 
   // Trip selected
   var chosenTrip = Trip()
+  let customList = try! Realm().objects(ItemList).filter("id = '2'").first!
   // why is this here?
   var allTrips = try! Realm().objects(Trip)
 
@@ -32,6 +33,7 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
     // Set the background image of the trips table
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
     listTable.backgroundView = UIImageView(image: bgImage)
+    
   }
   
   override func viewWillAppear(animated: Bool) {
@@ -40,7 +42,7 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
 
   // set two sections - One for "All Items" and one for Categories
   func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 2
+    return 3
   }
   
   
@@ -57,20 +59,31 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
       }
     }
     // Return the number of rows in the section.
-    if section == 1 {  // SECOND SECTION
-//      print(selectedCategories.count)
+    if section == 1 { // SECOND SECTION
+      if customList.items.filter("itemCount > 0").count > 0 {
+        return 1
+      } else {
+        return 0
+      }
+    } else if section == 2 { // THIRD SECTION
       return selectedCategories.count
     } else {
-      return 1 // FIRST SECTION
+      return 1 // FIRST and SECOND SECTION
     }
   }
   
   
-  //*** Print the cells based on (1)all items and (2)categories of items selected  ***//
+  //*** Print the cells based on (1)all items, (2)custom intems and 
+  //*** (3) categories of items selected  ***//
   func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCellWithIdentifier("listCell", forIndexPath: indexPath) 
     let tripList = chosenTrip.lists[0]
+    // Items from main list
     let selectedItems = tripList.items.filter("itemCount > 0")
+    let unpackedItems = selectedItems.filter("packed = false")
+    // Items from custom list
+    let customItems = customList.items.filter("itemCount > 0")
+    let customItemsLeft = customItems.filter("packed = false")
 
     // create an array of selectedCategories that have been selected
     var selectedCategories = [String]()
@@ -79,36 +92,57 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
         selectedCategories.append(selectedItems[i].itemCategory)
       }
     }
-
-    // Get items that have not been packed yet
-    let unpackedItems = selectedItems.filter("packed = false")
     
     //*** FIRST SECTION ***//
+    //*** All Items ***//
     if indexPath.section == 0 {
-      // Show All Items cell in first section
+      // Get total Items from Master List and Custom List that were chosen
+      let totalItemsCount = selectedItems.count + customItems.count
+      let totalUnpackedItemsCount = unpackedItems.count + customItemsLeft.count
       // List Name - has a tag of 1
       let listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
       // get the default "All Items" List Name and assign to first section
       listNameLabel.text = "\(tripList.listName)"
       // Item Name
       let listItemNameLabel = cell.contentView.viewWithTag(2) as! UILabel
-      listItemNameLabel.text = "\(selectedItems.count) items"
+      listItemNameLabel.text = "\(totalItemsCount) items"
       // Items Left to pack
       let itemsLeft = cell.contentView.viewWithTag(3) as! UILabel
-      itemsLeft.text = "\(unpackedItems.count) left"
+      itemsLeft.text = "\(totalUnpackedItemsCount) left"
       // Image for All Items
       let categoryImage = cell.contentView.viewWithTag(5) as! UIImageView
       categoryImage.image = UIImage(named: "knapsackIcon")
       
+      
+      
+      
     //*** SECOND SECTION ***//
+    //*** Custom Items ***//
     } else if indexPath.section == 1 {
-      // Show item categories if any items are added to list
+        // List Name - has a tag of 1
+        let listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
+        listNameLabel.text = "\(customList.listName)"
+      // Item Name
+        let listItemNameLabel = cell.contentView.viewWithTag(2) as! UILabel
+        listItemNameLabel.text = "\(customItems.count) items"
+      // Items Left to pack
+        let itemsLeft = cell.contentView.viewWithTag(3) as! UILabel
+        itemsLeft.text = "\(customItemsLeft.count) left"
+        // Image for All Items
+        let categoryImage = cell.contentView.viewWithTag(5) as! UIImageView
+        categoryImage.image = UIImage(named: "customIcon")
+      
+      
+      
+      
+    //*** THIRD SECTION ***//
+    //*** Chosen Category Items ***//
+    } else {
       // List Name - has a tag of 1
         let sortedCategories = selectedCategories.sort()
         let listNameLabel = cell.contentView.viewWithTag(1) as! UILabel
         let currentCategory = sortedCategories[indexPath.row]
         listNameLabel.text = currentCategory.capitalizedString
-      
       // Category List
         let listItemNameLabel = cell.contentView.viewWithTag(2) as! UILabel
         let categoryItems = selectedItems.filter("itemCategory = '\(currentCategory)'")
@@ -134,9 +168,18 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
         if let listPath = listTable.indexPathForSelectedRow {
           let cell = tableView(listTable, cellForRowAtIndexPath: listPath)
           let category = cell.contentView.viewWithTag(1) as! UILabel
-          let list = chosenTrip.lists[0]
+          
+          // Current Trip first list - master List "All Items"
+          var list = chosenTrip.lists[0]
+          if listPath.section == 1 {
+            list = customList
+          } else {
+            list = chosenTrip.lists[0]
+          }
+          
           destinationController.chosenList = list
           destinationController.chosenCategory = category.text!
+          destinationController.passedTrip = chosenTrip
         }
       }
     }

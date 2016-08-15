@@ -12,18 +12,21 @@ import RealmSwift
 class CategoryListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
   var realm = try! Realm()
+  var passedTrip = Trip()
   var passedCategory = "clothing"
   var passedList = ItemList()
   var masterList = MasterItemList().itemList
   
   
   
+  @IBOutlet weak var tripLengthLabel: UILabel!
   
   @IBOutlet weak var itemTable: UITableView!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     self.title = passedCategory.capitalizedString
+    tripLengthLabel.text = "Packing for \(passedTrip.numberOfDays) days"
   }
   
   
@@ -105,12 +108,15 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
         itemCountLabel.text = "0"
         decreaseButton.hidden = true
         decreaseBackground?.hidden = true
+        try! realm.write{
+          existingListItem.packed = false
+        }
       }
 
-      itemCountLabel.text = "\(updatedCount)"
       try! realm.write{
         existingListItem.itemCount = updatedCount
       }
+      itemCountLabel.text = "\(updatedCount)"
       self.itemTable.reloadData()
     }
 

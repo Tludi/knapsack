@@ -14,6 +14,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   
   let masterList = try! Realm().objects(ItemList).filter("id = '1'")
+  let customListFromAppDelegate = try! Realm().objects(ItemList).filter("id = '2'")
+  
   var window: UIWindow?
 
 

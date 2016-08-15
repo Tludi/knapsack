@@ -9,6 +9,9 @@
 import Foundation
 import RealmSwift
 
+
+//*** populates database with base items if masterlist does not exist ***//
+
 class DataManager {
   class func populateRealm() -> Void {
     let realm = try! Realm()
@@ -19,6 +22,7 @@ class DataManager {
     let masterListWithAllItems = ItemList()
     masterListWithAllItems.id = "1"
     masterListWithAllItems.listName = "Master Item List"
+    
     try! realm.write {
       realm.add(masterListWithAllItems)
       print("added master list")
@@ -27,7 +31,6 @@ class DataManager {
     for category in masterCategories {
       let categoryList = masterItems[category]!
       for item in categoryList {
-//        let categoryItem = item
         
         let newItem = Item()
         newItem.id = NSUUID().UUIDString
@@ -39,6 +42,15 @@ class DataManager {
           print("added \(newItem.itemName)")
         }
       }
+    }
+    
+    let customItemList = ItemList()
+    customItemList.id = "2"
+    customItemList.listName = "Custom Items"
+    
+    try! realm.write {
+      realm.add(customItemList)
+      print("added custom list")
     }
     
   }
