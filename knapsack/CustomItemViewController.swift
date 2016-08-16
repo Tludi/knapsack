@@ -23,19 +23,30 @@ class CustomItemViewController: UIViewController, UITableViewDelegate, UITableVi
 //    testLabel.text = addItemField.text!
     
     let realm = try! Realm()
-    
     let newItem = Item()
-    newItem.id = NSUUID().UUIDString
-    newItem.itemCategory = "custom items"
-    newItem.itemName = (addItemField.text?.capitalizedString)!
     
-    try! realm.write {
-      customList.items.append(newItem)
-      print("added \(newItem.itemName)")
+    if let newItemName = addItemField.text {
+      if newItemName == "" {
+        let noNameAlert = UIAlertController(title: "Item Name", message: "Name Can Not Be Blank", preferredStyle: .Alert)
+        noNameAlert.addAction(UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
+          return
+        }))
+        self.presentViewController(noNameAlert, animated: true, completion: nil)
+      } else {
+        newItem.id = NSUUID().UUIDString
+        newItem.itemCategory = "custom items"
+        newItem.itemName = (addItemField.text?.capitalizedString)!
+    
+        try! realm.write {
+          customList.items.append(newItem)
+          print("added \(newItem.itemName)")
+        }
+      
+        addItemField.text = ""
+        addItemField.resignFirstResponder()
+        customItemTable.reloadData()
+      }
     }
-    addItemField.text = ""
-    addItemField.resignFirstResponder()
-    customItemTable.reloadData()
   }
 
 
