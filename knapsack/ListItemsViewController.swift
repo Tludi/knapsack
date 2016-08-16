@@ -14,11 +14,12 @@ class ListItemsViewController: UIViewController, UITableViewDelegate, UITableVie
   let realm = try! Realm()
   var passedTrip = Trip()
   var chosenList = ItemList()
+  var customList = ItemList()
   var chosenCategory = String()
   let checkedButtonImage = UIImage(named: "squareCheck.png")
   let uncheckedButtonImage = UIImage(named: "squareCount.png")
   var filterCat :String = ""
-  let customList = try! Realm().objects(ItemList).filter("id = '2'").first!
+//  let customList = try! Realm().objects(ItemList).filter("id = '2'").first!
   
   @IBOutlet weak var listName: UILabel!
   @IBOutlet weak var listItemTable: UITableView!

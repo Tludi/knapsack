@@ -4,6 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Archive View Controller-->
@@ -162,14 +163,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tripCell" id="vdo-ac-tWz">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="tripCell" id="vdo-ac-tWz">
                                         <rect key="frame" x="0.0" y="86" width="592" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vdo-ac-tWz" id="wdy-64-Ciq">
-                                            <rect key="frame" x="0.0" y="0.0" width="592" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="559" height="120"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tripBox" translatesAutoresizingMaskIntoConstraints="NO" id="XNc-de-bM4">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="tripBox" translatesAutoresizingMaskIntoConstraints="NO" id="XNc-de-bM4">
                                                     <rect key="frame" x="10" y="10" width="572" height="100"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluePill" translatesAutoresizingMaskIntoConstraints="NO" id="XFM-YU-0Ik" userLabel="weatherPill">
@@ -180,7 +181,7 @@
                                                         <constraint firstAttribute="height" constant="30" id="Kif-bW-d5C"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TripName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSM-Rs-WmG">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="TripName" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSM-Rs-WmG">
                                                     <rect key="frame" x="20" y="23" width="552" height="28"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="200" id="Zmc-vA-QKL"/>
@@ -195,14 +196,14 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bluePill" translatesAutoresizingMaskIntoConstraints="NO" id="ypS-yS-h74">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bluePill" translatesAutoresizingMaskIntoConstraints="NO" id="ypS-yS-h74">
                                                     <rect key="frame" x="246" y="70" width="100" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="BmO-nx-Fpe"/>
                                                         <constraint firstAttribute="height" constant="30" id="Q22-NA-WXm"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQw-06-VVX">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="3" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZQw-06-VVX">
                                                     <rect key="frame" x="256" y="75" width="80" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="es0-MG-5bB"/>
@@ -212,7 +213,7 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="itemPill" translatesAutoresizingMaskIntoConstraints="NO" id="7mZ-1C-4hB">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="itemPill" translatesAutoresizingMaskIntoConstraints="NO" id="7mZ-1C-4hB">
                                                     <rect key="frame" x="512" y="70" width="60" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="gJV-X0-iS4"/>
@@ -235,14 +236,14 @@
                                                     <color key="textColor" red="0.60000002379999995" green="0.60000002379999995" blue="0.60000002379999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="archiveFlag" translatesAutoresizingMaskIntoConstraints="NO" id="Gc6-yW-CTA">
+                                                <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="archiveFlag" translatesAutoresizingMaskIntoConstraints="NO" id="Gc6-yW-CTA">
                                                     <rect key="frame" x="557" y="23" width="15" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="15" id="V02-XA-esy"/>
                                                         <constraint firstAttribute="width" constant="15" id="eSX-ME-6ED"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Items" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gxy-Uc-2bD">
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Items" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gxy-Uc-2bD">
                                                     <rect key="frame" x="517" y="75" width="50" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="3Nr-eK-cbC"/>
@@ -389,12 +390,19 @@
                         </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Trips" id="NTK-Ki-nv0">
-                        <barButtonItem key="leftBarButtonItem" image="archiveFlag" id="QIM-LY-OIT">
-                            <connections>
-                                <action selector="toggleTripType:" destination="5wy-3a-QpZ" id="yyk-iF-uK0"/>
-                                <segue destination="PV1-Gp-f7P" kind="show" id="DGn-lQ-Emg"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem image="archiveFlag" id="QIM-LY-OIT">
+                                <connections>
+                                    <action selector="toggleTripType:" destination="5wy-3a-QpZ" id="yyk-iF-uK0"/>
+                                    <segue destination="PV1-Gp-f7P" kind="show" id="DGn-lQ-Emg"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="icon-hamburger" id="8K0-AK-xzi">
+                                <connections>
+                                    <segue destination="Zp5-yN-fqk" kind="show" id="3lK-Ep-XxZ"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" title="New Trip" id="Bjh-ah-mAn">
                             <connections>
                                 <segue destination="11I-Sm-pTb" kind="show" id="Uas-d6-fMc"/>
@@ -413,6 +421,49 @@
             </objects>
             <point key="canvasLocation" x="438" y="-196"/>
         </scene>
+        <!--Information-->
+        <scene sceneID="Bo5-tm-tRI">
+            <objects>
+                <viewController title="Information" id="Zp5-yN-fqk" customClass="InformationPageViewController" customModule="knapsack" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="0Cp-jg-6j4"/>
+                        <viewControllerLayoutGuide type="bottom" id="2Oo-ba-tIf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ECk-2C-4hT">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Information Page" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="REi-62-eLJ">
+                                <rect key="frame" x="235" y="289" width="130" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="1. By swiping the trip to the left you can delete, edit, copy, or archive a trip." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="vdu-qU-9Ax">
+                                <rect key="frame" x="180" y="72" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="2ES-UW-VSE"/>
+                                    <constraint firstAttribute="height" constant="128" id="DhC-u2-CHH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="REi-62-eLJ" firstAttribute="top" secondItem="vdu-qU-9Ax" secondAttribute="bottom" constant="89" id="7mm-7m-Ysz"/>
+                            <constraint firstItem="REi-62-eLJ" firstAttribute="centerY" secondItem="ECk-2C-4hT" secondAttribute="centerY" id="J8s-ei-tGe"/>
+                            <constraint firstItem="vdu-qU-9Ax" firstAttribute="centerX" secondItem="ECk-2C-4hT" secondAttribute="centerX" id="Vuw-i7-zF3"/>
+                            <constraint firstItem="REi-62-eLJ" firstAttribute="centerX" secondItem="ECk-2C-4hT" secondAttribute="centerX" id="YOY-xz-jge"/>
+                            <constraint firstItem="vdu-qU-9Ax" firstAttribute="top" secondItem="0Cp-jg-6j4" secondAttribute="bottom" constant="8" id="zp2-eh-UYJ"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IDg-mV-H6Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-221" y="592"/>
+        </scene>
         <!--New Trip View Controller-->
         <scene sceneID="tsj-Du-UCf">
             <objects>
@@ -428,7 +479,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPhone5bg" translatesAutoresizingMaskIntoConstraints="NO" id="WEU-rU-wOx">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Fcc-N6-eAw" customClass="TPKeyboardAvoidingScrollView">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Fcc-N6-eAw" customClass="TPKeyboardAvoidingScrollView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trip Details" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeM-eV-28j">
@@ -616,13 +667,25 @@
                         <constraints>
                             <constraint firstItem="WEU-rU-wOx" firstAttribute="leading" secondItem="OYc-nd-4oh" secondAttribute="leading" id="0q0-cQ-5CP"/>
                             <constraint firstItem="Fcc-N6-eAw" firstAttribute="leading" secondItem="WEU-rU-wOx" secondAttribute="leading" id="49s-Hz-B6v"/>
+                            <constraint firstItem="Fcc-N6-eAw" firstAttribute="leading" secondItem="OYc-nd-4oh" secondAttribute="leading" id="4Fr-QX-2gC"/>
                             <constraint firstAttribute="trailing" secondItem="WEU-rU-wOx" secondAttribute="trailing" id="ExO-iJ-c4c"/>
                             <constraint firstItem="WEU-rU-wOx" firstAttribute="top" secondItem="OYc-nd-4oh" secondAttribute="top" id="FvR-c6-IxQ"/>
+                            <constraint firstItem="Fcc-N6-eAw" firstAttribute="top" secondItem="OYc-nd-4oh" secondAttribute="top" id="Qqb-ka-jr1"/>
+                            <constraint firstItem="VQ1-2T-JPY" firstAttribute="top" secondItem="Fcc-N6-eAw" secondAttribute="bottom" id="b9f-Up-nHf"/>
                             <constraint firstItem="Fcc-N6-eAw" firstAttribute="bottom" secondItem="VQ1-2T-JPY" secondAttribute="top" id="bm4-xq-e6I"/>
                             <constraint firstItem="Fcc-N6-eAw" firstAttribute="top" secondItem="WEU-rU-wOx" secondAttribute="top" id="cev-bP-gpx"/>
                             <constraint firstItem="VQ1-2T-JPY" firstAttribute="top" secondItem="WEU-rU-wOx" secondAttribute="bottom" id="fbD-h1-fq0"/>
+                            <constraint firstAttribute="trailing" secondItem="Fcc-N6-eAw" secondAttribute="trailing" id="hJk-yx-By3"/>
                             <constraint firstItem="Fcc-N6-eAw" firstAttribute="trailing" secondItem="WEU-rU-wOx" secondAttribute="trailing" id="qYD-ab-onH"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="49s-Hz-B6v"/>
+                                <exclude reference="bm4-xq-e6I"/>
+                                <exclude reference="cev-bP-gpx"/>
+                                <exclude reference="qYD-ab-onH"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="addtripButtonLabel" destination="hyL-FB-cxp" id="Nli-sQ-99p"/>
@@ -2010,6 +2073,7 @@
         <image name="bluePill" width="179" height="66"/>
         <image name="categoryBox" width="644" height="114"/>
         <image name="iPhone5bg" width="320" height="568"/>
+        <image name="icon-hamburger" width="22" height="16"/>
         <image name="itemBox" width="644" height="124"/>
         <image name="itemOverlay" width="644" height="125"/>
         <image name="itemPill" width="179" height="66"/>

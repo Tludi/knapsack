@@ -170,14 +170,10 @@ class TripListViewController: UIViewController, UITableViewDelegate, UITableView
           let category = cell.contentView.viewWithTag(1) as! UILabel
           
           // Current Trip first list - master List "All Items"
-          var list = chosenTrip.lists[0]
-          if listPath.section == 1 {
-            list = customList
-          } else {
-            list = chosenTrip.lists[0]
-          }
+          let allItemsList = chosenTrip.lists[0]
           
-          destinationController.chosenList = list
+          destinationController.chosenList = allItemsList
+          destinationController.customList = customList
           destinationController.chosenCategory = category.text!
           destinationController.passedTrip = chosenTrip
         }
