@@ -64,11 +64,11 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     itemCountLabel.text = "\(item.itemCount)"
     
     if item.itemCount > 0 {
-      decreaseButton.hidden = false
-      decreaseBackground!.hidden = false
+      decreaseButton.alpha = 1.0
+      decreaseBackground!.alpha = 1.0
     } else {
-      decreaseButton.hidden = true
-      decreaseBackground?.hidden = true
+      decreaseButton.alpha = 0.0
+      decreaseBackground?.alpha = 0.0
     }
     
     // #selector was updated from swift 2
@@ -84,39 +84,56 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
     let cell = sender.superview!.superview! as! UITableViewCell
     let itemLabel = cell.viewWithTag(1) as! UILabel
     let itemCountLabel = cell.viewWithTag(5) as! UILabel
+    let increaseBackground = cell.viewWithTag(6)
     let decreaseButton:UIButton = cell.viewWithTag(11) as! UIButton
-    let decreaseBackground = cell.viewWithTag(12)
+    let decreaseBackground = cell.viewWithTag(12) as! UIImageView
     let currentCount = Int((itemCountLabel.text)!)
-    
     
     // this is an array of items
     let existingListItem = passedList.items.filter("itemName = '\(itemLabel.text!)'").first!
     
-    // if sender is increase button
+    // if plus(+) button is selected
     if sender.tag == 10 {
+      if currentCount < 1 {
+        decreaseButton.fadeIn()
+        decreaseBackground.fadeIn()
+      }
+      
       let updatedCount = currentCount! + 1
       itemCountLabel.text = "\(updatedCount)"
-      decreaseButton.hidden = false
-      decreaseBackground!.hidden = false
+      print("increaseBackground alpha \(increaseBackground!.alpha)")
+      increaseBackground?.flash()
+      
       try! realm.write{
         existingListItem.itemCount = updatedCount
       }
-    } else {
-      // if sender is decrease button
+      
+    // if minus(-) button is selected
+    } else if sender.tag == 11 {
+      
       let updatedCount = currentCount! - 1
+      
       if updatedCount < 1 {
         itemCountLabel.text = "0"
-        decreaseButton.hidden = true
-        decreaseBackground?.hidden = true
+        decreaseButton.fadeOut()
+        decreaseBackground.fadeOut()
+ 
+        // clear any packed items if removed from list
         try! realm.write{
           existingListItem.packed = false
         }
-      }
 
+      } else {
+        decreaseBackground.flash()
+        itemCountLabel.text = "\(updatedCount)"
+      }
+      
       try! realm.write{
         existingListItem.itemCount = updatedCount
       }
-      itemCountLabel.text = "\(updatedCount)"
+      
+    } else {
+      print("object with wrong tag selected")
       self.itemTable.reloadData()
     }
 

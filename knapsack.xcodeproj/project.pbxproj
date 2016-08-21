@@ -43,6 +43,8 @@
 		0094AC491D6287F2006F3179 /* InformationPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0094AC471D6287F2006F3179 /* InformationPageViewController.swift */; };
 		009EC42F1B7BC3F30091A2E1 /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009EC42E1B7BC3F30091A2E1 /* ArchiveViewController.swift */; };
 		009EC4301B7BC3F30091A2E1 /* ArchiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 009EC42E1B7BC3F30091A2E1 /* ArchiveViewController.swift */; };
+		00BDF8441D68F2EF00ABD3D4 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BDF8431D68F2EF00ABD3D4 /* UIViewExtensions.swift */; };
+		00BDF8451D68F2EF00ABD3D4 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00BDF8431D68F2EF00ABD3D4 /* UIViewExtensions.swift */; };
 		00CFC2DB1B715E5E00B4B325 /* MasterItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CFC2DA1B715E5E00B4B325 /* MasterItemList.swift */; };
 		00CFC2DC1B715E5E00B4B325 /* MasterItemList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00CFC2DA1B715E5E00B4B325 /* MasterItemList.swift */; };
 		00D0C8D71B67DFEC00823D22 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D0C8D61B67DFEC00823D22 /* AppDelegate.swift */; };
@@ -89,6 +91,7 @@
 		007F621E1B6E81D800D2A36B /* CategoryListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
 		0094AC471D6287F2006F3179 /* InformationPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationPageViewController.swift; sourceTree = "<group>"; };
 		009EC42E1B7BC3F30091A2E1 /* ArchiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArchiveViewController.swift; sourceTree = "<group>"; };
+		00BDF8431D68F2EF00ABD3D4 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		00C6EB521D540B8300D476CA /* TPKeyboardAvoidingCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingCollectionView.h; sourceTree = "<group>"; };
 		00CFC2DA1B715E5E00B4B325 /* MasterItemList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MasterItemList.swift; sourceTree = "<group>"; };
 		00D0C8D11B67DFEC00823D22 /* knapsack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = knapsack.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +158,7 @@
 				003217511B6A90EA0092E36E /* TripViewController.swift */,
 				003217541B6ABA300092E36E /* TripListViewController.swift */,
 				005F80751B69F68400D46FB1 /* NewTripViewController.swift */,
+				00BDF8431D68F2EF00ABD3D4 /* UIViewExtensions.swift */,
 				0063AC911B6ADAE500059646 /* ListItemsViewController.swift */,
 				0063AC941B6B13D600059646 /* CategoriesViewController.swift */,
 				007F621E1B6E81D800D2A36B /* CategoryListViewController.swift */,
@@ -440,6 +444,7 @@
 				009EC42F1B7BC3F30091A2E1 /* ArchiveViewController.swift in Sources */,
 				005F809A1B69F83000D46FB1 /* UIScrollView+TPKeyboardAvoidingAdditions.m in Sources */,
 				005F80961B69F83000D46FB1 /* TPKeyboardAvoidingScrollView.m in Sources */,
+				00BDF8441D68F2EF00ABD3D4 /* UIViewExtensions.swift in Sources */,
 				007F621F1B6E81D800D2A36B /* CategoryListViewController.swift in Sources */,
 				00150B571B71504300AE47C7 /* NewListViewController.swift in Sources */,
 				0063AC921B6ADAE500059646 /* ListItemsViewController.swift in Sources */,
@@ -470,6 +475,7 @@
 				00CFC2DC1B715E5E00B4B325 /* MasterItemList.swift in Sources */,
 				0063AC931B6ADAE500059646 /* ListItemsViewController.swift in Sources */,
 				005F80951B69F83000D46FB1 /* TPKeyboardAvoidingCollectionView.m in Sources */,
+				00BDF8451D68F2EF00ABD3D4 /* UIViewExtensions.swift in Sources */,
 				003217531B6A90EA0092E36E /* TripViewController.swift in Sources */,
 				005F80831B69F68400D46FB1 /* MenuTableViewController.swift in Sources */,
 				EF98D46A1B6DB4B200175C53 /* MasterItems.swift in Sources */,

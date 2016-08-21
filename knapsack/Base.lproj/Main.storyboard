@@ -1076,14 +1076,14 @@
                                                         </mask>
                                                     </variation>
                                                 </label>
-                                                <imageView hidden="YES" userInteractionEnabled="NO" tag="12" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ovalBG" translatesAutoresizingMaskIntoConstraints="NO" id="gc2-sl-9wh" userLabel="-ovalBG">
+                                                <imageView userInteractionEnabled="NO" alpha="0.0" tag="12" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ovalBG" translatesAutoresizingMaskIntoConstraints="NO" id="gc2-sl-9wh" userLabel="-ovalBG">
                                                     <rect key="frame" x="448" y="13" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="Cx4-Yl-Mmr"/>
                                                         <constraint firstAttribute="height" constant="45" id="s1a-YR-3fT"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button hidden="YES" opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNb-uU-D5J">
+                                                <button alpha="0.0" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mNb-uU-D5J">
                                                     <rect key="frame" x="451" y="14" width="40" height="40"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="RXI-Ig-5J1"/>
@@ -1095,7 +1095,7 @@
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ovalBG" translatesAutoresizingMaskIntoConstraints="NO" id="b9g-qP-Kus" userLabel="+ovalBG">
+                                                <imageView userInteractionEnabled="NO" tag="6" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ovalBG" translatesAutoresizingMaskIntoConstraints="NO" id="b9g-qP-Kus" userLabel="+ovalBG">
                                                     <rect key="frame" x="498" y="13" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="45" id="awa-Pm-QoN"/>
@@ -1548,12 +1548,6 @@
                                                         <constraint firstAttribute="height" constant="60" id="xX9-Q0-t4S"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView hidden="YES" tag="15" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="itemOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="UyV-Tp-cof">
-                                                    <rect key="frame" x="10" y="5" width="580" height="60"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="60" id="cDE-Bs-zqh"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="20" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hh3-QG-A2s">
                                                     <rect key="frame" x="547" y="25" width="35" height="21"/>
                                                     <constraints>
@@ -1569,6 +1563,12 @@
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="35" id="95T-VQ-fMF"/>
                                                         <constraint firstAttribute="height" constant="35" id="mP1-Xn-zRb"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <imageView hidden="YES" tag="15" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="itemOverlay" translatesAutoresizingMaskIntoConstraints="NO" id="UyV-Tp-cof">
+                                                    <rect key="frame" x="10" y="5" width="580" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="60" id="cDE-Bs-zqh"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
