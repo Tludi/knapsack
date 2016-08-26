@@ -18,13 +18,19 @@ class ArchiveViewController: UIViewController, UITableViewDataSource, UITableVie
   var selectedTrip = Trip()
   var showActiveTrips = true
   
+  // get version and build of current app
+  let version: AnyObject = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"]!
+  let build: AnyObject = NSBundle.mainBundle().infoDictionary!["CFBundleVersion"]!
   
   @IBOutlet weak var archiveTable: UITableView!
   
+  @IBOutlet weak var versionLabel: UILabel!
   
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    versionLabel.text = "v. \(version) b. \(build)"
     
     // Set the background image of the trips table
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!

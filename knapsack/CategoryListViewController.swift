@@ -101,7 +101,7 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
       
       let updatedCount = currentCount! + 1
       itemCountLabel.text = "\(updatedCount)"
-      print("increaseBackground alpha \(increaseBackground!.alpha)")
+
       increaseBackground?.flash()
       
       try! realm.write{
@@ -133,7 +133,7 @@ class CategoryListViewController: UIViewController, UITableViewDataSource, UITab
       }
       
     } else {
-      print("object with wrong tag selected")
+
       self.itemTable.reloadData()
     }
 

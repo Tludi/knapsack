@@ -19,6 +19,7 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
   var showActiveTrips = true
   let currentDate = NSDate()
   
+  @IBOutlet weak var infoButtonOutlet: UIBarButtonItem!
   @IBOutlet weak var bannerView: GADBannerView!
 
   @IBOutlet weak var addTripBox: UIView!
@@ -52,6 +53,8 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    infoButtonOutlet.enabled = false
+    infoButtonOutlet.tintColor = UIColor.clearColor()
     
     // Set the background image of the trips table
     let bgImage: UIImage = UIImage(named: "iPhone5bg.png")!
@@ -60,9 +63,9 @@ class TripViewController: UIViewController, UITableViewDataSource, UITableViewDe
     // AdMob code
     print("Google Mobile Ads SDK version: " + GADRequest.sdkVersion())
     // This is a test ID, use for testing
-    bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
+//    bannerView.adUnitID = "ca-app-pub-3940256099942544/2934735716"
     // This is the app unit ID for Admob - knapsack banner ad - front page
-//    bannerView.adUnitID = "ca-app-pub-9078081310752371/9311362449"
+    bannerView.adUnitID = "ca-app-pub-9078081310752371/9311362449"
     print("remember to reset adUnitID to production if using testing ID")
     bannerView.rootViewController = self
     bannerView.loadRequest(GADRequest())

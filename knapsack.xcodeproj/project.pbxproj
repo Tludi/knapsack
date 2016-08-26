@@ -290,6 +290,11 @@
 					00D0C8D01B67DFEC00823D22 = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = LWH67H9CS7;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					00D0C8E51B67DFEC00823D22 = {
 						CreatedOnToolsVersion = 6.4;
